@@ -6,8 +6,15 @@ public class Recensione {
 	
 	private String codice;
 	private String descrizione;
-	private LocalDate creazione;
+	private LocalDate dataCreazione;
 	private Float stelle;
+	
+	public Recensione(String codice, String descrizione, LocalDate dataCreazione, Float stelle) {
+		this.codice = codice;
+		this.descrizione = descrizione;
+		this.dataCreazione = dataCreazione;
+		this.stelle = stelle;
+	}
 	
 	public String getCodice() {
 		return codice;
@@ -22,10 +29,10 @@ public class Recensione {
 		this.descrizione = descrizione;
 	}
 	public LocalDate getCreazione() {
-		return creazione;
+		return dataCreazione;
 	}
 	public void setCreazione(LocalDate creazione) {
-		this.creazione = creazione;
+		this.dataCreazione = creazione;
 	}
 	public Float getStelle() {
 		return stelle;
