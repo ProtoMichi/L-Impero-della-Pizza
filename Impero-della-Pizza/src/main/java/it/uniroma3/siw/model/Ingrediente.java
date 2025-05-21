@@ -54,11 +54,11 @@ public class Ingrediente {
 	}
 	
 	public Boolean getCeliaco() {
-		return this.ciliaco;
+		return this.celiaco;
 	}
 	
-	public void setCiliaco(Boolean celiaco) {
-		this.ciliaco = ciliaco;
+	public void setCeliaco(Boolean celiaco) {
+		this.celiaco = celiaco;
 	}
 
 	@Override
