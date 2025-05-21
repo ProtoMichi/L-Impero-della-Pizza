@@ -11,14 +11,14 @@ public class Ingrediente {
 	private Integer codice;
 	private Float prezzo;
 	private Boolean vegan;
-	private Boolean ciliaco;
+	private Boolean celiaco;
 	
-	public Ingrediente(String nome,Integer codice,Float prezzo,Boolean Vegan,Boolean Ciliaco) {
+	public Ingrediente(String nome,Integer codice,Float prezzo,Boolean vegan,Boolean celiaco) {
 		this.nome = nome;
 		this.codice = codice;
 		this.prezzo = prezzo;
 		this.vegan = vegan;
-		this.ciliaco = ciliaco;
+		this.celiaco = celiaco;
 	}
 	
 	public String getNome() {
@@ -53,11 +53,11 @@ public class Ingrediente {
 		this.vegan = vegan;
 	}
 	
-	public Boolean getCiliaco() {
+	public Boolean getCeliaco() {
 		return this.ciliaco;
 	}
 	
-	public void setCiliaco(Boolean ciliaco) {
+	public void setCiliaco(Boolean celiaco) {
 		this.ciliaco = ciliaco;
 	}
 
@@ -81,7 +81,7 @@ public class Ingrediente {
 	@Override
 	public String toString() {
 		return "Ingrediente [id=" + id + ", nome=" + nome + ", codice=" + codice + ", prezzo=" + prezzo + ", vegan="
-				+ vegan + ", ciliaco=" + ciliaco + "]";
+				+ vegan + ", celiaco=" + celiaco + "]";
 	}
 	
 }
