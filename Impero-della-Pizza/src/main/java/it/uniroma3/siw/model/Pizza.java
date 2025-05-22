@@ -15,14 +15,16 @@ public class Pizza {
 	private Long id;
 	private String nome;
 	private Float prezzo;
-	private Float mediaStelle = 0.0f;
+	private Float mediaStelle;
 	private String URLImmagine;
 	
-	public Pizza(String nome, Float prezzo, String URLImmagine) {
-		this.nome = nome;
-		this.prezzo = prezzo;
-		this.URLImmagine = URLImmagine;
-	}
+	
+//	public Pizza(String nome, Float prezzo, String URLImmagine, Float mediaStelle) {
+//		this.nome = nome;
+//		this.prezzo = prezzo;
+//		this.URLImmagine = URLImmagine;
+//		this.mediaStelle = mediaStelle != null ? mediaStelle : 0.0f;
+//	}
 
 	public Long getId() {
 		return id;
