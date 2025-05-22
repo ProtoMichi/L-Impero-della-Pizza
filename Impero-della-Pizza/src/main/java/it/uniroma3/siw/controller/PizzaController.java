@@ -25,4 +25,9 @@ public class PizzaController {
 		model.addAttribute("pizzas", this.pizzaService.getAllPizzas());
 		return "pizzas.html";
 	}
+	
+	@GetMapping("/")
+	public String getHomepage() {
+		return "homepage.html";
+	}
 }
