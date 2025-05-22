@@ -1,6 +1,7 @@
 package it.uniroma3.siw.model;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -48,15 +49,28 @@ public class Recensione {
 	public void setStelle(Float stelle) {
 		this.stelle = stelle;
 	}
-	
-	public boolean equals(Object o) {
-		if(o == null) return false;
-		Recensione that = (Recensione)o;
-		return this.getId().equals(that.getId());
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(dataCreazione, descrizione);
 	}
-	
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Recensione other = (Recensione) obj;
+		return Objects.equals(dataCreazione, other.dataCreazione) && Objects.equals(descrizione, other.descrizione);
+	}
+
+	@Override
 	public String toString() {
-		return this.getCreazione() + "\n\n" + this.getDescrizione() + "\n\n" + this.getStelle();
+		return "Recensione [id=" + id + ", descrizione=" + descrizione + ", dataCreazione=" + dataCreazione
+				+ ", stelle=" + stelle + "]";
 	}
 	
 	
