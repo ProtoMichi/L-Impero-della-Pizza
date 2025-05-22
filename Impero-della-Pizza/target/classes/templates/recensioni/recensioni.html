@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista Recensioni</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <h1>Tutte le Recensioni</h1>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Descrizione</th>
+                <th>Data</th>
+                <th>Stelle</th>
+                <th>Dettagli</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="rec : ${recensioni}">
+                <td th:text="${rec.id}">1</td>
+                <td th:text="${rec.descrizione}">Descrizione</td>
+                <td th:text="${rec.creazione}">2024-04-01</td>
+                <td th:text="${rec.stelle}">4.5</td>
+                <td><a th:href="@{/recensione/{id}(id=${rec.id})}">Visualizza</a></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
