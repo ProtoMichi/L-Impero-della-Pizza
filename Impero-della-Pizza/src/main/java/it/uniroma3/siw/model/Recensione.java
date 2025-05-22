@@ -12,23 +12,23 @@ public class Recensione {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private String codice;
+	private Long id;
 	private String descrizione;
 	private LocalDate dataCreazione;
 	private Float stelle;
 	
-	public Recensione(String codice, String descrizione, LocalDate dataCreazione, Float stelle) {
-		this.codice = codice;
+	public Recensione(Long id, String descrizione, LocalDate dataCreazione, Float stelle) {
+		this.id = id;
 		this.descrizione = descrizione;
 		this.dataCreazione = dataCreazione;
 		this.stelle = stelle;
 	}
 	
-	public String getCodice() {
-		return codice;
+	public Long getId() {
+		return id;
 	}
-	public void setCodice(String codice) {
-		this.codice = codice;
+	public void setId(Long id) {
+		this.id = id;
 	}
 	public String getDescrizione() {
 		return descrizione;
@@ -52,7 +52,7 @@ public class Recensione {
 	public boolean equals(Object o) {
 		if(o == null) return false;
 		Recensione that = (Recensione)o;
-		return this.getCodice().equals(that.getCodice());
+		return this.getId().equals(that.getId());
 	}
 	
 	public String toString() {
