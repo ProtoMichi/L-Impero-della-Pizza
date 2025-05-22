@@ -5,14 +5,12 @@ import java.util.Objects;
 public class Pizza {
 
 	private Long id;
-	private Integer codice;
 	private String nome;
 	private Float prezzo;
 	private Float mediaStelle = 0.0f;
 	private String URLImmagine;
 	
-	public Pizza(Integer codice, String nome, Float prezzo, String URLImmagine) {
-		this.codice = codice;
+	public Pizza(String nome, Float prezzo, String URLImmagine) {
 		this.nome = nome;
 		this.prezzo = prezzo;
 		this.URLImmagine = URLImmagine;
@@ -24,14 +22,6 @@ public class Pizza {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public Integer getCodice() {
-		return codice;
-	}
-
-	public void setCodice(Integer codice) {
-		this.codice = codice;
 	}
 
 	public String getNome() {
@@ -68,7 +58,7 @@ public class Pizza {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(codice);
+		return Objects.hash(nome);
 	}
 
 	@Override
@@ -80,12 +70,12 @@ public class Pizza {
 		if (getClass() != obj.getClass())
 			return false;
 		Pizza other = (Pizza) obj;
-		return Objects.equals(codice, other.codice);
+		return Objects.equals(nome, other.nome);
 	}
 
 	@Override
 	public String toString() {
-		return "Pizza [id=" + id + ", codice=" + codice + ", nome=" + nome + ", prezzo=" + prezzo + ", mediaStelle="
+		return "Pizza [id=" + id + ", nome=" + nome + ", prezzo=" + prezzo + ", mediaStelle="
 				+ mediaStelle + ", URLImmagine=" + URLImmagine + "]";
 	}
 	
