@@ -8,17 +8,15 @@ public class Ingrediente {
     private Long id;
 	
 	private String nome;
-	private Integer codice;
 	private Float prezzo;
 	private Boolean vegan;
-	private Boolean ciliaco;
+	private Boolean celiaco;
 	
-	public Ingrediente(String nome,Integer codice,Float prezzo,Boolean Vegan,Boolean Ciliaco) {
+	public Ingrediente(String nome,Float prezzo,Boolean Vegan,Boolean Ciliaco) {
 		this.nome = nome;
-		this.codice = codice;
 		this.prezzo = prezzo;
 		this.vegan = vegan;
-		this.ciliaco = ciliaco;
+		this.celiaco = celiaco;
 	}
 	
 	public String getNome() {
@@ -27,14 +25,6 @@ public class Ingrediente {
 	
 	public void setNome(String nome) {
 		this.nome = nome;
-	}
-	
-	public Integer getCodice() {
-		return codice;
-	}
-	
-	public void setCodice(Integer codice) {
-		this.codice = codice;
 	}
 	
 	public Float getPrezzo() {
@@ -53,17 +43,29 @@ public class Ingrediente {
 		this.vegan = vegan;
 	}
 	
-	public Boolean getCiliaco() {
-		return this.ciliaco;
+	public Boolean getCeliaco() {
+		return this.celiaco;
 	}
 	
-	public void setCiliaco(Boolean ciliaco) {
-		this.ciliaco = ciliaco;
+	public void setCiliaco(Boolean celiaco) {
+		this.celiaco = celiaco;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public void setCeliaco(Boolean celiaco) {
+		this.celiaco = celiaco;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(codice);
+		return Objects.hash(nome);
 	}
 
 	@Override
@@ -75,13 +77,11 @@ public class Ingrediente {
 		if (getClass() != obj.getClass())
 			return false;
 		Ingrediente other = (Ingrediente) obj;
-		return Objects.equals(codice, other.codice);
+		return Objects.equals(nome, other.nome);
 	}
+	
+	
 
-	@Override
-	public String toString() {
-		return "Ingrediente [id=" + id + ", nome=" + nome + ", codice=" + codice + ", prezzo=" + prezzo + ", vegan="
-				+ vegan + ", ciliaco=" + ciliaco + "]";
-	}
+	
 	
 }
