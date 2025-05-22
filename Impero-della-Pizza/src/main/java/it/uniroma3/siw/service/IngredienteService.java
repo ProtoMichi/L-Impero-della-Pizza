@@ -12,11 +12,12 @@ public class IngredienteService {
 	@Autowired
 	private IngredienteRepository ingredienteRepository;
 	
-	public Ingrediente getPizzabyId(Long id) {
+	public Ingrediente getIngredientebyId(Long id) {
 		return ingredienteRepository.findById(id).get();
 	}
 	
-	public Iterable<Ingrediente> getAllPizzas() {
+	public Iterable<Ingrediente> getAllIngredienti() {
 		return ingredienteRepository.findAll();
 	}
 }
+
