@@ -18,12 +18,12 @@ public class Recensione {
 	private LocalDate dataCreazione;
 	private Float stelle;
 	
-	public Recensione(Long id, String descrizione, LocalDate dataCreazione, Float stelle) {
-		this.id = id;
-		this.descrizione = descrizione;
-		this.dataCreazione = dataCreazione;
-		this.stelle = stelle;
-	}
+//	public Recensione(Long id, String descrizione, LocalDate dataCreazione, Float stelle) {
+//		this.id = id;
+//		this.descrizione = descrizione;
+//		this.dataCreazione = dataCreazione;
+//		this.stelle = stelle;
+//	}
 	
 	public Long getId() {
 		return id;

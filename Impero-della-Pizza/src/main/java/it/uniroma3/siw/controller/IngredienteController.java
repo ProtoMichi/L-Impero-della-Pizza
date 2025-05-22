@@ -16,7 +16,7 @@ public class IngredienteController {
 	
 	@GetMapping("/ingrediente")
 	public String getIngredienti(Model model) {
-		model.addAttribute("ingrediente",this.ingredienteService.getAllIngredienti());
+		model.addAttribute("ingredienti",this.ingredienteService.getAllIngredienti());
 		return "ingredienti.html";
 	}
 	

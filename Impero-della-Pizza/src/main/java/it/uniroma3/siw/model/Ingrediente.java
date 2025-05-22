@@ -19,12 +19,12 @@ public class Ingrediente {
 	private Boolean vegan;
 	private Boolean celiaco;
 	
-	public Ingrediente(String nome,Float prezzo,Boolean vegan,Boolean celiaco) {
-		this.nome = nome;
-		this.prezzo = prezzo;
-		this.vegan = vegan;
-		this.celiaco = celiaco;
-	}
+//	public Ingrediente(String nome,Float prezzo,Boolean vegan,Boolean celiaco) {
+//		this.nome = nome;
+//		this.prezzo = prezzo;
+//		this.vegan = vegan;
+//		this.celiaco = celiaco;
+//	}
 	
 	public String getNome() {
 		return nome;
