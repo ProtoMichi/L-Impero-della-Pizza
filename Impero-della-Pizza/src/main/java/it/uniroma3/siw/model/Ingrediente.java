@@ -2,9 +2,16 @@ package it.uniroma3.siw.model;
 
 import java.util.Objects;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
+@Entity
 public class Ingrediente {
 
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
 	
 	private String nome;
@@ -12,7 +19,7 @@ public class Ingrediente {
 	private Boolean vegan;
 	private Boolean celiaco;
 	
-	public Ingrediente(String nome,Float prezzo,Boolean Vegan,Boolean Ciliaco) {
+	public Ingrediente(String nome,Float prezzo,Boolean vegan,Boolean celiaco) {
 		this.nome = nome;
 		this.prezzo = prezzo;
 		this.vegan = vegan;
@@ -78,10 +85,5 @@ public class Ingrediente {
 			return false;
 		Ingrediente other = (Ingrediente) obj;
 		return Objects.equals(nome, other.nome);
-	}
-	
-	
-
-	
-	
+	}	
 }
