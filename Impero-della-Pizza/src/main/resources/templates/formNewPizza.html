@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	
+	<head>
+		<title>Crea la tua pizza!</title>
+	</head>
+
+	<body>
+		<div><a href="/"><img src="/images/impero-della-pizza.png" width="5%"/></a> </div>
+		
+		<h1>Crea la tua pizza!</h1>
+		<form th:action="@{/pizza}" method="POST" th:object="${pizza}">
+			<div>
+				Nome:<span><input required type = "text" th:field="${pizza.nome}"></span>
+			</div>
+			
+			<div>
+				Prezzo: €<span><input required type="number" step="0.25" 
+					th:field="${pizza.prezzo}"> </span> 
+			</div>
+			
+			<div>
+				<span><button type = "submit">Conferma!</button></span>
+			</div>
+		</form>
+	
+	</body>
+	
+	
+</html>

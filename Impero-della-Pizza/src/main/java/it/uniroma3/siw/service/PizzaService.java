@@ -19,4 +19,8 @@ public class PizzaService {
 	public Iterable<Pizza> getAllPizzas() {
 		return pizzaRepository.findAll();
 	}
+
+	public void save(Pizza pizza) {
+		this.pizzaRepository.save(pizza);
+	}
 }
