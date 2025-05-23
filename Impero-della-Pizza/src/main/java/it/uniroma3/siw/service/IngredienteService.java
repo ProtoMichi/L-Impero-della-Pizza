@@ -19,4 +19,8 @@ public class IngredienteService {
 	public Iterable<Ingrediente> getAllIngredienti() {
 		return ingredienteRepository.findAll();
 	}
+	
+	public void save(Ingrediente ingrediente) {
+		this.ingredienteRepository.save(ingrediente);
+	}
 }

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+  		<title>Aggiungi Ingrediente</title>
+	</head>
+	<body>
+		<div><a href="/"><img src="/images/impero-della-pizza.png" width="5%"></a></div>
+	  <h1>Aggiungi un ingrediente</h1>
+	  <form th:action="@{/ingrediente}" method="POST" th:object="${ingrediente}">
+	<div>
+		Nome: <span><input required type="text" th:field="${ingrediente.nome}"/></span>
+	</div>
+	<div>
+		Prezzo: <span><input required type="number" th:field="${ingrediente.prezzo}"/></span>		
+	</div>
+	<div>
+		Vegan: 
+		<span>		
+			<select th:field="${ingrediente.vegan}">
+		      <option th:value="true">Adatto ai vegani</option>
+		      <option th:value="false">Non adatto ai vegani</option>
+		    </select>
+		</span>
+	</div>
+	<div>
+	 Celiaco: 
+	 <span>
+	     <select th:field="${ingrediente.celiaco}">
+	       <option th:value="true">Per celiaci</option>
+	       <option th:value="false">Non per celiaci</option>
+	     </select>
+	   </span>
+	</div>
+	<div>
+		<span><button type="submit">Conferma</button></span>
+	</div>	
+	  </form>	
+	</body>
+</html>
