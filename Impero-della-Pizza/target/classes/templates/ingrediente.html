@@ -11,9 +11,9 @@
 	
   <div th:if="${ingrediente}">
     <h1 th:text="${ingrediente.nome}">Nome Ingrediente</h1>
-    <div>
-      Prezzo: <span th:text="${ingrediente.prezzo} + ' €'">1.50 €</span>
-    </div>
+	<div>
+	  Prezzo: <span th:text="${#numbers.formatDecimal(ingrediente.prezzo, 1, 2)} + ' €'">1.50 €</span>
+	</div>
     <div th:if="${ingrediente.vegan}">
       <span>Adatto a vegani</span>
     </div>

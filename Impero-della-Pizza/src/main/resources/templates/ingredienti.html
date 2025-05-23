@@ -19,7 +19,7 @@
     <li th:each="ingrediente : ${ingredienti}">
       <a th:href="@{'/ingrediente/' + ${ingrediente.id}}">
         <span th:text="${ingrediente.nome}">Pomodoro</span>
-        <span th:text="' ' + ${ingrediente.prezzo} + '€'">1.50€</span>
+        <span th:text="' ' + ${#numbers.formatDecimal(ingrediente.prezzo, 1, 2)} + ' €'">1.50€</span>
         <span th:if="${ingrediente.vegan}"> - Adatto a vegani</span>
         <span th:unless="${ingrediente.vegan}"> - Non adatto a vegani</span>
         <span th:if="${ingrediente.celiaco}"> - Adatto a celiaci</span>
