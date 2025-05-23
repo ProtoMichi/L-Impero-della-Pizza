@@ -3,6 +3,7 @@ package it.uniroma3.siw.model;
 import java.time.LocalDate;
 import java.util.Objects;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,6 +16,7 @@ public class Recensione {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private String descrizione;
+	@Column(name = "data_di_creazione")
 	private LocalDate dataCreazione;
 	private Float stelle;
 	
