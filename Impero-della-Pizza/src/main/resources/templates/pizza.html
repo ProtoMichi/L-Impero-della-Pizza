@@ -6,11 +6,13 @@
 	
 	<body>
 		<div>
-			<a href="/"><img src="/images/impero-della-pizza.png" width="5%"></a>
+			<a href="/"><img src="/images/impero-della-pizza.png" width="5%"/></a>
 		</div>
 		<div th:if="${pizza}">
 			<h1 th:text="${pizza.nome}">Nome Pizza</h1>
-			<div>Prezzo: <span th:text="'(' + ${pizza.prezzo} + ')'"></span></div>
+			<div>
+				Prezzo: <span th:text="${#numbers.formatDecimal(pizza.prezzo, 1, 2)} + ' €' "></span>
+			</div>
 			<span><img width="30%" th:src="${pizza.URLImmagine}"/></span>
 		</div>
 		<div th:unless="${pizza}">Non Esiste</div>

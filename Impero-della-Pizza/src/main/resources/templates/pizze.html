@@ -15,7 +15,7 @@
 		<div th:if="${pizze.isEmpty()}">Non ci sono pizze da gustare :(</div>
 		<ul>
 			<li th:each="pizza : ${pizze}">
-				<a th:href="@{'/pizza' + '/' + ${pizza.id}}" th:text="${pizza.nome} + ' (€' + ${pizza.prezzo} + ')'">Margherita (€ 5)</a>
+				<a th:href="@{'/pizza' + '/' + ${pizza.id}}" th:text="${pizza.nome} + ' (' + ${#numbers.formatDecimal(pizza.prezzo, 1, 2)} + '€)'">Margherita (€ 5)</a>
 			</li>
 		</ul>
 	</body>

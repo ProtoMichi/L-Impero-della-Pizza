@@ -15,7 +15,7 @@ public class Ingrediente {
     private Long id;
 	
 	private String nome;
-	private Float prezzo;
+	private Double prezzo;
 	private Boolean vegan;
 	private Boolean celiaco;
 	
@@ -34,11 +34,11 @@ public class Ingrediente {
 		this.nome = nome;
 	}
 	
-	public Float getPrezzo() {
+	public Double getPrezzo() {
 		return prezzo;
 	}
 	
-	public void setPrezzo(Float prezzo) {
+	public void setPrezzo(Double prezzo) {
 		this.prezzo = prezzo;
 	}
 	
