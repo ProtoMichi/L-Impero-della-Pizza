@@ -11,25 +11,14 @@
 		Nome: <span><input required type="text" th:field="${ingrediente.nome}"/></span>
 	</div>
 	<div>
-		Prezzo: <span><input required type="number" th:field="${ingrediente.prezzo}"/></span>		
+		Prezzo: <span><input required type="number" step="0.05" th:field="${ingrediente.prezzo}"/></span>		
 	</div>
 	<div>
-		Vegan: 
-		<span>		
-			<select th:field="${ingrediente.vegan}">
-		      <option th:value="true">Adatto ai vegani</option>
-		      <option th:value="false">Non adatto ai vegani</option>
-		    </select>
-		</span>
+		Vegan: <span><input type="checkbox" th:field="${ingrediente.vegan}"/></span>
 	</div>
 	<div>
 	 Celiaco: 
-	 <span>
-	     <select th:field="${ingrediente.celiaco}">
-	       <option th:value="true">Per celiaci</option>
-	       <option th:value="false">Non per celiaci</option>
-	     </select>
-	   </span>
+	 <span><input type="checkbox" th:field="${ingrediente.celiaco}"/></span>
 	</div>
 	<div>
 		<span><button type="submit">Conferma</button></span>
