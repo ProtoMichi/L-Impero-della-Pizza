@@ -80,8 +80,6 @@ public class Pizza {
 	public void setURLImmagine(String uRLImmagine) {
 		URLImmagine = uRLImmagine;
 	}
-	
-	
 
 	public List<Ingrediente> getListaIngredienti() {
 		return listaIngredienti;
