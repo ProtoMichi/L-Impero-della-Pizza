@@ -1,11 +1,16 @@
 package it.uniroma3.siw.model;
 
+import java.util.List;
 import java.util.Objects;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Pizza {
@@ -13,18 +18,28 @@ public class Pizza {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
+	@Column(nullable = false)
 	private String nome;
+	@Column(nullable = false)
 	private Float prezzo;
 	private Float mediaStelle;
 	private String URLImmagine;
 	
+	@ManyToMany(fetch= FetchType.EAGER, mappedBy = "listaPizze")
+	private List<Ingrediente> listaIngredienti;
+	@OneToMany
+	private List<Recensione> listaRecensioni;
 	
-//	public Pizza(String nome, Float prezzo, String URLImmagine, Float mediaStelle) {
-//		this.nome = nome;
-//		this.prezzo = prezzo;
-//		this.URLImmagine = URLImmagine;
-//		this.mediaStelle = mediaStelle != null ? mediaStelle : 0.0f;
-//	}
+	public Pizza() {
+		
+	}
+	
+	public Pizza(String nome, Float prezzo, String URLImmagine, Float mediaStelle) {
+		this.nome = nome;
+		this.prezzo = prezzo;
+		this.URLImmagine = URLImmagine;
+		this.mediaStelle = mediaStelle != null ? mediaStelle : 0.0f;
+	}
 
 	public Long getId() {
 		return id;
@@ -65,6 +80,24 @@ public class Pizza {
 	public void setURLImmagine(String uRLImmagine) {
 		URLImmagine = uRLImmagine;
 	}
+	
+	
+
+	public List<Ingrediente> getListaIngredienti() {
+		return listaIngredienti;
+	}
+
+	public void setListaIngredienti(List<Ingrediente> listaIngredienti) {
+		this.listaIngredienti = listaIngredienti;
+	}
+
+	public List<Recensione> getListaRecensioni() {
+		return listaRecensioni;
+	}
+
+	public void setListaRecensioni(List<Recensione> listaRecensioni) {
+		this.listaRecensioni = listaRecensioni;
+	}
 
 	@Override
 	public int hashCode() {
@@ -85,8 +118,9 @@ public class Pizza {
 
 	@Override
 	public String toString() {
-		return "Pizza [id=" + id + ", nome=" + nome + ", prezzo=" + prezzo + ", mediaStelle="
-				+ mediaStelle + ", URLImmagine=" + URLImmagine + "]";
+		return "Pizza [id=" + id + ", nome=" + nome + ", prezzo=" + prezzo + ", mediaStelle=" + mediaStelle
+				+ ", URLImmagine=" + URLImmagine + ", listaIngredienti=" + listaIngredienti + ", listaRecensioni="
+				+ listaRecensioni + "]";
 	}
 	
 	
