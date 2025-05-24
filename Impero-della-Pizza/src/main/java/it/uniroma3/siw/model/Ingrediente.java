@@ -30,7 +30,7 @@ public class Ingrediente {
 	private Boolean celiaco;
 
 	@ManyToMany
-	private List<Pizza> pizze;
+	private List<Pizza> listaPizze;
 
 	public Ingrediente() {
 		
