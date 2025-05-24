@@ -87,7 +87,6 @@ public class Ingrediente {
 		this.celiaco = celiaco;
 	}
 	
-
 	public List<Pizza> getListaPizze() {
 		return listaPizze;
 	}
