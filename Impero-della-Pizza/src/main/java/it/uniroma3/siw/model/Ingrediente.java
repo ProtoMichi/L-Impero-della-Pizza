@@ -86,6 +86,15 @@ public class Ingrediente {
 	public void setCeliaco(Boolean celiaco) {
 		this.celiaco = celiaco;
 	}
+	
+
+	public List<Pizza> getListaPizze() {
+		return listaPizze;
+	}
+
+	public void setListaPizze(List<Pizza> listaPizze) {
+		this.listaPizze = listaPizze;
+	}
 
 	@Override
 	public int hashCode() {
@@ -102,5 +111,11 @@ public class Ingrediente {
 			return false;
 		Ingrediente other = (Ingrediente) obj;
 		return Objects.equals(nome, other.nome);
-	}	
+	}
+
+	@Override
+	public String toString() {
+		return "Ingrediente [id=" + id + ", nome=" + nome + ", prezzo=" + prezzo + ", vegan=" + vegan + ", celiaco="
+				+ celiaco + ", listaPizze=" + listaPizze + "]";
+	}
 }
