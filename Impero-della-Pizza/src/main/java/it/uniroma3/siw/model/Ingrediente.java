@@ -33,7 +33,7 @@ public class Ingrediente {
 	private List<Pizza> pizze;
 
 	public Ingrediente() {
-
+		
 	}
 
 	public Ingrediente(String nome,Float prezzo,Boolean vegan,Boolean celiaco) {
