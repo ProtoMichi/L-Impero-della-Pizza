@@ -21,12 +21,19 @@
                 <fieldset>
                     <legend>Recensione</legend>
                     <label> Descrizione:
-                        <input required type="text" name="descrizione" placeholder="Gnam!">
+                        <input required type="text" name="descrizione" placeholder="Gnam!"
+							th:field="${recensione.descrizione}">
                     </label>
 
                     <label>Stelle:
-                        <input required type="number" name="stelle" placeholder="5/5">
+                        <input required type="number" name="stelle" placeholder="5/5"
+							th:field="${recensione.stelle}">
                     </label>
+					
+					<label>Data
+						<input type="datetime-local" name="data" placeholder="14/10/2023"
+							th:field="${recensione.dataCreazione}">
+					</label>
                     <button>Submit</button>
                 </fieldset>
             </form>
