@@ -10,11 +10,11 @@
 		<div th:if="${#fields.hasGlobalErrors()}">
 			<p th:each="err : ${#fields.hasGlobalErrors()}" th:text="${err}">...</p>
 	<div>
-		Nome: <span><input required type="text" th:field="${ingrediente.nome}"/></span>
+		Nome: <span><input type="text" th:field="${ingrediente.nome}"/></span>
 		<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
 	</div>
 	<div>
-		Prezzo: <span><input required type="number" step="0.05" th:field="${ingrediente.prezzo}"/></span>
+		Prezzo: <span><input type="number" step="0.05" th:field="${ingrediente.prezzo}"/></span>
 		<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>		
 	</div>
 	<div>
