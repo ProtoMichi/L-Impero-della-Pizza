@@ -4,8 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
+import it.uniroma3.siw.model.Recensione;
 import it.uniroma3.siw.service.RecensioneService;
 
 @Controller
@@ -24,5 +27,18 @@ public class RecensioneController {
 	public String showRecensioni(Model model) {
 		model.addAttribute("recensioni", this.recensioneService.getAllRecensioni());
 		return "recensioni.html";
+	}
+	
+	@GetMapping("/formNewRecensione")
+	public String formNewRecensione(Model model) {
+		model.addAttribute("recensione",new Recensione());
+		return "formNewRecensione.html";
+	}
+	
+	@PostMapping("/recensione")
+	public String newMovie(@ModelAttribute("recensione") Recensione recensione, Model model) {
+		this.recensioneService.save(recensione);
+		model.addAttribute("recensione", recensione);
+		return "redirect:recensione/"+recensione.getId();
 	}
 }

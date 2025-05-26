@@ -27,6 +27,13 @@ public class Recensione {
 //		this.stelle = stelle;
 //	}
 	
+	public LocalDate getDataCreazione() {
+		return dataCreazione;
+	}
+	public void setDataCreazione(LocalDate dataCreazione) {
+		this.dataCreazione = dataCreazione;
+	}
+	
 	public Long getId() {
 		return id;
 	}
@@ -39,12 +46,7 @@ public class Recensione {
 	public void setDescrizione(String descrizione) {
 		this.descrizione = descrizione;
 	}
-	public LocalDate getCreazione() {
-		return dataCreazione;
-	}
-	public void setCreazione(LocalDate creazione) {
-		this.dataCreazione = creazione;
-	}
+	
 	public Float getStelle() {
 		return stelle;
 	}
@@ -54,7 +56,7 @@ public class Recensione {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(dataCreazione, descrizione);
+		return Objects.hash(getDataCreazione(), descrizione);
 	}
 
 	@Override
@@ -66,14 +68,15 @@ public class Recensione {
 		if (getClass() != obj.getClass())
 			return false;
 		Recensione other = (Recensione) obj;
-		return Objects.equals(dataCreazione, other.dataCreazione) && Objects.equals(descrizione, other.descrizione);
+		return Objects.equals(getDataCreazione(), other.getDataCreazione()) && Objects.equals(descrizione, other.descrizione);
 	}
 
 	@Override
 	public String toString() {
-		return "Recensione [id=" + id + ", descrizione=" + descrizione + ", dataCreazione=" + dataCreazione
+		return "Recensione [id=" + id + ", descrizione=" + descrizione + ", dataCreazione=" + getDataCreazione()
 				+ ", stelle=" + stelle + "]";
 	}
+	
 	
 	
 }

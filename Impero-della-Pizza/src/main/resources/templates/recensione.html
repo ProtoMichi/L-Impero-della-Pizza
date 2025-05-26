@@ -5,12 +5,17 @@
     <meta charset="UTF-8">
 </head>
 <body>
-    <h1>Dettaglio Recensione</h1>
+	<header>
+		<a href="/"><img src="/images/impero-della-pizza.png" width="5%"/></a>
+		<h1>Dettaglio Recensione</h1>
+	</header>
     
-    <p><strong>ID:</strong> <span th:text="${recensione.id}">1</span></p>
-    <p><strong>Descrizione:</strong> <span th:text="${recensione.descrizione}">Ottima pizza!</span></p>
-    <p><strong>Data di Creazione:</strong> <span th:text="${recensione.creazione}">2024-04-01</span></p>
-    <p><strong>Stelle:</strong> <span th:text="${recensione.stelle}">4.5</span></p>
+    <main>
+		<p><strong>ID:</strong> <span th:text="${recensione.id}">1</span></p>
+		<p><strong>Descrizione:</strong> <span th:text="${recensione.descrizione}">Ottima pizza!</span></p>
+		<p><strong>Data di Creazione:</strong> <span th:text="${recensione.creazione}">2024-04-01</span></p>
+		<p><strong>Stelle:</strong> <span th:text="${recensione.stelle}">4.5</span></p>
+	</main>
 
     <a th:href="@{/recensione}">Torna alla lista</a>
 </body>

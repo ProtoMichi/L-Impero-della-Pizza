@@ -19,4 +19,8 @@ public class RecensioneService {
 	public Iterable<Recensione> getAllRecensioni(){
 		return recensioneRepository.findAll();
 	}
+	
+	public Recensione save(Recensione recensione) {
+		return recensioneRepository.save(recensione);
+	}
 }
