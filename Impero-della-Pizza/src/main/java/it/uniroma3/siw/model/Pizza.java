@@ -11,6 +11,10 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 public class Pizza {
@@ -19,12 +23,15 @@ public class Pizza {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	@Column(nullable = false)
+	@NotBlank
 	private String nome;
 	@Column(nullable = false)
+	@NotNull
+	@Min(1)
 	private Float prezzo;
 	private Float mediaStelle;
 	private String URLImmagine;
-	
+	//@NotEmpty
 	@ManyToMany(fetch= FetchType.EAGER, mappedBy = "listaPizze")
 	private List<Ingrediente> listaIngredienti;
 	@OneToMany
