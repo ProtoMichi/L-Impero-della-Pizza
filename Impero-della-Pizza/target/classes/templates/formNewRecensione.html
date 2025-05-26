@@ -24,17 +24,23 @@
 
 			        <label> Descrizione:
 			            <input required type="text" name="descrizione" placeholder="Gnam!"
-			                th:field="*{descrizione}">
+			                th:field="*{descrizione}"
+						>
+						<span th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}"></span>
 			        </label>
 
 			        <label>Stelle:
 			            <input required type="number" name="stelle" placeholder="5/5"
-			                th:field="*{stelle}">
+			                th:field="*{stelle}"
+						>
+						<span th:if="${#fields.hasErrors('stelle')}" th:errors="*{stelle}"></span>
 			        </label>
 			        
 			        <label>Data:
 			            <input type="datetime-local" name="data" placeholder="14/10/2023"
-			                th:field="*{dataCreazione}">
+			                th:field="*{dataCreazione}"
+						>
+						<span th:if="${#fields.hasErrors('dataCreazione')}" th:errors="*{dataCreazione}"></span>
 			        </label>
 
 			        <button>Submit</button>

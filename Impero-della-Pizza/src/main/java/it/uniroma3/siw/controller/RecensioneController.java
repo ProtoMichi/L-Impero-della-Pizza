@@ -3,6 +3,7 @@ package it.uniroma3.siw.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import it.uniroma3.siw.model.Recensione;
 import it.uniroma3.siw.service.RecensioneService;
+import jakarta.validation.Valid;
 
 @Controller
 public class RecensioneController {
@@ -36,9 +38,15 @@ public class RecensioneController {
 	}
 	
 	@PostMapping("/recensione")
-	public String newMovie(@ModelAttribute("recensione") Recensione recensione, Model model) {
-		this.recensioneService.save(recensione);
-		model.addAttribute("recensione", recensione);
-		return "redirect:recensione/"+recensione.getId();
+	public String newRecensione(@Valid @ModelAttribute("recensione") Recensione recensione,
+			BindingResult bindingResult,Model model) {
+		if(bindingResult.hasErrors()) {
+			return "formNewRecensione.html";
+		}
+		else {
+			this.recensioneService.save(recensione);
+			model.addAttribute("recensione", recensione);
+			return "redirect:recensione/"+recensione.getId();
+		}
 	}
 }

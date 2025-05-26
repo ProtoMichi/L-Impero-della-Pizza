@@ -9,6 +9,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 public class Ingrediente {
@@ -17,9 +19,11 @@ public class Ingrediente {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 
+	@NotBlank
 	@Column(nullable=false)
 	private String nome;
 
+	@NotNull
 	@Column(nullable=false)
 	private Float prezzo;
 
