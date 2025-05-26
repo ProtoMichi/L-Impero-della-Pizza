@@ -1,6 +1,7 @@
 package it.uniroma3.siw.model;
 
 import java.time.LocalDate;
+
 import java.util.Objects;
 
 import jakarta.persistence.Column;
@@ -15,17 +16,26 @@ public class Recensione {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
+	
+	@Column(nullable = true)
 	private String descrizione;
-	@Column(name = "data_di_creazione")
+	
+	@Column(name = "data_di_creazione", nullable = false, length = 2000)
 	private LocalDate dataCreazione;
+	
+	@Column(nullable = false, length = 3)
 	private Float stelle;
 	
-//	public Recensione(Long id, String descrizione, LocalDate dataCreazione, Float stelle) {
-//		this.id = id;
-//		this.descrizione = descrizione;
-//		this.dataCreazione = dataCreazione;
-//		this.stelle = stelle;
-//	}
+	public Recensione() {
+		
+	}
+	
+	public Recensione(Long id, String descrizione, LocalDate dataCreazione, Float stelle) {
+		this.id = id;
+		this.descrizione = descrizione;
+		this.dataCreazione = dataCreazione;
+		this.stelle = stelle;
+	}
 	
 	public LocalDate getDataCreazione() {
 		return dataCreazione;
