@@ -1,7 +1,6 @@
 package it.uniroma3.siw.model;
 
 import java.time.LocalDate;
-
 import java.util.Objects;
 
 import jakarta.persistence.Column;
@@ -11,7 +10,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 public class Recensione {
@@ -20,15 +19,16 @@ public class Recensione {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
-	@NotBlank
 	private String descrizione;
 	
 	@Column(name = "data_di_creazione", nullable = false, length = 2000)
+	@NotNull
 	private LocalDate dataCreazione;
 	
 	@Column(nullable = false)
 	@Min(0)
 	@Max(5)
+	@NotNull
 	private Float stelle;
 	
 	public Recensione() {

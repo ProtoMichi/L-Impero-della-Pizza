@@ -13,7 +13,7 @@
 	</div>
 	<div>
 		Prezzo: <span><input type="number" min="0.05" step="0.05" th:field="${ingrediente.prezzo}"/></span>
-		<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>		
+		<span th:if="${#fields.hasErrors('prezzo')}" th:errors="*{prezzo}"></span>		
 	</div>
 	<div>
 		Vegan: <span><input type="checkbox" th:field="${ingrediente.vegan}"/></span>

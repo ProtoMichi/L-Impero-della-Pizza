@@ -43,9 +43,9 @@ public class PizzaController {
 			return "formNewPizza.html";
 		} 
 		else {
-		this.pizzaService.save(pizza);
-		model.addAttribute("pizza", pizza);
-		return "redirect:pizza/" + pizza.getId();
+			this.pizzaService.save(pizza);
+			model.addAttribute("pizza", pizza);
+			return "redirect:pizza/" + pizza.getId();
 		}
 	}
 	

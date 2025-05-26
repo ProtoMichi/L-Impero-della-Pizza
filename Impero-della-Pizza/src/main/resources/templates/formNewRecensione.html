@@ -13,31 +13,31 @@
 			<a href="/"><img src="/images/impero-della-pizza.png" width="5%"/></a>
             <nav>
                 <a href="/">Home</a>
-                <a href="/recensioni">Recensioni</a>
+                <a href="/recensione">Recensioni</a>
             </nav>
         </header>
 
         <main>
-			<form th:action="@{recensione/}" method="post" th:object="${recensione}">
+			<form th:action="@{/recensione}" method="post" th:object="${recensione}">
 			    <fieldset>
 			        <legend>Recensione</legend>
 
 			        <label> Descrizione:
-			            <input required type="text" name="descrizione" placeholder="Gnam!"
+			            <input type="text" name="descrizione" placeholder="Gnam!"
 			                th:field="*{descrizione}"
 						>
 						<span th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}"></span>
 			        </label>
 
 			        <label>Stelle:
-			            <input required type="number" name="stelle" placeholder="5/5"
+			            <input type="number" min="0" max="5" name="stelle" placeholder="5/5"
 			                th:field="*{stelle}"
 						>
 						<span th:if="${#fields.hasErrors('stelle')}" th:errors="*{stelle}"></span>
 			        </label>
 			        
 			        <label>Data:
-			            <input type="datetime-local" name="data" placeholder="14/10/2023"
+			            <input type="datetime" name="data" placeholder="2023-05-10"
 			                th:field="*{dataCreazione}"
 						>
 						<span th:if="${#fields.hasErrors('dataCreazione')}" th:errors="*{dataCreazione}"></span>
