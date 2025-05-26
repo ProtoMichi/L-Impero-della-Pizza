@@ -9,6 +9,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 public class Recensione {
@@ -17,13 +20,17 @@ public class Recensione {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
-	@Column(nullable = true)
+	@NotBlank
 	private String descrizione;
 	
 	@Column(name = "data_di_creazione", nullable = false, length = 2000)
+	@Min(2020)
+	@Max(2025)
 	private LocalDate dataCreazione;
 	
-	@Column(nullable = false, length = 3)
+	@Column(nullable = false)
+	@Min(0)
+	@Max(5)
 	private Float stelle;
 	
 	public Recensione() {
