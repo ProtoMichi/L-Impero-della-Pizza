@@ -24,8 +24,6 @@ public class Recensione {
 	private String descrizione;
 	
 	@Column(name = "data_di_creazione", nullable = false, length = 2000)
-	@Min(2020)
-	@Max(2025)
 	private LocalDate dataCreazione;
 	
 	@Column(nullable = false)
