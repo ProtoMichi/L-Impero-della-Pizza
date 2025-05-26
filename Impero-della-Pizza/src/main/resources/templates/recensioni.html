@@ -22,7 +22,7 @@
             <tr th:each="rec : ${recensioni}">
                 <td th:text="${rec.id}">1</td>
                 <td th:text="${rec.descrizione}">Descrizione</td>
-                <td th:text="${rec.creazione}">2024-04-01</td>
+                <td th:text="${rec.dataCreazione}">2024-04-01</td>
                 <td th:text="${rec.stelle}">4.5</td>
                 <td><a th:href="@{/recensione/{id}(id=${rec.id})}">Visualizza</a></td>
             </tr>
