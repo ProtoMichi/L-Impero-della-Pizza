@@ -1,6 +1,5 @@
 package it.uniroma3.siw.model;
 
-import java.time.LocalDate;
 import java.util.Objects;
 
 import jakarta.persistence.Column;
@@ -8,24 +7,28 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 
 @Entity
+@Table(name = "users")
 public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
+	
 	@NotBlank
 	@Column(nullable=false)
 	private String nome;
+	
 	@NotBlank
 	@Column(nullable=false)
 	private String cognome;
-	@Column(nullable = false)
-	@NotNull
-	private LocalDate dataDiNascita;
+	
+	@Column(nullable=false)
+	@NotBlank
+	private String email;
 	
 	public Long getId() {
 		return id;
@@ -51,17 +54,17 @@ public class User {
 		this.cognome = cognome;
 	}
 	
-	public LocalDate getDataDiNascita() {
-		return dataDiNascita;
+	public String getEmail() {
+		return email;
 	}
 	
-	public void setDataDiNascita(LocalDate dataDiNascita) {
-		this.dataDiNascita = dataDiNascita;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(cognome, dataDiNascita, nome);
+		return Objects.hash(cognome, email, nome);
 	}
 
 	@Override
@@ -73,7 +76,7 @@ public class User {
 		if (getClass() != obj.getClass())
 			return false;
 		User other = (User) obj;
-		return Objects.equals(cognome, other.cognome) && Objects.equals(dataDiNascita, other.dataDiNascita)
+		return Objects.equals(cognome, other.cognome) && Objects.equals(email, other.email)
 				&& Objects.equals(nome, other.nome);
 	}
 	

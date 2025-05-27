@@ -1,7 +1,5 @@
 package it.uniroma3.siw.model;
 
-import java.util.Objects;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -14,6 +12,9 @@ import jakarta.validation.constraints.NotBlank;
 @Entity
 public class Credentials {
 
+	public static final String DEFAULT_ROLE = "DEFAULT";
+	public static final String ADMIN_ROLE = "ADMIN";
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
@@ -28,8 +29,8 @@ public class Credentials {
 	@Column(nullable = false)
 	private String ruolo;
 	
-	@OneToOne(cascade = {CascadeType.ALL})
-	private User utente;
+	@OneToOne(cascade = CascadeType.ALL)
+	private User user;
 	
 	public Long getId() {
 		return id;
@@ -55,6 +56,14 @@ public class Credentials {
 		this.password = password;
 	}
 	
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
 	public String getRuolo() {
 		return ruolo;
 	}
@@ -63,26 +72,4 @@ public class Credentials {
 		this.ruolo = ruolo;
 	}
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(username);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Credentials other = (Credentials) obj;
-		return Objects.equals(username, other.username);
-	}
-
-	@Override
-	public String toString() {
-		return "Credentials [id=" + id + ", username=" + username + ", password=" + password + ", ruolo=" + ruolo + "]";
-	}
-	
 }
