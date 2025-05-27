@@ -48,9 +48,4 @@ public class PizzaController {
 			return "redirect:pizza/" + pizza.getId();
 		}
 	}
-	
-	@GetMapping("/")
-	public String getHomepage() {
-		return "homepage.html";
-	}
 }
