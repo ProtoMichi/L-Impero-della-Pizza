@@ -1,12 +1,19 @@
 package it.uniroma3.siw.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
+
 import it.uniroma3.siw.model.Credentials;
 import it.uniroma3.siw.repository.CredentialsRepository;
 import jakarta.transaction.Transactional;
 
 public class CredentialsService {
 
-	private CredentialsRepository credentialsRepository;
+	@Autowired
+	protected PasswordEncoder passwordEncoder;
+	
+	@Autowired
+	protected CredentialsRepository credentialsRepository;
 	
 	@Transactional
 	public Credentials getCredentials(Long id) {
@@ -21,6 +28,7 @@ public class CredentialsService {
 	@Transactional
 	public Credentials saveCredentials(Credentials credentials) {
 		credentials.setRuolo(Credentials.DEFAULT_ROLE);
+		credentials.setPassword(this.passwordEncoder.encode(credentials.getPassword()));
 		return this.credentialsRepository.save(credentials);
 	}
 }
