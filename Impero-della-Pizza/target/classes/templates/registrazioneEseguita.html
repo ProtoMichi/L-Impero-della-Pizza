@@ -2,7 +2,7 @@
 <html>
 
 <head>
-	<title>Imper della Pizza - Registrazione Eseguita</title>
+	<title>Impero della Pizza - Registrazione Eseguita</title>
 	<link rel="stylesheet" href="/css/stile.css" />
 </head>
 
@@ -12,7 +12,7 @@
 			<span th:text="${userDetails.username}"></span>
 			<a href="/logout">Logout</a>
 		</div>
-		<div th:unless="${user}">
+		<div th:unless="${userDetails}">
 			<a href="/login">Login</a>
 		</div>
 	</header>
@@ -30,7 +30,7 @@
 		<span th:text="${user.cognome}"></span>
 	</div>
 	<div>
-	<span>Email:</span>
+		<span>Email:</span>
 		<span th:text="${user.email}"></span>
 	</div>
 </body>

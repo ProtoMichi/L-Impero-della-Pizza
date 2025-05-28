@@ -23,7 +23,7 @@ public class UserService {
 		return userRepository.findAll();
 	}
 	@Transactional
-	public void save(User user) {
-		this.userRepository.save(user);
+	public User saveUser(User user) {
+		return this.userRepository.save(user);
 	}
 }

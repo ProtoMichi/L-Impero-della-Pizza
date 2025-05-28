@@ -9,6 +9,13 @@
 
     <body>
         <header>
+		<div th:if="${userDetails}">
+			<span th:text="${userDetails.username}"></span>
+			<a href="/logout">Logout</a>
+		</div>
+		<div th:unless="${userDetails}">
+			<a href="/login">Login</a>
+		</div>
             <h1>Inviaci la tua recensione!</h1>
 			<a href="/"><img src="/images/impero-della-pizza.png" width="5%"/></a>
             <nav>

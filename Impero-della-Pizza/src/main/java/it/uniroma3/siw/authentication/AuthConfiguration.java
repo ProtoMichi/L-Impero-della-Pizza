@@ -51,8 +51,8 @@ public class AuthConfiguration {
 		.authorizeHttpRequests(auth -> auth
 				// .requestMatchers("/**").permitAll()
 				// chiunque (autenticato o no) può accedere alle pagine index, login, register, ai css e alle immagini
-				.requestMatchers(HttpMethod.GET, "/", "/homepage", "/register", "/css/**", "/images/**").permitAll()
-				.requestMatchers(HttpMethod.POST, "/register", "/login").permitAll()
+				.requestMatchers(HttpMethod.GET, "/", "/homepage", "/registrazione", "/css/**", "/images/**").permitAll()
+				.requestMatchers(HttpMethod.POST, "/registrazione", "/login").permitAll()
 				// chiunque (autenticato o no) può mandare richieste POST al punto di accesso per login e register
 				.requestMatchers(HttpMethod.GET, "/admin/**").hasAuthority(ADMIN_ROLE)
 				.requestMatchers(HttpMethod.POST, "/admin/**").hasAuthority(ADMIN_ROLE)
@@ -63,7 +63,7 @@ public class AuthConfiguration {
 		.formLogin(form -> form
 				.loginPage("/login")
 				.permitAll()
-				.defaultSuccessUrl("/success", true)
+				.defaultSuccessUrl("/successo", true)
 				.failureUrl("/login?error=true")
 				)
 		// LOGOUT: qui definiamo il logout

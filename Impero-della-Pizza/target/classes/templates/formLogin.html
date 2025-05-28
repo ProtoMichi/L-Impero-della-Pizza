@@ -5,7 +5,7 @@
 	<title>
 		Impero della Pizza - Login
 	</title>
-	<link rel="sylesheet" href="/css/stile.css"/>
+	<link rel="stylesheet" href="/css/stile.css"/>
 </head>
 
 <body>
@@ -14,7 +14,7 @@
 			<span th:text="${userDetails.username}"></span>
 			<a href="/logout">Logout</a>
 		</div>
-		<div th:unless="${user}">
+		<div th:unless="${userDetails}">
 			<a href="/login">Login</a>
 		</div>
 	</header>
@@ -34,7 +34,6 @@
 		</div>
 		<div>
 			<span th:if="${param.error != null}">Username e/o password errati!</span>
-			<span>Riprova!</span> 
 		</div>
 		<div>
 			<span><button type="submit">Login</button></span>

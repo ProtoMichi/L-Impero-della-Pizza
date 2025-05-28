@@ -1,31 +1,36 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>SIW</title>
+<title>SIW</title>
 </head>
 <body>
-
+	<header>
+		<div th:if="${userDetails}">
+			<span th:text="${userDetails.username}"></span> <a href="/logout">Logout</a>
+		</div>
+		<div th:unless="${userDetails}">
+			<a href="/login">Login</a>
+		</div>
+	</header>
 	<div>
-				<a href="/"><img src="/images/impero-della-pizza.png" width="5%" /></a>
-			</div>
-	
-  <h1>Ingredienti</h1>
+		<a href="/"><img src="/images/impero-della-pizza.png" width="5%" /></a>
+	</div>
 
-  <div th:if="${ingredienti.isEmpty()}">
-    Non ci sono Ingredienti nel sistema
-  </div>
+	<h1>Ingredienti</h1>
 
-  <ul>
-    <li th:each="ingrediente : ${ingredienti}">
-      <a th:href="@{'/ingrediente/' + ${ingrediente.id}}">
-        <span th:text="${ingrediente.nome}">Pomodoro</span>
-        <span th:text="' ' + ${#numbers.formatDecimal(ingrediente.prezzo, 1, 2)} + ' €'">1.50€</span>
-        <span th:if="${ingrediente.vegan}"> - Adatto a vegani</span>
-        <span th:unless="${ingrediente.vegan}"> - Non adatto a vegani</span>
-        <span th:if="${ingrediente.celiaco}"> - Adatto a celiaci</span>
-        <span th:unless="${ingrediente.celiaco}"> - Non adatto a celiaci</span>
-      </a>
-    </li>
-  </ul>
+	<div th:if="${ingredienti.isEmpty()}">Non ci sono Ingredienti nel
+		sistema</div>
+
+	<ul>
+		<li th:each="ingrediente : ${ingredienti}"><a
+			th:href="@{'/ingrediente/' + ${ingrediente.id}}"> <span
+				th:text="${ingrediente.nome}">Pomodoro</span> <span
+				th:text="' ' + ${#numbers.formatDecimal(ingrediente.prezzo, 1, 2)} + ' €'">1.50€</span>
+				<span th:if="${ingrediente.vegan}"> - Adatto a vegani</span> <span
+				th:unless="${ingrediente.vegan}"> - Non adatto a vegani</span> <span
+				th:if="${ingrediente.celiaco}"> - Adatto a celiaci</span> <span
+				th:unless="${ingrediente.celiaco}"> - Non adatto a celiaci</span>
+		</a></li>
+	</ul>
 </body>
 </html>

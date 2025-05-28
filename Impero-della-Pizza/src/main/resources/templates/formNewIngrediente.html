@@ -4,6 +4,15 @@
   		<title>Aggiungi Ingrediente</title>
 	</head>
 	<body>
+	<header>
+		<div th:if="${userDetails}">
+			<span th:text="${userDetails.username}"></span>
+			<a href="/logout">Logout</a>
+		</div>
+		<div th:unless="${userDetails}">
+			<a href="/login">Login</a>
+		</div>
+	</header>
 		<div><a href="/"><img src="/images/impero-della-pizza.png" width="5%"></a></div>
 	  <h1>Aggiungi un ingrediente</h1>
 	  <form th:action="@{/ingrediente}" method="POST" th:object="${ingrediente}">

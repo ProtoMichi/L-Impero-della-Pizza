@@ -5,6 +5,15 @@
     <meta charset="UTF-8">
 </head>
 <body>
+<header>
+		<div th:if="${userDetails}">
+			<span th:text="${userDetails.username}"></span>
+			<a href="/logout">Logout</a>
+		</div>
+		<div th:unless="${userDetails}">
+			<a href="/login">Login</a>
+		</div>
+	</header>
 	<a href="/"><img src="/images/impero-della-pizza.png" width="5%"/></a>
     <h1>Tutte le Recensioni</h1>
 

@@ -25,7 +25,6 @@ public class Credentials {
 	@NotBlank
 	@Column(nullable = false)
 	private String password;
-	@NotBlank
 	@Column(nullable = false)
 	private String ruolo;
 	
