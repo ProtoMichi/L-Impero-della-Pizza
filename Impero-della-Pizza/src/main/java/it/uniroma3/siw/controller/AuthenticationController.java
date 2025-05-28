@@ -27,7 +27,7 @@ public class AuthenticationController {
 	
 	@GetMapping(value = "/registrazione") 
 	public String mostraFormRegistrazione (Model model) {
-		model.addAttribute("utente", new User());
+		model.addAttribute("user", new User());
 		model.addAttribute("credentials", new Credentials());
 		return "formRegistrazione.html";
 	}
@@ -38,7 +38,7 @@ public class AuthenticationController {
 	}
 
 	@GetMapping(value = "/") 
-	public String index(Model model) {
+	public String homepage(Model model) {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		if (authentication instanceof AnonymousAuthenticationToken) {
 	        return "homepage.html";
@@ -63,9 +63,9 @@ public class AuthenticationController {
         }
         return "homepage.html";
     }
-
-	@PostMapping(value = { "/registrazione" })
-    public String registerUser(@Valid @ModelAttribute("utente") User user,BindingResult userBindingResult, @Valid @ModelAttribute("credentials") Credentials credentials, BindingResult credentialsBindingResult, Model model) {
+    
+	@PostMapping(value = "/registrazione")
+    public String registerUser(@Valid @ModelAttribute("user") User user,BindingResult userBindingResult, @Valid @ModelAttribute("credentials") Credentials credentials, BindingResult credentialsBindingResult, Model model) {
 		// se user e credential hanno entrambi contenuti validi, memorizza User e the Credentials nel DB
         if(!userBindingResult.hasErrors() && !credentialsBindingResult.hasErrors()) {
             userService.save(user);
