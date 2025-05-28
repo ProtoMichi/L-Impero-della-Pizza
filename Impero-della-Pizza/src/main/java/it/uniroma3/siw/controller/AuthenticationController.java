@@ -1,0 +1,79 @@
+package it.uniroma3.siw.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import it.uniroma3.siw.model.Credentials;
+import it.uniroma3.siw.model.User;
+import it.uniroma3.siw.service.CredentialsService;
+import it.uniroma3.siw.service.UserService;
+import jakarta.validation.Valid;
+
+public class AuthenticationController {
+
+	@Autowired
+	private CredentialsService credentialsService;
+
+    @Autowired
+	private UserService userService;
+	
+	@GetMapping(value = "/registrazione") 
+	public String mostraFormRegistrazione (Model model) {
+		model.addAttribute("utente", new User());
+		model.addAttribute("credentials", new Credentials());
+		return "formRegistrazione.html";
+	}
+	
+	@GetMapping(value = "/login") 
+	public String mostraFormLogin (Model model) {
+		return "formLogin.html";
+	}
+
+	@GetMapping(value = "/") 
+	public String index(Model model) {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		if (authentication instanceof AnonymousAuthenticationToken) {
+	        return "homepage.html";
+		}
+		else {		
+			UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+			Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
+			if (credentials.getRuolo().equals(Credentials.ADMIN_ROLE)) {
+				return "admin/homepage.html";
+			}
+		}
+        return "homepage.html";
+	}
+		
+    @GetMapping(value = "/login/successo")
+    public String defaultDopoLogin(Model model) {
+        
+    	UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    	Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
+    	if (credentials.getRuolo().equals(Credentials.ADMIN_ROLE)) {
+            return "admin/homepageAdmin.html";
+        }
+        return "homepage.html";
+    }
+
+	@PostMapping(value = { "/registrazione" })
+    public String registerUser(@Valid @ModelAttribute("utente") User user,BindingResult userBindingResult, @Valid @ModelAttribute("credentials") Credentials credentials, BindingResult credentialsBindingResult, Model model) {
+		// se user e credential hanno entrambi contenuti validi, memorizza User e the Credentials nel DB
+        if(!userBindingResult.hasErrors() && !credentialsBindingResult.hasErrors()) {
+            userService.save(user);
+            credentials.setUser(user);
+            credentialsService.saveCredentials(credentials);
+            model.addAttribute("user", user);
+            return "registrazioneEseguita.html";
+        }
+        return "formRegistrazione.html";
+    }
+}
