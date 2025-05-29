@@ -37,10 +37,10 @@ public class IngredienteController {
 		return "admin/formNewIngrediente.html";
 	}
 	
-	@PostMapping("/ingrediente")
+	@PostMapping("/admin/ingrediente")
 	public String newIngrediente(@Valid @ModelAttribute("ingrediente") Ingrediente ingrediente,BindingResult bindingResult,Model model) {
 		if(bindingResult.hasErrors()) {
-			return "formNewIngrediente.html";
+			return "admin/formNewIngrediente.html";
 		}
 		else {
 			this.ingredienteService.save(ingrediente);
