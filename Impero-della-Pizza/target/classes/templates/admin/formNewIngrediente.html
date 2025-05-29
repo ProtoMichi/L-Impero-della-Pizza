@@ -15,7 +15,7 @@
 	</header>
 		<div><a href="/"><img src="/images/impero-della-pizza.png" width="5%"></a></div>
 	  <h1>Aggiungi un ingrediente</h1>
-	  <form th:action="@{/ingrediente}" method="POST" th:object="${ingrediente}">
+	  <form th:action="@{/admin/ingrediente}" method="POST" th:object="${ingrediente}">
 	<div>
 		Nome: <span><input type="text" th:field="${ingrediente.nome}"/></span>
 		<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
