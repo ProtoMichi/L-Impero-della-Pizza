@@ -18,3 +18,5 @@ INSERT INTO recensione(descrizione, data_di_creazione, stelle) VALUES ('Tutto ok
 
 INSERT INTO users(id, nome, cognome, email) VALUES(nextval('users_seq'), 'paolo', 'paolo', 'paolo@gmail.com');
 INSERT INTO credentials(id, password, ruolo, username, user_id) VALUES(nextval('credentials_seq'), '$2a$10$F605H0XOC06ODyI.oQnCzeMWpWRPNOH2DM2Lmf.ZSAkNrTG6Kqa3q', 'DEFAULT', 'paolo',currval('users_seq'));
+INSERT INTO users(id, nome, cognome, email) VALUES(nextval('users_seq'), 'admin', 'admin', 'admin@admin.com');
+INSERT INTO credentials(id, password, ruolo, username, user_id) VALUES(nextval('credentials_seq'), '$2a$12$Lzmhtr/JjTVh8zJF.6h6IOswJfrt.zmuS3yjvjZW999TJdDoRroQu', 'ADMIN', 'admin',currval('users_seq'));
