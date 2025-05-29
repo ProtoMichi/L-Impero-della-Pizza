@@ -3,7 +3,7 @@
 
 <head>
 	<title>
-		SiwMovie - Gestione Film
+		Impero della Pizza - Gestione Pizze 
 	</title>
 	<link rel="stylesheet" href="/css/stile.css" />
 </head>
@@ -14,22 +14,20 @@
 			<span th:text="${userDetails.username}"></span>
 			<a href="/logout">Logout</a>
 		</div>
-		<div th:unless="${user}">
+		<div th:unless="${userDetails}">
 			<a href="/login">Login</a>
 		</div>
 	</header>
-
-	<div><a href="/"><img src="/images/logo-siw.png" width="50%" /></a></div>
-	<h1>Gestione Film</h1>
+	<div><a href="/"><img src="/images/impero-della-pizza.png" width="15%" /></a></div>
+	<h1>Gestione Pizze</h1>
 	<div>
-		<a href="/admin/formNewMovie">Inserisci i dati di un film</a>
+		<a href="/admin/formNewPizza">Inserisci i dati di una Pizza</a>
 	</div>
 	<div>
-		<a href="/admin/manageMovies">Gestisci i film</a>
+		<a href="/admin/gestisciPizze">Gestisci le pizze</a>
 	</div>
 	<div>
-		<a href="/formSearchMovies">Cerca film per anno</a>
+		<a href="/formCercaPizze">Cerca pizze per ingrediente</a>
 	</div>
 </body>
-
 </html>

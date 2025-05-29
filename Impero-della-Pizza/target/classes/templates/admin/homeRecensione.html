@@ -3,7 +3,7 @@
 
 <head>
 	<title>
-		Impero della Pizza - Gestione Pizze 
+		Impero della Pizza - Gestione Recensioni
 	</title>
 	<link rel="stylesheet" href="/css/stile.css" />
 </head>
@@ -14,21 +14,22 @@
 			<span th:text="${userDetails.username}"></span>
 			<a href="/logout">Logout</a>
 		</div>
-
 		<div th:unless="${userDetails}">
 			<a href="/login">Login</a>
 		</div>
 	</header>
+
 	<div><a href="/"><img src="/images/impero-della-pizza.png" width="15%" /></a></div>
-	<h1>Gestione Pizze</h1>
+	<h1>Gestione Recensioni</h1>
 	<div>
-		<a href="/admin/formNewPizza">Inserisci i dati di una Pizza</a>
+		<a href="/admin/formNewRecensione">Inserisci i dati di una recensione</a>
 	</div>
 	<div>
-		<a href="/admin/gestisciPizze">Gestisci le pizze</a>
+		<a href="/admin/gestisciRecensioni">Gestisci le recensioni</a>
 	</div>
 	<div>
-		<a href="/formCercaPizze">Cerca pizze per ingrediente</a>
+		<a href="/formCercaRecensioni">Cerca recensioni per pizza</a>
 	</div>
 </body>
+
 </html>
