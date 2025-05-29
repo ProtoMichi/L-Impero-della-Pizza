@@ -14,11 +14,11 @@
 			<span th:text="${userDetails.username}"></span>
 			<a href="/logout">Logout</a>
 		</div>
+
 		<div th:unless="${userDetails}">
 			<a href="/login">Login</a>
 		</div>
 	</header>
-
 	<div><a href="/"><img src="/images/impero-della-pizza.png" width="15%" /></a></div>
 	<h1>Gestione Pizze</h1>
 	<div>
@@ -31,5 +31,4 @@
 		<a href="/formCercaPizze">Cerca pizze per ingrediente</a>
 	</div>
 </body>
-
 </html>
