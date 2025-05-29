@@ -31,10 +31,10 @@ public class IngredienteController {
 		return "ingrediente.html";
 	}
 	
-	@GetMapping("/formNewIngrediente")
+	@GetMapping("/admin/formNewIngrediente")
 	public String formNewIngrediente(Model model) {
 		model.addAttribute("ingrediente",new Ingrediente());
-		return "formNewIngrediente.html";
+		return "admin/formNewIngrediente.html";
 	}
 	
 	@PostMapping("/ingrediente")
@@ -47,5 +47,10 @@ public class IngredienteController {
 			model.addAttribute("ingrediente",ingrediente);
 			return "redirect:ingrediente/"+ingrediente.getId();
 		}
+	}
+	
+	@GetMapping("/admin/homeIngrediente")
+	public String homeIngrediente() {
+		return "admin/homeIngrediente.html";
 	}
 }

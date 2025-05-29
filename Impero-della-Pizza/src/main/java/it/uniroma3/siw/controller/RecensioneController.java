@@ -49,4 +49,9 @@ public class RecensioneController {
 			return "redirect:recensione/"+recensione.getId();
 		}
 	}
+	
+	@GetMapping("/admin/homeRecensione")
+	public String homeIngrediente() {
+		return "admin/homeRecensione.html";
+	}
 }
