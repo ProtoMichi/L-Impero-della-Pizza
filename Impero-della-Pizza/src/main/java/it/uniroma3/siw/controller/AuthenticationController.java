@@ -49,7 +49,7 @@ public class AuthenticationController {
 			UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 			Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
 			if (credentials.getRuolo().equals(Credentials.ADMIN_ROLE)) {
-				return "admin/homepage.html";
+				return "admin/homepageAdmin.html";
 			}
 		}
         return "homepage.html";

@@ -45,9 +45,10 @@ public class IngredienteController {
 		else {
 			this.ingredienteService.save(ingrediente);
 			model.addAttribute("ingrediente",ingrediente);
-			return "redirect:ingrediente/"+ingrediente.getId();
+			return "redirect:/ingrediente/"+ingrediente.getId();
 		}
 	}
+
 	
 	@GetMapping("/admin/homeIngrediente")
 	public String homeIngrediente() {
