@@ -18,37 +18,37 @@ public class RecensioneController {
 	
 	@Autowired
 	RecensioneService recensioneService;
-	
+	//da rimuovere perchè non c'interessa una recensione singola
 	@GetMapping("/recensione/{id}")
 	public String getRecensione(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("recensione", this.recensioneService.getRecensioneById(id));
 		return "recensione.html";
 	}
-	
+	//da lsciare, così che abbiamo un elenco di recensioni
 	@GetMapping("/recensione")
 	public String showRecensioni(Model model) {
 		model.addAttribute("recensioni", this.recensioneService.getAllRecensioni());
 		return "recensioni.html";
 	}
-	
-	@GetMapping("/formNewRecensione")
-	public String formNewRecensione(Model model) {
-		model.addAttribute("recensione",new Recensione());
-		return "formNewRecensione.html";
-	}
-	
-	@PostMapping("/recensione")
-	public String newRecensione(@Valid @ModelAttribute("recensione") Recensione recensione,
-			BindingResult bindingResult,Model model) {
-		if(bindingResult.hasErrors()) {
-			return "formNewRecensione.html";
-		}
-		else {
-			this.recensioneService.save(recensione);
-			model.addAttribute("recensione", recensione);
-			return "redirect:recensione/"+recensione.getId();
-		}
-	}
+	//da spostare in pizza
+//	@GetMapping("/formNewRecensione")
+//	public String formNewRecensione(Model model) {
+//		model.addAttribute("recensione",new Recensione());
+//		return "formNewRecensione.html";
+//	}
+	//da spostare in pizza
+//	@PostMapping("/recensione")
+//	public String newRecensione(@Valid @ModelAttribute("recensione") Recensione recensione,
+//			BindingResult bindingResult,Model model) {
+//		if(bindingResult.hasErrors()) {
+//			return "formNewRecensione.html";
+//		}
+//		else {
+//			this.recensioneService.save(recensione);
+//			model.addAttribute("recensione", recensione);
+//			return "redirect:recensione/"+recensione.getId();
+//		}
+//	}
 	
 	@GetMapping("/admin/homeRecensione")
 	public String homeIngrediente() {

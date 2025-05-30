@@ -11,10 +11,10 @@ INSERT INTO ingrediente(nome,prezzo,vegan,celiaco)VALUES('Mozzarella',2.50,true,
 INSERT INTO ingrediente(nome,prezzo,vegan,celiaco)VALUES('Basilico',0.50,true,true);
 INSERT INTO ingrediente(nome,prezzo,vegan,celiaco)VALUES('Farina',1.50,true,false);
 
-INSERT INTO recensione(descrizione, data_di_creazione, stelle) VALUES ('DIAVOLA SUPER BUONISSIMA!', '03-10-2023', 5.0);
-INSERT INTO recensione(descrizione, data_di_creazione, stelle) VALUES ('Ottime pizze, personale gentile, ma i baffi del titolare puzzano', '16-07-2024', 4.0);
-INSERT INTO recensione(descrizione, data_di_creazione, stelle) VALUES ('Buono tutto, specie la diavola!', '17-07-2024', 4.5);
-INSERT INTO recensione(descrizione, data_di_creazione, stelle) VALUES ('Tutto ok.', '01-01-2025', 4.0);
+INSERT INTO recensione(pizza_id, descrizione, data_di_creazione, stelle) VALUES (51,'DIAVOLA SUPER BUONISSIMA!', '03-10-2023', 5.0);
+INSERT INTO recensione(pizza_id, descrizione, data_di_creazione, stelle) VALUES (1,'Ottime pizze, personale gentile, ma i baffi del titolare puzzano', '16-07-2024', 4.0);
+INSERT INTO recensione(pizza_id, descrizione, data_di_creazione, stelle) VALUES (1,'Buono tutto, specie la diavola!', '17-07-2024', 4.5);
+INSERT INTO recensione(pizza_id, descrizione, data_di_creazione, stelle) VALUES (101,'Tutto ok.', '01-01-2025', 4.0);
 
 INSERT INTO users(id, nome, cognome, email) VALUES(nextval('users_seq'), 'paolo', 'paolo', 'paolo@gmail.com');
 INSERT INTO credentials(id, password, ruolo, username, user_id) VALUES(nextval('credentials_seq'), '$2a$10$F605H0XOC06ODyI.oQnCzeMWpWRPNOH2DM2Lmf.ZSAkNrTG6Kqa3q', 'DEFAULT', 'paolo',currval('users_seq'));

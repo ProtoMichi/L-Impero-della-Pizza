@@ -25,5 +25,15 @@
 			<span><img width="30%" th:src="${pizza.URLImmagine}"/></span>
 		</div>
 		<div th:unless="${pizza}">Non Esiste</div>
+		
+		<h2><a th:href="@{'/pizza' + '/' + ${pizza.id} + '/formNewRecensione'}">Aggiungi una recensione!</a></h2>
+		
+		<h1>Recensioni</h1>
+	<div th:if="${pizza.listaRecensioni==null || pizza.listaRecensioni.isEmpty()}">Non ci sono recensioni per questa pizza</div>
+	<ul>
+		<li th:each="recensione : ${pizza.listaRecensioni}">
+			<a th:text="${recensione.descrizione} + ' (' + ${recensione.stelle} + ')'">Gnam!(4)</a>
+		</li>
+	</ul>
 	</body>
 </html>

@@ -8,6 +8,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
@@ -21,8 +22,7 @@ public class Recensione {
 	
 	private String descrizione;
 	
-	@Column(name = "data_di_creazione", nullable = false, length = 2000)
-	@NotNull
+	@Column(name = "data_di_creazione", length = 2000)
 	private LocalDate dataCreazione;
 	
 	@Column(nullable = false)
@@ -30,6 +30,8 @@ public class Recensione {
 	@Max(5)
 	@NotNull
 	private Float stelle;
+	@ManyToOne()
+	private Pizza pizza;
 	
 	public Recensione() {
 		
@@ -67,6 +69,14 @@ public class Recensione {
 	}
 	public void setStelle(Float stelle) {
 		this.stelle = stelle;
+	}
+
+	public Pizza getPizza() {
+		return pizza;
+	}
+
+	public void setPizza(Pizza pizza) {
+		this.pizza = pizza;
 	}
 
 	@Override

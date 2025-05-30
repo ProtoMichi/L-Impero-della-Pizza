@@ -1,5 +1,8 @@
 package it.uniroma3.siw.controller;
 
+import java.util.Collections;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,7 +13,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import it.uniroma3.siw.model.Pizza;
+import it.uniroma3.siw.model.Recensione;
 import it.uniroma3.siw.service.PizzaService;
+import it.uniroma3.siw.service.RecensioneService;
 import jakarta.validation.Valid;
 
 @Controller
@@ -19,9 +24,16 @@ public class PizzaController {
 	@Autowired
 	private PizzaService pizzaService;
 	
+	@Autowired
+	private RecensioneService recensioneService;
+	
 	@GetMapping("/pizza/{id}")
 	public String getPizza(@PathVariable("id") Long id, Model model) {
-		model.addAttribute("pizza", this.pizzaService.getPizzabyId(id));
+		Pizza pizza = this.pizzaService.getPizzabyId(id);
+		List <Recensione> reversed = pizza.getListaRecensioni();
+		Collections.reverse(reversed);
+		pizza.setListaRecensioni(reversed);
+		model.addAttribute("pizza", pizza);
 		return "pizza.html";
 	}
 	
@@ -46,6 +58,31 @@ public class PizzaController {
 			this.pizzaService.save(pizza);
 			model.addAttribute("pizza", pizza);
 			return "redirect:pizza/" + pizza.getId();
+		}
+	}
+	
+	@GetMapping("/pizza/{id}/formNewRecensione")
+	public String formNewRecensione(@PathVariable("id") Long id , Model model) {
+		model.addAttribute("pizza", this.pizzaService.getPizzabyId(id));
+		model.addAttribute("recensione",new Recensione());
+		return "formNewRecensione.html";
+	}
+	
+	@PostMapping("/pizza/{id}/recensione")
+	public String addRecensione(@PathVariable("id") Long id, @Valid @ModelAttribute("recensione") Recensione recensione,
+			BindingResult bindingResult, Model model) {
+		
+		
+		if(bindingResult.hasErrors()) {
+			model.addAttribute("pizza", this.pizzaService.getPizzabyId(id));
+			return "formNewRecensione.html";
+		}
+		else {
+			Pizza pizza = this.pizzaService.getPizzabyId(id);
+			recensione.setId(null);
+			recensione.setPizza(pizza);
+			this.recensioneService.save(recensione);
+			return "redirect:/pizza/"+ pizza.getId();
 		}
 	}
 	
