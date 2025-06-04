@@ -22,15 +22,13 @@
 		sistema</div>
 
 	<ul>
-		<li th:each="ingrediente : ${ingredienti}"><a
-			th:href="@{'/ingrediente/' + ${ingrediente.id}}"> <span
-				th:text="${ingrediente.nome}">Pomodoro</span> <span
-				th:text="' ' + ${#numbers.formatDecimal(ingrediente.prezzo, 1, 2)} + ' €'">1.50€</span>
-				<span th:if="${ingrediente.vegan}"> - Adatto a vegani</span> <span
-				th:unless="${ingrediente.vegan}"> - Non adatto a vegani</span> <span
-				th:if="${ingrediente.celiaco}"> - Adatto a celiaci</span> <span
-				th:unless="${ingrediente.celiaco}"> - Non adatto a celiaci</span>
-		</a></li>
+		<li th:each="ingrediente : ${ingredienti}" style="font-size: 2rem">
+			<a th:href="@{'/ingrediente/' + ${ingrediente.id}}" style="text-decoration: none;color: brown;"> 
+				<span th:text="${ingrediente.nome}">Pomodoro</span></a>
+				<span th:text="' ' + '(' + ${#numbers.formatDecimal(ingrediente.prezzo, 1, 2)} + '€' + ')'">1.50€</span>
+				<span th:if="${ingrediente.vegan}"> <img src="/images/Vegan_friendly_icon.jpg" width="1.5%"> </span> 
+				<span th:if="${ingrediente.celiaco}"> <img src="/images/GlutenFree.jpg" width="1.5%"></span> 
+			</li>
 	</ul>
 </body>
 </html>
