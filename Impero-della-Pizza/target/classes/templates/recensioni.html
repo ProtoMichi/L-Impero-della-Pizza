@@ -31,7 +31,7 @@
         <tbody>
             <tr th:each="rec : ${recensioni}">
                 <td th:text="${rec.id}">1</td>
-                <td th:text="${rec.pizza.nome}">Nome pizza</td>
+                <td><a th:href="@{/pizza/{id}(id=${rec.pizza.id})}" th:text="${rec.pizza.nome}"></a></td>
                 <td th:text="${rec.descrizione}">Descrizione</td>
                 <td th:text="${rec.dataCreazione}">2024-04-01</td>
                 <td th:text="${rec.stelle}">4.5</td>
