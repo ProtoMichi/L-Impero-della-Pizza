@@ -12,6 +12,10 @@ INSERT INTO ingrediente(nome,prezzo,vegan,celiaco)VALUES('Basilico',0.50,true,tr
 INSERT INTO ingrediente(nome,prezzo,vegan,celiaco)VALUES('Farina',1.50,true,false);
 INSERT INTO ingrediente(nome,prezzo,vegan,celiaco)VALUES('Cheddar',1.50,false,false);
 
+INSERT INTO ingrediente_lista_pizze(lista_pizze_id,lista_ingredienti_id) VALUES (1,1);
+INSERT INTO ingrediente_lista_pizze(lista_pizze_id,lista_ingredienti_id) VALUES (1,51);
+INSERT INTO ingrediente_lista_pizze(lista_pizze_id,lista_ingredienti_id) VALUES (1,101);
+
 INSERT INTO recensione(pizza_id, descrizione, data_di_creazione, stelle) VALUES (51,'DIAVOLA SUPER BUONISSIMA!', '03-10-2023', 5.0);
 INSERT INTO recensione(pizza_id, descrizione, data_di_creazione, stelle) VALUES (1,'Ottime pizze, personale gentile, ma i baffi del titolare puzzano', '16-07-2024', 4.0);
 INSERT INTO recensione(pizza_id, descrizione, data_di_creazione, stelle) VALUES (1,'Buono tutto, specie la diavola!', '17-07-2024', 4.5);

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import it.uniroma3.siw.model.Ingrediente;
 import it.uniroma3.siw.model.Pizza;
 import it.uniroma3.siw.model.Recensione;
 import it.uniroma3.siw.service.IngredienteService;
@@ -30,6 +31,7 @@ public class PizzaController {
 	
 	@Autowired
 	private IngredienteService ingredienteService;
+	
 	
 	@GetMapping("/pizza/{id}")
 	public String getPizza(@PathVariable("id") Long id, Model model) {
@@ -51,18 +53,22 @@ public class PizzaController {
 	public String formNewPizza(Model model) {
 		model.addAttribute("pizza", new Pizza());
 		model.addAttribute("farine",this.ingredienteService.getFarine());
+		model.addAttribute("ingrediente",this.ingredienteService.getIngredientiExceptFarina());
 		return "formNewPizza.html";
 	}
 	
 	@PostMapping("/pizza")
 	public String newPizza(@Valid @ModelAttribute("pizza") Pizza pizza, BindingResult bindingResult, Model model) {
 		if(bindingResult.hasErrors()) {
+			model.addAttribute("farine",this.ingredienteService.getFarine());
+			model.addAttribute("ingrediente",this.ingredienteService.getIngredientiExceptFarina());
 			return "formNewPizza.html";
 		} 
 		else {
-			this.pizzaService.save(pizza);
-			model.addAttribute("pizza", pizza);
-			return "redirect:pizza/" + pizza.getId();
+			System.out.println("Ingredienti selezionati: " + pizza.getListaIngredienti()); // Debug
+			Pizza savedPizza = this.pizzaService.save(pizza);
+	        model.addAttribute("pizza", savedPizza);
+	        return "redirect:/pizza/" + savedPizza.getId();
 		}
 	}
 	

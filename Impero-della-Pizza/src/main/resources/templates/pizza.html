@@ -24,6 +24,34 @@
 			</div>
 			<span><img width="30%" th:src="${pizza.URLImmagine}"/></span>
 		</div>
+		<div th:if="${pizza.farina != null}">
+		  <h3>Farina</h3>
+		  <p>
+		    <span th:text="${pizza.farina.nome}">Nome farina</span> - 
+		    <span th:text="${#numbers.formatDecimal(pizza.farina.prezzo, 1, 2)} + ' €'">Prezzo</span>
+		    <span th:if="${pizza.farina.vegan}">
+		      <img src="/images/Vegan_friendly_icon.jpg" width="1%" />
+		    </span>
+		    <span th:if="${pizza.farina.celiaco}">
+		      <img src="/images/GlutenFree.jpg" width="1%" />
+		    </span>
+		  </p>
+		</div>
+		<div>
+		  Ingredienti:
+		  <ul>
+		    <li th:each="ingrediente : ${pizza.listaIngredienti}">
+		      <span th:text="${ingrediente.nome}">Nome ingrediente</span> -
+		      <span th:text="${#numbers.formatDecimal(ingrediente.prezzo, 1, 2)} + ' €'">Prezzo</span> -
+		      
+		      <!-- Icona Vegan -->
+			  <span th:if="${ingrediente.vegan}"> <img src="/images/Vegan_friendly_icon.jpg" width="1%"> </span> 
+			  
+		      <!-- Icona Celiaco -->
+			  <span th:if="${ingrediente.celiaco}"> <img src="/images/GlutenFree.jpg" width="1%"></span>
+		    </li>
+		  </ul>
+		</div>
 		<div th:unless="${pizza}">Non Esiste</div>
 		
 		<h2><a th:href="@{'/pizza' + '/' + ${pizza.id} + '/formNewRecensione'}">Aggiungi una recensione!</a></h2>

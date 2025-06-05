@@ -118,7 +118,8 @@ public class Ingrediente {
 
 	@Override
 	public String toString() {
-		return "Ingrediente [id=" + id + ", nome=" + nome + ", prezzo=" + prezzo + ", vegan=" + vegan + ", celiaco="
-				+ celiaco + ", listaPizze=" + listaPizze + "]";
+	    return "Ingrediente [id=" + id + ", nome=" + nome + ", prezzo=" + prezzo 
+	           + ", vegan=" + vegan + ", celiaco=" + celiaco 
+	           + ", numeroPizze=" + (listaPizze != null ? listaPizze.size() : 0) + "]";
 	}
 }

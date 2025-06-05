@@ -11,6 +11,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
@@ -36,6 +37,10 @@ public class Pizza {
 	private List<Ingrediente> listaIngredienti;
 	@OneToMany(mappedBy = "pizza", cascade = CascadeType.ALL)
 	private List<Recensione> listaRecensioni;
+	@ManyToOne(fetch = FetchType.EAGER)
+	private Ingrediente farina;
+	
+	
 	
 	public Pizza() {
 		
@@ -103,6 +108,16 @@ public class Pizza {
 	public void setListaRecensioni(List<Recensione> listaRecensioni) {
 		this.listaRecensioni = listaRecensioni;
 	}
+	
+	
+
+	public Ingrediente getFarina() {
+		return farina;
+	}
+
+	public void setFarina(Ingrediente farina) {
+		this.farina = farina;
+	}
 
 	@Override
 	public int hashCode() {
@@ -125,9 +140,9 @@ public class Pizza {
 	public String toString() {
 		return "Pizza [id=" + id + ", nome=" + nome + ", prezzo=" + prezzo + ", mediaStelle=" + mediaStelle
 				+ ", URLImmagine=" + URLImmagine + ", listaIngredienti=" + listaIngredienti + ", listaRecensioni="
-				+ listaRecensioni + "]";
+				+ listaRecensioni + ", farina=" + farina + "]";
 	}
-	
+
 	
 	
 }
