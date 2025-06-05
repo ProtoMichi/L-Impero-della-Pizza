@@ -1,5 +1,6 @@
 package it.uniroma3.siw.model;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -33,7 +34,7 @@ public class Pizza {
 	private String URLImmagine;
 	//@NotEmpty
 	@ManyToMany(fetch= FetchType.EAGER, mappedBy = "listaPizze")
-	private List<Ingrediente> listaIngredienti;
+	private List<Ingrediente> listaIngredienti = new ArrayList<>();
 	@OneToMany(mappedBy = "pizza", cascade = CascadeType.ALL)
 	private List<Recensione> listaRecensioni;
 	

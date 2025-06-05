@@ -40,6 +40,10 @@ public class Ingrediente {
 		
 	}
 
+    public Ingrediente(Long id) {
+        this.id = id;
+    }
+	
 	public Ingrediente(String nome,Float prezzo,Boolean vegan,Boolean celiaco) {
 		this.nome = nome;
 		this.prezzo = prezzo;
@@ -101,7 +105,7 @@ public class Ingrediente {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(nome);
+		return Objects.hash(id);
 	}
 
 	@Override
@@ -113,7 +117,7 @@ public class Ingrediente {
 		if (getClass() != obj.getClass())
 			return false;
 		Ingrediente other = (Ingrediente) obj;
-		return Objects.equals(nome, other.nome);
+		return Objects.equals(id, other.id);
 	}
 
 	@Override
