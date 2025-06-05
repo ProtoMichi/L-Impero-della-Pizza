@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import it.uniroma3.siw.model.Pizza;
 import it.uniroma3.siw.model.Recensione;
+import it.uniroma3.siw.service.IngredienteService;
 import it.uniroma3.siw.service.PizzaService;
 import it.uniroma3.siw.service.RecensioneService;
 import jakarta.validation.Valid;
@@ -26,6 +27,9 @@ public class PizzaController {
 	
 	@Autowired
 	private RecensioneService recensioneService;
+	
+	@Autowired
+	private IngredienteService ingredienteService;
 	
 	@GetMapping("/pizza/{id}")
 	public String getPizza(@PathVariable("id") Long id, Model model) {
@@ -46,6 +50,7 @@ public class PizzaController {
 	@GetMapping("/formNewPizza")
 	public String formNewPizza(Model model) {
 		model.addAttribute("pizza", new Pizza());
+		model.addAttribute("farine",this.ingredienteService.getFarine());
 		return "formNewPizza.html";
 	}
 	

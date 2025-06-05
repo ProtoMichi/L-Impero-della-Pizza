@@ -34,6 +34,15 @@
 			<div>
 				<label>URL Immagine:</label> <span><input type="text" th:field="${pizza.URLImmagine}" /></span>
 			</div>
+			
+			<div>
+				<label>Tipo Farina:</label>
+				<select th:field="*{listaIngredienti}">
+					<option value="" disabled selected>-- Seleziona farina --</option>
+					<option th:each="f : ${farine}"  th:value="${f.id}" th:text="${f.nome}">Farina</option>
+				</select>
+			</div>
+			
 			<div>
 				<span><button type = "submit">Conferma!</button></span>
 			</div>

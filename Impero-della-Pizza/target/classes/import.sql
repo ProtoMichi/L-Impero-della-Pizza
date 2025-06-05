@@ -21,3 +21,13 @@ INSERT INTO users(id, nome, cognome, email) VALUES(nextval('users_seq'), 'paolo'
 INSERT INTO credentials(id, password, ruolo, username, user_id) VALUES(nextval('credentials_seq'), '$2a$10$F605H0XOC06ODyI.oQnCzeMWpWRPNOH2DM2Lmf.ZSAkNrTG6Kqa3q', 'DEFAULT', 'paolo',currval('users_seq'));
 INSERT INTO users(id, nome, cognome, email) VALUES(nextval('users_seq'), 'admin', 'admin', 'admin@admin.com');
 INSERT INTO credentials(id, password, ruolo, username, user_id) VALUES(nextval('credentials_seq'), '$2a$12$Lzmhtr/JjTVh8zJF.6h6IOswJfrt.zmuS3yjvjZW999TJdDoRroQu', 'ADMIN', 'admin',currval('users_seq'));
+
+
+INSERT INTO ingrediente(nome,prezzo,vegan,celiaco)VALUES('Farina 00',1.50,true,false);
+INSERT INTO ingrediente(nome,prezzo,vegan,celiaco)VALUES('Farina 0',1.00,true,false);
+INSERT INTO ingrediente(nome,prezzo,vegan,celiaco)VALUES('Farina manitoba',2.50,true,false);
+INSERT INTO ingrediente(nome,prezzo,vegan,celiaco)VALUES('Farina integrale',3.00,true,false);
+INSERT INTO ingrediente(nome,prezzo,vegan,celiaco)VALUES('Farina di semola rimacinata di grano duro',3.50,true,false);
+INSERT INTO ingrediente(nome,prezzo,vegan,celiaco)VALUES('Farina di riso',3.50,true,true);
+INSERT INTO ingrediente(nome,prezzo,vegan,celiaco)VALUES('Farina di mais',2.75,true,true);
+INSERT INTO ingrediente(nome,prezzo,vegan,celiaco)VALUES('Farina di grano saraceno',4.50,true,true);
