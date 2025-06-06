@@ -35,7 +35,8 @@ public class PizzaController {
 	
 	@GetMapping("/pizza/{id}")
 	public String getPizza(@PathVariable("id") Long id, Model model) {
-		Pizza pizza = this.pizzaService.getPizzabyId(id);
+		Pizza pizza = this.pizzaService.getPizzabyIdFetchIngredienti(id);
+		System.out.println("Ingredienti caricati: " + pizza.getListaIngredienti());
 		List <Recensione> reversed = pizza.getListaRecensioni();
 		Collections.reverse(reversed);
 		pizza.setListaRecensioni(reversed);
@@ -66,9 +67,8 @@ public class PizzaController {
 		} 
 		else {
 			System.out.println("Ingredienti selezionati: " + pizza.getListaIngredienti()); // Debug
-			Pizza savedPizza = this.pizzaService.save(pizza);
-	        model.addAttribute("pizza", savedPizza);
-	        return "redirect:/pizza/" + savedPizza.getId();
+			this.pizzaService.save(pizza);
+			return "redirect:/pizza/" + pizza.getId();
 		}
 	}
 	

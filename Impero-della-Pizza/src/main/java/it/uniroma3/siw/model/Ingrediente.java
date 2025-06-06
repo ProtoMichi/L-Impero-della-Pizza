@@ -33,7 +33,7 @@ public class Ingrediente {
 	@Column(nullable=false)
 	private Boolean celiaco;
 
-	@ManyToMany
+	@ManyToMany(mappedBy = "listaIngredienti")
 	private List<Pizza> listaPizze;
 
 	public Ingrediente() {

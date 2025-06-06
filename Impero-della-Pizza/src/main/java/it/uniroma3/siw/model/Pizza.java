@@ -33,7 +33,7 @@ public class Pizza {
 	private Float mediaStelle;
 	private String URLImmagine;
 	//@NotEmpty
-	@ManyToMany(fetch= FetchType.EAGER, mappedBy = "listaPizze")
+	@ManyToMany(fetch= FetchType.EAGER)
 	private List<Ingrediente> listaIngredienti;
 	@OneToMany(mappedBy = "pizza", cascade = CascadeType.ALL)
 	private List<Recensione> listaRecensioni;

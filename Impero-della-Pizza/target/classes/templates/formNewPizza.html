@@ -37,19 +37,19 @@
 			
 			<!-- Farina -->
 			<div>
-				<label>Tipo Farina:</label>
-				<select name="farinaId">
-					<option value="" disabled selected>-- Seleziona farina --</option>
-					<option th:each="f : ${farine}" th:value="${f.id}" th:text="${f.nome}"></option>
-				</select>
+			    <label>Tipo Farina:</label>
+			    <select th:field="${pizza.farina}">
+			        <option value="" disabled selected>-- Seleziona farina --</option>
+			        <option th:each="f : ${farine}" th:value="${f.id}" th:text="${f.nome}"></option>
+			    </select>
 			</div>
 
 			<!-- Ingredienti -->
 			<div>
-				<label>Ingredienti:</label>
-				<select name="ingredientiIds" multiple="multiple">
-					<option th:each="i : ${ingrediente}" th:value="${i.id}" th:text="${i.nome}"></option>
-				</select>
+			    <label>Ingredienti:</label>
+			    <select multiple th:field="${pizza.listaIngredienti}">
+			        <option th:each="i : ${ingrediente}" th:value="${i.id}" th:text="${i.nome}"></option>
+			    </select>
 			</div>
 
 			<div>
