@@ -38,7 +38,7 @@ public class Pizza {
 	@OneToMany(mappedBy = "pizza", cascade = CascadeType.ALL)
 	private List<Recensione> listaRecensioni;
 	@ManyToOne(fetch = FetchType.EAGER)
-	private Ingrediente farina;
+	private Ingrediente tipoFarina;
 	
 	
 	
@@ -112,11 +112,11 @@ public class Pizza {
 	
 
 	public Ingrediente getFarina() {
-		return farina;
+		return tipoFarina;
 	}
 
 	public void setFarina(Ingrediente farina) {
-		this.farina = farina;
+		this.tipoFarina = farina;
 	}
 
 	@Override
@@ -140,7 +140,7 @@ public class Pizza {
 	public String toString() {
 		return "Pizza [id=" + id + ", nome=" + nome + ", prezzo=" + prezzo + ", mediaStelle=" + mediaStelle
 				+ ", URLImmagine=" + URLImmagine + ", listaIngredienti=" + listaIngredienti + ", listaRecensioni="
-				+ listaRecensioni + ", farina=" + farina + "]";
+				+ listaRecensioni + ", farina=" + tipoFarina + "]";
 	}
 
 	

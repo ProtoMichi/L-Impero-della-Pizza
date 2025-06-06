@@ -18,9 +18,9 @@ INSERT INTO ingrediente(nome,prezzo,vegan,celiaco)VALUES('Farina di mais',2.75,t
 INSERT INTO ingrediente(nome,prezzo,vegan,celiaco)VALUES('Farina di grano saraceno',4.50,true,true);
 
 
-INSERT INTO pizza (nome,prezzo, URLImmagine,farina_id) VALUES ('Margherita',5.00, '/images/pizza-margherita.jpg',301);
-INSERT INTO pizza (nome,prezzo, URLImmagine,farina_id) VALUES ('Diavola',7.00, '/images/pizza-diavola.jpg',251);	
-INSERT INTO pizza (nome,prezzo, URLImmagine,farina_id) VALUES ('Quattro Formaggi',8.00,'/images/pizza-quattro-formaggi.jpg',151);
+INSERT INTO pizza (nome,prezzo, URLImmagine,tipo_farina_id) VALUES ('Margherita',5.00, '/images/pizza-margherita.jpg',301);
+INSERT INTO pizza (nome,prezzo, URLImmagine,tipo_farina_id) VALUES ('Diavola',7.00, '/images/pizza-diavola.jpg',251);	
+INSERT INTO pizza (nome,prezzo, URLImmagine,tipo_farina_id) VALUES ('Quattro Formaggi',8.00,'/images/pizza-quattro-formaggi.jpg',151);
 
 INSERT INTO pizza_lista_ingredienti(lista_pizze_id,lista_ingredienti_id) VALUES (1,1);
 INSERT INTO pizza_lista_ingredienti(lista_pizze_id,lista_ingredienti_id) VALUES (1,51);
