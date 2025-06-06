@@ -14,6 +14,11 @@ INSERT INTO ingrediente(nome,prezzo,vegan,celiaco)VALUES('Pomodoro',1.50,true,tr
 INSERT INTO ingrediente(nome,prezzo,vegan,celiaco)VALUES('Mozzarella',2.50,false,true);
 INSERT INTO ingrediente(nome,prezzo,vegan,celiaco)VALUES('Basilico',0.50,true,true);
 INSERT INTO ingrediente(nome,prezzo,vegan,celiaco)VALUES('Cheddar',1.50,false,true);
+INSERT INTO ingrediente(nome,prezzo,vegan,celiaco)VALUES('Gorgonzola',1.50,false,true);
+INSERT INTO ingrediente(nome,prezzo,vegan,celiaco)VALUES('Stracchino',1.50,false,true);
+INSERT INTO ingrediente(nome,prezzo,vegan,celiaco)VALUES('Ventricina',1.50,false,true);
+
+
 
 INSERT INTO pizza (nome,prezzo, URLImmagine,tipo_farina_id) VALUES ('Margherita',5.00, '/images/pizza-margherita.jpg',1);
 INSERT INTO pizza (nome,prezzo, URLImmagine,tipo_farina_id) VALUES ('Diavola',7.00, '/images/pizza-diavola.jpg',51);	
@@ -22,6 +27,12 @@ INSERT INTO pizza (nome,prezzo, URLImmagine,tipo_farina_id) VALUES ('Quattro For
 INSERT INTO pizza_lista_ingredienti(lista_pizze_id,lista_ingredienti_id) VALUES (1,401);
 INSERT INTO pizza_lista_ingredienti(lista_pizze_id,lista_ingredienti_id) VALUES (1,451);
 INSERT INTO pizza_lista_ingredienti(lista_pizze_id,lista_ingredienti_id) VALUES (1,501);
+INSERT INTO pizza_lista_ingredienti(lista_pizze_id,lista_ingredienti_id) VALUES (51,401);
+INSERT INTO pizza_lista_ingredienti(lista_pizze_id,lista_ingredienti_id) VALUES (51,451);
+INSERT INTO pizza_lista_ingredienti(lista_pizze_id,lista_ingredienti_id) VALUES (51,701);
+INSERT INTO pizza_lista_ingredienti(lista_pizze_id,lista_ingredienti_id) VALUES (101,451);
+INSERT INTO pizza_lista_ingredienti(lista_pizze_id,lista_ingredienti_id) VALUES (101,601);
+INSERT INTO pizza_lista_ingredienti(lista_pizze_id,lista_ingredienti_id) VALUES (101,651);
 
 INSERT INTO recensione(pizza_id, descrizione, data_di_creazione, stelle) VALUES (51,'DIAVOLA SUPER BUONISSIMA!', '03-10-2023', 5.0);
 INSERT INTO recensione(pizza_id, descrizione, data_di_creazione, stelle) VALUES (1,'Ottime pizze, personale gentile, ma i baffi del titolare puzzano', '16-07-2024', 4.0);
