@@ -37,14 +37,19 @@
 			<label>URL Immagine:</label> <span><input type="text"
 				th:field="${pizza.URLImmagine}" /></span>
 		</div>
-
+		<div>
+			<label>Tipo Farina:</label> <select th:field="${pizza.tipoFarina}">
+				<option value="" disabled selected>-- Seleziona farina --</option>
+				<option th:each="f : ${farine}" th:value="${f.id}"
+					th:text="${f.nome}"></option>
+			</select>
+		</div>
 		<div>
 			<label>Ingredienti:</label>
 			<ul>
 				<li th:each="ing, i: *{listaIngredienti}"><span
-					th:text="${ing.nome}">Ingrediente</span> 
-					<input type="hidden" th:field="*{listaIngredienti[__${i.index}__].id}" />
-				</li>
+					th:text="${ing.nome}">Ingrediente</span> <input type="hidden"
+					th:field="*{listaIngredienti[__${i.index}__].id}" /></li>
 			</ul>
 			<select name="ingredienteSelezionatoId">
 				<option value="" disabled selected>Seleziona ingrediente</option>

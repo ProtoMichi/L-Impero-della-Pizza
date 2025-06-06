@@ -55,6 +55,7 @@ public class PizzaController {
 	public String formNewPizza(Model model) {
 		List<Ingrediente> tuttiIngredientiSenzaFarine = (this.ingredienteService.getAllIngredientiNotFarina());
 		model.addAttribute("pizza", new Pizza());
+		model.addAttribute("farine",this.ingredienteService.getFarine());
 		model.addAttribute("tuttiIngredientiSenzaFarine", tuttiIngredientiSenzaFarine);
 		return "formNewPizza.html";
 	}
@@ -62,6 +63,7 @@ public class PizzaController {
 	@PostMapping(value = "/pizza", params = "Conferma")
 	public String newPizza(@Valid @ModelAttribute("pizza") Pizza pizza, BindingResult bindingResult, Model model) {
 		if(bindingResult.hasErrors()) {
+			model.addAttribute("farine",this.ingredienteService.getFarine());
 			model.addAttribute("tuttiIngredientiSenzaFarine", ingredienteService.getAllIngredientiNotFarina());
 			return "formNewPizza.html";
 		} 
@@ -74,7 +76,6 @@ public class PizzaController {
 					);
 			pizza.setListaIngredienti(ingredientiSelezionati);
 			this.pizzaService.save(pizza);
-			model.addAttribute("pizza", pizza);
 			return "redirect:/pizza/" + pizza.getId();
 		}
 	}
@@ -82,18 +83,20 @@ public class PizzaController {
 	@PostMapping(value = "/pizza", params = "aggiungiIngrediente")
 	public String aggiungiIngrediente(@ModelAttribute("pizza") Pizza pizza, @RequestParam Long ingredienteSelezionatoId,
 			Model model) {
-
+		if(pizza.getListaIngredienti() == null) {
+			pizza.setListaIngredienti(new ArrayList<>());
+		}
 		List<Long> ids = pizza.getListaIngredienti()
 				.stream()
 				.map(Ingrediente::getId)
 				.collect(Collectors.toList());
 		List<Ingrediente> ingredientiAttuali = new ArrayList<>(ingredienteService.findAllById(ids));
-
 		Ingrediente nuovo = ingredienteService.getIngredienteById(ingredienteSelezionatoId);
 		if (nuovo != null && !ingredientiAttuali.contains(nuovo)) {
 			ingredientiAttuali.add(nuovo);
 		}
 		pizza.setListaIngredienti(ingredientiAttuali);
+		model.addAttribute("farine",this.ingredienteService.getFarine());
 		model.addAttribute("tuttiIngredientiSenzaFarine", ingredienteService.getAllIngredientiNotFarina());
 		model.addAttribute("pizza", pizza);
 		return "formNewPizza.html";

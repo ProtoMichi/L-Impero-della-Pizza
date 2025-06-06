@@ -12,6 +12,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
@@ -32,9 +33,11 @@ public class Pizza {
 	private Float prezzo;
 	private Float mediaStelle;
 	private String URLImmagine;
+	@ManyToOne(fetch = FetchType.EAGER)
+	private Ingrediente tipoFarina;
 	//@NotEmpty
-	@ManyToMany(fetch= FetchType.EAGER, mappedBy = "listaPizze")
-	private List<Ingrediente> listaIngredienti = new ArrayList<>();
+	@ManyToMany(fetch= FetchType.EAGER)
+	private List<Ingrediente> listaIngredienti;
 	@OneToMany(mappedBy = "pizza", cascade = CascadeType.ALL)
 	private List<Recensione> listaRecensioni;
 	
@@ -87,6 +90,14 @@ public class Pizza {
 
 	public void setURLImmagine(String uRLImmagine) {
 		URLImmagine = uRLImmagine;
+	}
+
+	public Ingrediente getTipoFarina() {
+		return tipoFarina;
+	}
+
+	public void setTipoFarina(Ingrediente tipoFarina) {
+		this.tipoFarina = tipoFarina;
 	}
 
 	public List<Ingrediente> getListaIngredienti() {

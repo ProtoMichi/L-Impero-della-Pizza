@@ -33,16 +33,12 @@ public class Ingrediente {
 	@Column(nullable=false)
 	private Boolean celiaco;
 
-	@ManyToMany
+	@ManyToMany(mappedBy="listaIngredienti")
 	private List<Pizza> listaPizze;
 
 	public Ingrediente() {
 		
 	}
-
-    public Ingrediente(Long id) {
-        this.id = id;
-    }
 	
 	public Ingrediente(String nome,Float prezzo,Boolean vegan,Boolean celiaco) {
 		this.nome = nome;
@@ -105,7 +101,7 @@ public class Ingrediente {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id);
+		return Objects.hash(celiaco, nome, prezzo, vegan);
 	}
 
 	@Override
@@ -117,7 +113,8 @@ public class Ingrediente {
 		if (getClass() != obj.getClass())
 			return false;
 		Ingrediente other = (Ingrediente) obj;
-		return Objects.equals(id, other.id);
+		return Objects.equals(celiaco, other.celiaco) && Objects.equals(nome, other.nome)
+				&& Objects.equals(prezzo, other.prezzo) && Objects.equals(vegan, other.vegan);
 	}
 
 	@Override

@@ -26,6 +26,10 @@ public class IngredienteService {
 		return ingredienteRepository.findAll();
 	}
 	
+	public List<Ingrediente> getFarine(){
+		return ingredienteRepository.findByNomeStartingWith("Farina");
+	}
+	
 	public List<Ingrediente> getAllIngredientiNotFarina(){
 		return ingredienteRepository.findByNomeNotContaining("Farina");
 	}

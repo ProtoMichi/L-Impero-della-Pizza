@@ -17,26 +17,26 @@
 		<a href="/"><img src="/images/impero-della-pizza.png" width="5%" /></a>
 	</div>
 	<div th:if="${pizza}">
-		<h1 th:text="${pizza.nome}">Nome Pizza</h1>
-		Ingredienti:
-		<ul>
-			<li th:each="ingrediente : ${pizza.listaIngredienti}"><span
-				th:text="${ingrediente.nome}">Nome ingrediente</span> -</li>
-		</ul>
-			<div>
-				Prezzo: <span
-					th:text="${#numbers.formatDecimal(pizza.prezzo, 1, 2)} + ' €' "></span>
-			</div>
-			<span><img width="30%" th:src="${pizza.URLImmagine}" /></span>
+		<h1
+			th:text="${pizza.nome} + ' ' + ${#numbers.formatDecimal(pizza.prezzo, 1, 2)} + ' €' ">Nome
+			Pizza</h1>
+
+		<span><img width="30%" th:src="${pizza.URLImmagine}" /></span>
 	</div>
 	<div th:unless="${pizza}">Non Esiste</div>
+	<h1>Ingredienti:</h1>
+	<ul>
+		<li th:if="${pizza.tipoFarina != null}"
+			th:text="${pizza.tipoFarina.nome}">Nome farina</li>
+		<li th:each="ingrediente : ${pizza.listaIngredienti}"><span
+			th:text="${ingrediente.nome}">Nome ingrediente</span></li>
+	</ul>
 
+	<h1>Recensioni</h1>
 	<h2>
 		<a th:href="@{'/pizza' + '/' + ${pizza.id} + '/formNewRecensione'}">Aggiungi
 			una recensione!</a>
 	</h2>
-
-	<h1>Recensioni</h1>
 	<div
 		th:if="${pizza.listaRecensioni==null || pizza.listaRecensioni.isEmpty()}">Non
 		ci sono recensioni per questa pizza</div>
