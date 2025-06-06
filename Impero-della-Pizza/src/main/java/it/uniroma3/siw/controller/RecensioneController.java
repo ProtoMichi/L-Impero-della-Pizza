@@ -51,7 +51,7 @@ public class RecensioneController {
 //	}
 	
 	@GetMapping("/admin/homeRecensione")
-	public String homeIngrediente() {
+	public String homeRecensione() {
 		return "admin/homeRecensione.html";
 	}
 	
