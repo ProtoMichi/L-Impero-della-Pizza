@@ -30,9 +30,6 @@
 					<li th:each="ingrediente : ${pizza.listaIngredienti}"><span
 						th:text="${ingrediente.nome}">Nome ingrediente</span></li>
 				</ul>
-		
-		<h2><a th:href="@{'/pizza' + '/' + ${pizza.id} + '/formNewRecensione'}">Aggiungi una recensione!</a></h2>
-		
 		<h1>Recensioni</h1>
 		<h2><a th:href="@{'/pizza' + '/' + ${pizza.id} + '/formNewRecensione'}">Aggiungi una recensione!</a></h2>
 	<div th:if="${pizza.listaRecensioni==null || pizza.listaRecensioni.isEmpty()}">Non ci sono recensioni per questa pizza</div>
