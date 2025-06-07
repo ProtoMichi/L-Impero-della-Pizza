@@ -33,13 +33,13 @@ public class Ingrediente {
 	@Column(nullable=false)
 	private Boolean celiaco;
 
-	@ManyToMany(mappedBy="listaIngredienti")
+	@ManyToMany(mappedBy = "listaIngredienti")
 	private List<Pizza> listaPizze;
 
 	public Ingrediente() {
 		
 	}
-	
+
 	public Ingrediente(String nome,Float prezzo,Boolean vegan,Boolean celiaco) {
 		this.nome = nome;
 		this.prezzo = prezzo;
@@ -101,7 +101,7 @@ public class Ingrediente {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(celiaco, nome, prezzo, vegan);
+		return Objects.hash(nome);
 	}
 
 	@Override
@@ -113,13 +113,13 @@ public class Ingrediente {
 		if (getClass() != obj.getClass())
 			return false;
 		Ingrediente other = (Ingrediente) obj;
-		return Objects.equals(celiaco, other.celiaco) && Objects.equals(nome, other.nome)
-				&& Objects.equals(prezzo, other.prezzo) && Objects.equals(vegan, other.vegan);
+		return Objects.equals(nome, other.nome);
 	}
 
 	@Override
 	public String toString() {
-		return "Ingrediente [id=" + id + ", nome=" + nome + ", prezzo=" + prezzo + ", vegan=" + vegan + ", celiaco="
-				+ celiaco + ", listaPizze=" + listaPizze + "]";
+	    return "Ingrediente [id=" + id + ", nome=" + nome + ", prezzo=" + prezzo 
+	           + ", vegan=" + vegan + ", celiaco=" + celiaco 
+	           + ", numeroPizze=" + (listaPizze != null ? listaPizze.size() : 0) + "]";
 	}
 }

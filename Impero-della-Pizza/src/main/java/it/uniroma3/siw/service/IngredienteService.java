@@ -37,4 +37,12 @@ public class IngredienteService {
 	public void save(Ingrediente ingrediente) {
 		this.ingredienteRepository.save(ingrediente);
 	}
+	
+	public List<Ingrediente> getFarine(){
+		return ingredienteRepository.findByNomeStartingWith("Farina");
+	}
+	
+	public List<Ingrediente> getIngredientiExceptFarina(){
+		return this.ingredienteRepository.findByNomeNotLike("Farina%");
+	}
 }

@@ -1,5 +1,6 @@
 package it.uniroma3.siw.model;
 
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
 
@@ -39,9 +40,13 @@ public class Pizza {
 	private List<Ingrediente> listaIngredienti;
 	@OneToMany(mappedBy = "pizza", cascade = CascadeType.ALL)
 	private List<Recensione> listaRecensioni;
+	@ManyToOne(fetch = FetchType.EAGER)
+	private Ingrediente tipoFarina;
+	
+	
 	
 	public Pizza() {
-		
+		this.listaIngredienti = new LinkedList<>();
 	}
 	
 	public Pizza(String nome, Float prezzo, String URLImmagine, Float mediaStelle) {
@@ -114,6 +119,16 @@ public class Pizza {
 	public void setListaRecensioni(List<Recensione> listaRecensioni) {
 		this.listaRecensioni = listaRecensioni;
 	}
+	
+	
+
+	public Ingrediente getFarina() {
+		return tipoFarina;
+	}
+
+	public void setFarina(Ingrediente farina) {
+		this.tipoFarina = farina;
+	}
 
 	@Override
 	public int hashCode() {
@@ -136,9 +151,9 @@ public class Pizza {
 	public String toString() {
 		return "Pizza [id=" + id + ", nome=" + nome + ", prezzo=" + prezzo + ", mediaStelle=" + mediaStelle
 				+ ", URLImmagine=" + URLImmagine + ", listaIngredienti=" + listaIngredienti + ", listaRecensioni="
-				+ listaRecensioni + "]";
+				+ listaRecensioni + ", farina=" + tipoFarina + "]";
 	}
-	
+
 	
 	
 }
