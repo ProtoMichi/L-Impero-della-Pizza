@@ -1,5 +1,6 @@
 package it.uniroma3.siw.model;
 
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
 
@@ -43,7 +44,7 @@ public class Pizza {
 	
 	
 	public Pizza() {
-		
+		this.listaIngredienti = new LinkedList<>();
 	}
 	
 	public Pizza(String nome, Float prezzo, String URLImmagine, Float mediaStelle) {

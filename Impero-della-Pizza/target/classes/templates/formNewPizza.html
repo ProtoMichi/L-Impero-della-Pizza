@@ -46,14 +46,23 @@
 
 			<!-- Ingredienti -->
 			<div>
-			    <label>Ingredienti:</label>
-			    <select multiple th:field="${pizza.listaIngredienti}">
-			        <option th:each="i : ${ingrediente}" th:value="${i.id}" th:text="${i.nome}"></option>
-			    </select>
-			</div>
+						<label>Ingredienti:</label>
+						<ul>
+							<li th:each="ing, i: *{listaIngredienti}"><span
+								th:text="${ing.nome}">Ingrediente</span> <input type="hidden"
+								th:field="*{listaIngredienti[__${i.index}__].id}" /></li>
+						</ul>
+						<select name="ingredienteSelezionatoId">
+							<option value="" disabled selected>Seleziona ingrediente</option>
+							<option th:each="ingrediente : ${ingrediente}"
+								th:value="${ingrediente.id}" th:text="${ingrediente.nome}">
+							</option>
+						</select>
+					</div>
 
 			<div>
-				<span><button type = "submit">Conferma!</button></span>
+				<button type="submit" name="action" value="aggiungi">Aggiungi ingrediente</button>
+				<span><button type="submit" name="action" value="conferma">Conferma!</button></span>
 			</div>
 		</form>
 	

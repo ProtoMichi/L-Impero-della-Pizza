@@ -23,37 +23,21 @@ public class PizzaService {
 		return pizzaRepository.findById(id).get();
 	}
 	
-	public Pizza getPizzabyIdFetchIngredienti(Long id) {
-	    return pizzaRepository.findByIdFetchIngredienti(id);
-	}
 	
 	public Iterable<Pizza> getAllPizzas() {
 		return pizzaRepository.findAll();
 	}
+	
+	public void aggiungiIngrediente(Pizza pizza, Long ingredienteId) {
+	    if (ingredienteId != null) {
+	        Ingrediente ingr = ingredienteService.getIngredientebyId(ingredienteId);
+	        if (ingr != null && !pizza.getListaIngredienti().contains(ingr)) {
+	            pizza.getListaIngredienti().add(ingr);
+	        }
+	    }
+	}
 
 	public Pizza save(Pizza pizza) {
-	    // Ricostruzione ingredienti
-	    List<Ingrediente> ingredientiCompleti = new LinkedList<>();
-	    for (Ingrediente ingr : pizza.getListaIngredienti()) {
-	        Ingrediente ingredienteCompleto = ingredienteService.getIngredientebyId(ingr.getId());
-	        ingredientiCompleti.add(ingredienteCompleto);
-	        
-	        // Aggiorna il lato inverso della relazione
-	        if (ingredienteCompleto.getListaPizze() == null) {
-	            ingredienteCompleto.setListaPizze(new LinkedList<>());
-	        }
-	        if (!ingredienteCompleto.getListaPizze().contains(pizza)) {
-	            ingredienteCompleto.getListaPizze().add(pizza);
-	        }
-	    }
-	    pizza.setListaIngredienti(ingredientiCompleti);
-
-	    // Ricostruzione farina
-	    if (pizza.getFarina() != null && pizza.getFarina().getId() != null) {
-	        Ingrediente farinaCompleta = ingredienteService.getIngredientebyId(pizza.getFarina().getId());
-	        pizza.setFarina(farinaCompleta);
-	    }
-
 	    return this.pizzaRepository.save(pizza);
 	}
 

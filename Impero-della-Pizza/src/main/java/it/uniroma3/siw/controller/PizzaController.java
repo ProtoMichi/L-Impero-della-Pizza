@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import it.uniroma3.siw.model.Ingrediente;
 import it.uniroma3.siw.model.Pizza;
@@ -35,7 +36,7 @@ public class PizzaController {
 	
 	@GetMapping("/pizza/{id}")
 	public String getPizza(@PathVariable("id") Long id, Model model) {
-		Pizza pizza = this.pizzaService.getPizzabyIdFetchIngredienti(id);
+		Pizza pizza = this.pizzaService.getPizzabyId(id);
 		System.out.println("Ingredienti caricati: " + pizza.getListaIngredienti());
 		List <Recensione> reversed = pizza.getListaRecensioni();
 		Collections.reverse(reversed);
@@ -59,18 +60,24 @@ public class PizzaController {
 	}
 	
 	@PostMapping("/pizza")
-	public String newPizza(@Valid @ModelAttribute("pizza") Pizza pizza, BindingResult bindingResult, Model model) {
-		if(bindingResult.hasErrors()) {
-			model.addAttribute("farine",this.ingredienteService.getFarine());
-			model.addAttribute("ingrediente",this.ingredienteService.getIngredientiExceptFarina());
-			return "formNewPizza.html";
-		} 
-		else {
-			System.out.println("Ingredienti selezionati: " + pizza.getListaIngredienti()); // Debug
-			this.pizzaService.save(pizza);
-			return "redirect:/pizza/" + pizza.getId();
-		}
+	public String newPizza(@Valid @ModelAttribute("pizza") Pizza pizza, BindingResult bindingResult, @RequestParam(value = "ingredienteSelezionatoId", required = false) Long ingredienteId, @RequestParam("action") String action,Model model) { 
+	    model.addAttribute("farine", this.ingredienteService.getFarine());
+	    model.addAttribute("ingrediente", this.ingredienteService.getIngredientiExceptFarina());
+
+	    if ("aggiungi".equals(action)) {
+	        this.pizzaService.aggiungiIngrediente(pizza, ingredienteId);
+	        model.addAttribute("pizza", pizza);
+	        return "formNewPizza.html";
+	    }
+
+	    if (bindingResult.hasErrors()) {
+	        return "formNewPizza.html";
+	    }
+
+	    this.pizzaService.save(pizza);
+	    return "redirect:/pizza/" + pizza.getId();
 	}
+
 	
 	@GetMapping("/pizza/{id}/formNewRecensione")
 	public String formNewRecensione(@PathVariable("id") Long id , Model model) {

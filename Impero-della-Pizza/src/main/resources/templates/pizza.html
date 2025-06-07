@@ -18,45 +18,23 @@
 			<a href="/"><img src="/images/impero-della-pizza.png" width="5%"/></a>
 		</div>
 		<div th:if="${pizza}">
-			<h1 th:text="${pizza.nome}">Nome Pizza</h1>
-			<div>
-				Prezzo: <span th:text="${#numbers.formatDecimal(pizza.prezzo, 1, 2)} + ' €' "></span>
+			<h1 th:text="${pizza.nome} + ' ' + ${#numbers.formatDecimal(pizza.prezzo, 1, 2)} + ' €' ">Nome Pizza</h1>
+			<span><img width="30%" th:src="${pizza.URLImmagine}" /></span>
 			</div>
-			<span><img width="30%" th:src="${pizza.URLImmagine}"/></span>
-		</div>
+			<div th:unless="${pizza}">Non Esiste</div>
 		<div th:if="${pizza.farina != null}">
-		  <h3>Farina</h3>
-		  <p>
-		    <span th:text="${pizza.farina.nome}">Nome farina</span> - 
-		    <span th:text="${#numbers.formatDecimal(pizza.farina.prezzo, 1, 2)} + ' €'">Prezzo</span>
-		    <span th:if="${pizza.farina.vegan}">
-		      <img src="/images/Vegan_friendly_icon.jpg" width="1%" />
-		    </span>
-		    <span th:if="${pizza.farina.celiaco}">
-		      <img src="/images/GlutenFree.jpg" width="1%" />
-		    </span>
-		  </p>
-		</div>
-		<div>
-		  Ingredienti:
-		  <ul>
-		    <li th:each="ingrediente : ${pizza.listaIngredienti}">
-		      <span th:text="${ingrediente.nome}">Nome ingrediente</span> -
-		      <span th:text="${#numbers.formatDecimal(ingrediente.prezzo, 1, 2)} + ' €'">Prezzo</span> -
-		      
-		      <!-- Icona Vegan -->
-			  <span th:if="${ingrediente.vegan}"> <img src="/images/Vegan_friendly_icon.jpg" width="1%"> </span> 
-			  
-		      <!-- Icona Celiaco -->
-			  <span th:if="${ingrediente.celiaco}"> <img src="/images/GlutenFree.jpg" width="1%"></span>
-		    </li>
-		  </ul>
-		</div>
-		<div th:unless="${pizza}">Non Esiste</div>
+			<h1>Ingredienti:</h1>
+				<ul>
+					<li th:if="${pizza.farina != null}"
+						th:text="${pizza.farina.nome}">Nome farina</li>
+					<li th:each="ingrediente : ${pizza.listaIngredienti}"><span
+						th:text="${ingrediente.nome}">Nome ingrediente</span></li>
+				</ul>
 		
 		<h2><a th:href="@{'/pizza' + '/' + ${pizza.id} + '/formNewRecensione'}">Aggiungi una recensione!</a></h2>
 		
 		<h1>Recensioni</h1>
+		<h2><a th:href="@{'/pizza' + '/' + ${pizza.id} + '/formNewRecensione'}">Aggiungi una recensione!</a></h2>
 	<div th:if="${pizza.listaRecensioni==null || pizza.listaRecensioni.isEmpty()}">Non ci sono recensioni per questa pizza</div>
 	<ul>
 		<li th:each="recensione : ${pizza.listaRecensioni}">
