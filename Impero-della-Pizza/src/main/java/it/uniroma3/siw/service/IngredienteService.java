@@ -30,16 +30,8 @@ public class IngredienteService {
 		return ingredienteRepository.findByNomeStartingWith("Farina");
 	}
 	
-	public List<Ingrediente> getAllIngredientiNotFarina(){
-		return ingredienteRepository.findByNomeNotContaining("Farina");
-	}
-	
 	public void save(Ingrediente ingrediente) {
 		this.ingredienteRepository.save(ingrediente);
-	}
-	
-	public List<Ingrediente> getFarine(){
-		return ingredienteRepository.findByNomeStartingWith("Farina");
 	}
 	
 	public List<Ingrediente> getIngredientiExceptFarina(){

@@ -40,8 +40,7 @@ public class Pizza {
 	private List<Ingrediente> listaIngredienti;
 	@OneToMany(mappedBy = "pizza", cascade = CascadeType.ALL)
 	private List<Recensione> listaRecensioni;
-	@ManyToOne(fetch = FetchType.EAGER)
-	private Ingrediente tipoFarina;
+	
 	
 	
 	

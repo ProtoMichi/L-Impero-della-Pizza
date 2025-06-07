@@ -30,7 +30,7 @@ public class PizzaService {
 	
 	public void aggiungiIngrediente(Pizza pizza, Long ingredienteId) {
 	    if (ingredienteId != null) {
-	        Ingrediente ingr = ingredienteService.getIngredientebyId(ingredienteId);
+	        Ingrediente ingr = ingredienteService.getIngredienteById(ingredienteId);
 	        if (ingr != null && !pizza.getListaIngredienti().contains(ingr)) {
 	            pizza.getListaIngredienti().add(ingr);
 	        }
