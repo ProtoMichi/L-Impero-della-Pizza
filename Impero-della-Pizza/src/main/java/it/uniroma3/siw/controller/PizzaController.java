@@ -68,12 +68,11 @@ public class PizzaController {
 			return "formNewPizza.html";
 		} 
 		else {
-			List<Ingrediente> ingredientiSelezionati = ingredienteService.findAllById(
-					pizza.getListaIngredienti()
-					.stream()
-					.map(Ingrediente::getId)
-					.collect(Collectors.toList())
-					);
+			List<Long> ids = new ArrayList<>();
+			for (Ingrediente i : pizza.getListaIngredienti()) {
+			    ids.add(i.getId());
+			}
+			List<Ingrediente> ingredientiSelezionati = ingredienteService.findAllById(ids);
 			pizza.setListaIngredienti(ingredientiSelezionati);
 			this.pizzaService.save(pizza);
 			return "redirect:/pizza/" + pizza.getId();
@@ -86,10 +85,10 @@ public class PizzaController {
 		if(pizza.getListaIngredienti() == null) {
 			pizza.setListaIngredienti(new ArrayList<>());
 		}
-		List<Long> ids = pizza.getListaIngredienti()
-				.stream()
-				.map(Ingrediente::getId)
-				.collect(Collectors.toList());
+		List<Long> ids = new ArrayList<>();
+		for (Ingrediente i : pizza.getListaIngredienti()) {
+		    ids.add(i.getId());
+		}
 		List<Ingrediente> ingredientiAttuali = new ArrayList<>(ingredienteService.findAllById(ids));
 		Ingrediente nuovo = ingredienteService.getIngredienteById(ingredienteSelezionatoId);
 		if (nuovo != null && !ingredientiAttuali.contains(nuovo)) {
