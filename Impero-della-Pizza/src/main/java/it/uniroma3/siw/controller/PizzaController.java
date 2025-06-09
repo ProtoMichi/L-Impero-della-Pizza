@@ -1,6 +1,7 @@
 package it.uniroma3.siw.controller;
 
 import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,7 +66,24 @@ public class PizzaController {
 	    model.addAttribute("ingrediente", this.ingredienteService.getIngredientiExceptFarina());
 
 	    if ("aggiungi".equals(action)) {
-	        this.pizzaService.aggiungiIngrediente(pizza, ingredienteId);
+	        // Ricarica correttamente gli ingredienti già presenti
+	        List<Ingrediente> ingredientiCompleti = new LinkedList<>();
+	        for (Ingrediente i : pizza.getListaIngredienti()) {
+	            Ingrediente daDb = ingredienteService.getIngredienteById(i.getId());
+	            if (daDb != null) {
+	                ingredientiCompleti.add(daDb);
+	            }
+	        }
+	        pizza.setListaIngredienti(ingredientiCompleti);
+
+	        // Aggiungi quello selezionato se presente
+	        if (ingredienteId != null) {
+	            Ingrediente nuovo = ingredienteService.getIngredienteById(ingredienteId);
+	            if (nuovo != null && !ingredientiCompleti.contains(nuovo)) {
+	                pizza.getListaIngredienti().add(nuovo);
+	            }
+	        }
+
 	        model.addAttribute("pizza", pizza);
 	        return "formNewPizza.html";
 	    }
