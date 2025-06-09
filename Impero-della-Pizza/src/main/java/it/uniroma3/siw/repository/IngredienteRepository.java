@@ -9,5 +9,5 @@ import it.uniroma3.siw.model.Ingrediente;
 public interface IngredienteRepository extends CrudRepository<Ingrediente, Long> {
 
 	public List<Ingrediente> findByNomeStartingWith(String inizio);
-	public List<Ingrediente> findByNomeNotLike(String inizio);
+	public List<Ingrediente> findByNomeNotContaining(String inizio);
 }
