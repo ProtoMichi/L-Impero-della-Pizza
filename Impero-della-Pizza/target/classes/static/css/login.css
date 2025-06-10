@@ -1,0 +1,103 @@
+
+@font-face {
+    font-family: 'Sauce Tomato';
+    src: url('/fonts/Sauce-Tomato.otf') format('opentype');
+  }
+
+body {
+    margin: 0;
+    background-image: url('/images/crosta-sfondo.png'); 
+    background-repeat: repeat-y;
+    background-size: cover; 
+    background-position: center;
+    background-attachment: fixed;
+    font-family: "Sauce Tomato";    
+}
+
+header {
+    display: flex;
+    justify-content: flex-end;
+    background-color: #f1e4cd;
+    padding: 1rem 2rem;
+    border-bottom: 4px solid #b33e3e;
+    font-weight: bold;
+    color: #b33e3e;
+}
+
+header a {
+    text-decoration: none;
+    color: #b33e3e;
+    margin-left: 1rem;
+}
+
+header a:hover {
+    text-shadow: 2px 2px 2px #3E7D3B;
+}
+
+h1 {
+    text-align: center;
+    color: #f1e4cd;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000,
+                 -1px 1px 0 #000, 1px 1px 0 #000;
+    margin-top: 2rem;
+}
+
+form {
+    background-color: rgba(241, 228, 205, 0.9);
+    max-width: 400px;
+    margin: 2rem auto;
+    padding: 2rem;
+    border: 4px outset #b33e3e;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #2a5328;
+}
+
+form div {
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+form span {
+    margin-bottom: 0.5rem;
+    color: #b33e3e;
+    font-weight: bold;
+}
+
+input[type="text"], input[type="password"] {
+    padding: 0.5rem;
+    border: 2px solid #b33e3e;
+    border-radius: 5px;
+    font-family: "Sauce Tomato";
+}
+
+button {
+    background-color: #b33e3e;
+    color: white;
+    padding: 0.7rem 1.2rem;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #3E7D3B;
+}
+
+a {
+    color: #b33e3e;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    text-shadow: 2px 2px 2px #3E7D3B;
+}
+
+div > a img {
+    display: block;
+    margin: 0 auto;
+    margin-top: 1rem;
+}

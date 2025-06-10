@@ -1,31 +1,46 @@
 <!DOCTYPE html>
+
 <html>
-	<head>
-  		<title>Impero della Pizza</title>
-	</head>
-	
-	<body>
-		
-		<header>
-			<div th:if="${userDetails}">
-			<span th:text="${userDetails.username}"></span>
-			<a href="/logout">Logout</a>
-		</div>
-		<div th:unless="${userDetails}">
-			<a href="/login">Login</a>
-		</div>
-			<a href="/"><img src="/images/impero-della-pizza.png" width="15%" /></a>
-		</header>
-  	
-		<h1>Impero della Pizza</h1>
-  	
-		<h2><a href="/pizza">Dai un'occhiata alle nostre gustose pizze</a></h2>
-  	
-		<h2><a href="/formNewPizza">Crea la tua pizza</a></h2>
-  	
-		<h2><a href= "/ingrediente">Consulta tutti i nostri ingredienti <3</a></h2>
-		
-		<h2><a href= "/recensione">Consulta le recensioni <3</a></h2>	
-		
-	</body>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="icon" type="image/png" href="/images/logoPizza.png">
+        <title>L'Impero della Pizza</title>
+        <link rel="stylesheet" href="css/home.css">       
+    </head>
+
+    <body>
+        <header>
+            <nav class="navbar">
+                <div class="nav-links">
+                    <a href="/hompepage"><img src="images/logoPizza.png" alt="logo" title="Home"
+                        height="100" width="100" class="logo">
+                    </a>               
+                    <a href="/pizze">Menù</a>
+                    <a href="/ingredienti">Ingredienti</a>
+                    <a href="/recensioni">Recensioni</a>
+                </div>
+                <div th:if="${userDetails}">
+                    <span th:text="${userDetails.username}"></span>
+                    <a href="/logout">Logout</a>
+                </div>
+                <div th:unless="${userDetails}">
+                    <a href="/login">Login</a>
+                </div>
+            </nav>
+        </header>
+
+        <section class="richieste">
+            <h1>Crea oggi stesso la tua pizza!</h1>
+            <fieldset>
+                <legend><h2>Le più amate</h2></legend>
+                <div class="pizze">
+                    <img src="/images/pizza-margherita.jpg" alt="Margherita">
+                    <img src="/images/pizza-diavola.jpg" alt="Diavola">
+                    <img src="/images/pizza-quattro-formaggi.jpg" alt="Boscaiola">
+                </div>
+            </fieldset>
+            
+        </section>
+
+    </body>
 </html>

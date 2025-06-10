@@ -1,0 +1,76 @@
+@font-face {
+    font-family: 'Sauce Tomato';
+    src: url('/fonts/Sauce-Tomato.otf') format('opentype');
+  }
+
+body {
+    margin: 0;
+    background-image: url('/images/crosta-sfondo.png'); 
+    background-repeat: repeat-y;
+    background-size: cover; /* o 'contain' per vedere tutta l'immagine */
+    background-position: center;
+    background-attachment: fixed;
+    font-family: "Sauce Tomato";    
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 2 rem;
+    border-style: outset;
+    border-color: #b33e3e;
+    border-width: 0.5rem;
+    background-color: #f1e4cd;
+}
+
+.nav-links { 
+    display: flex;
+    align-items: center;
+    gap: 6rem;
+    text-decoration: none;
+    color: #b33e3e;
+    font-weight: bold;
+
+}
+
+.nav-links a:hover {
+    text-shadow: 2px 2px 2px #3E7D3B;
+}
+
+.richieste {
+    text-align: center;
+    padding: 2rem;
+}
+
+.richieste h1, h2 {
+    color: #f1e4cd;
+    font-size: 2rem;
+  text-shadow:
+    -1px -1px 0 #000,  
+     1px -1px 0 #000,
+    -1px  1px 0 #000,
+     1px  1px 0 #000;
+}
+
+
+.pizze {
+    display: flex;
+    justify-content: center;
+    gap: 2rem; 
+    flex-wrap: wrap; 
+    margin-top: 1rem;
+  }
+
+.pizze img {
+    width: 300px;
+    height: auto;
+    border-style: outset;
+    border-color: #b33e3e;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px #2a5328;
+    transition: transform 0.3s ease;
+}
+
+.pizze img:hover {
+    transform: scale(1.05);
+  }
