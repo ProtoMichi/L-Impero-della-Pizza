@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Gestione Recensioni</title>
+<meta charset="UTF-8">
+</head>
+<body>
+	<header>
+		<div th:if="${userDetails}">
+			<span th:text="${userDetails.username}"></span> <a href="/logout">Logout</a>
+		</div>
+		<div th:unless="${userDetails}">
+			<a href="/login">Login</a>
+		</div>
+	</header>
+	<a href="/"><img src="/images/impero-della-pizza.png" width="5%" /></a>
+	<h1>Tutte le Recensioni</h1>
+
+	<table border="1">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Pizza</th>
+				<th>Descrizione</th>
+				<th>Data</th>
+				<th>Stelle</th>
+				<th>Dettagli</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="rec : ${recensioni}">
+				<td th:text="${rec.id}">1</td>
+				<td><a th:href="@{/pizza/{id}(id=${rec.pizza.id})}"
+					th:text="${rec.pizza.nome}"></a></td>
+				<td th:text="${rec.descrizione}">Descrizione</td>
+				<td th:text="${rec.dataCreazione}">2024-04-01</td>
+				<td th:text="${rec.stelle}">4.5</td>
+				<td><a th:href="@{/recensione/{id}(id=${rec.id})}">Visualizza</a></td>
+				<td>
+					<form th:action="@{/admin/gestioneRecensione/delete}" method="post"
+						th:object="${rec}">
+						<input type="hidden" name="id" th:value="${rec.id}" />
+						<button type="submit"
+							onclick="return confirm('Questa Recensione verrà eliminata per sempre, vuoi continuare lo stesso?');">Elimina</button>
+					</form>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

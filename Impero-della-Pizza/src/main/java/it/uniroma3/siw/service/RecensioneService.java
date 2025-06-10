@@ -23,4 +23,8 @@ public class RecensioneService {
 	public Recensione save(Recensione recensione) {
 		return recensioneRepository.save(recensione);
 	}
+
+	public void deleteById(Long id) {
+		recensioneRepository.deleteById(id);
+	}
 }

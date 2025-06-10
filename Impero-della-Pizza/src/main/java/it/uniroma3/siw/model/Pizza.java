@@ -55,6 +55,26 @@ public class Pizza {
 		this.mediaStelle = mediaStelle != null ? mediaStelle : 0.0f;
 	}
 
+	public boolean isCeliaco() {
+		if(!tipoFarina.getCeliaco())
+			return false;
+		for(Ingrediente ingrediente: this.listaIngredienti) {
+			if(!ingrediente.getCeliaco())
+				return false;
+		}
+		return true;
+	}
+	
+	public boolean isVegan() {
+		if(!tipoFarina.getVegan())
+			return false;
+		for(Ingrediente ingrediente: this.listaIngredienti) {
+			if(!ingrediente.getVegan())
+				return false;
+		}
+		return true;
+	}
+	
 	public Long getId() {
 		return id;
 	}
