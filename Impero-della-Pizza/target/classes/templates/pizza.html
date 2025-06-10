@@ -1,42 +1,50 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>Pizza X</title>
-	</head>
-	
-	<body>
+<head>
+<title>Pizza X</title>
+</head>
+
+<body>
 	<header>
 		<div th:if="${userDetails}">
-			<span th:text="${userDetails.username}"></span>
-			<a href="/logout">Logout</a>
+			<span th:text="${userDetails.username}"></span> <a href="/logout">Logout</a>
 		</div>
 		<div th:unless="${userDetails}">
 			<a href="/login">Login</a>
 		</div>
 	</header>
-		<div>
-			<a href="/"><img src="/images/impero-della-pizza.png" width="5%"/></a>
-		</div>
-		<div th:if="${pizza}">
-			<h1 th:text="${pizza.nome} + ' ' + ${#numbers.formatDecimal(pizza.prezzo, 1, 2)} + ' €' ">Nome Pizza</h1>
-			<span><img width="30%" th:src="${pizza.URLImmagine}" /></span>
-			</div>
-			<div th:unless="${pizza}">Non Esiste</div>
-		<div th:if="${pizza.farina != null}">
-			<h1>Ingredienti:</h1>
-				<ul>
-					<li th:if="${pizza.farina != null}"
-						th:text="${pizza.farina.nome}">Nome farina</li>
-					<li th:each="ingrediente : ${pizza.listaIngredienti}"><span
-						th:text="${ingrediente.nome}">Nome ingrediente</span></li>
-				</ul>
-		<h1>Recensioni</h1>
-		<h2><a th:href="@{'/pizza' + '/' + ${pizza.id} + '/formNewRecensione'}">Aggiungi una recensione!</a></h2>
-	<div th:if="${pizza.listaRecensioni==null || pizza.listaRecensioni.isEmpty()}">Non ci sono recensioni per questa pizza</div>
+	<div>
+		<a href="/"><img src="/images/impero-della-pizza.png" width="5%" /></a>
+	</div>
+	<div th:if="${pizza}">
+		<h1> 
+			<span th:text="${pizza.nome} + ' ' + ${#numbers.formatDecimal(pizza.prezzo, 1, 2)} + ' €' ">NomePizza</span>
+		 	<span th:if="${pizza.isCeliaco}"> <img src="/images/GlutenFree.jpg" width="3%"/></span>
+		 	<span th:if="${pizza.isVegan}"> <img src="/images/Vegan_friendly_icon.jpg" width="3%"/></span></h1>
+		 	<span><img width="30%" th:src="${pizza.URLImmagine}" /></span>
+	</div>
+	<div th:unless="${pizza}">Non Esiste</div>
+	<div th:if="${pizza.farina != null}">
+		<h1>Ingredienti:</h1>
+		<ul>
+			<li th:if="${pizza.farina != null}" th:text="${pizza.farina.nome}">Nome
+				farina</li>
+			<li th:each="ingrediente : ${pizza.listaIngredienti}"><span
+				th:text="${ingrediente.nome}">Nome ingrediente</span></li>
+		</ul>
+	</div>
+	<h1>Recensioni</h1>
+	<h2>
+		<a th:href="@{'/pizza' + '/' + ${pizza.id} + '/formNewRecensione'}">Aggiungi
+			una recensione!</a>
+	</h2>
+	<div
+		th:if="${pizza.listaRecensioni==null || pizza.listaRecensioni.isEmpty()}">Non
+		ci sono recensioni per questa pizza</div>
 	<ul>
-		<li th:each="recensione : ${pizza.listaRecensioni}">
-			<a th:text="${recensione.descrizione} + ' (' + ${recensione.stelle} + ')'">Gnam!(4)</a>
+		<li th:each="recensione : ${pizza.listaRecensioni}"><a
+			th:text="${recensione.descrizione} + ' (' + ${recensione.stelle} + ')'">Gnam!(4)</a>
 		</li>
 	</ul>
-	</body>
+</body>
 </html>
