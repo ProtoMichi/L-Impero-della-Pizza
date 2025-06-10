@@ -5,9 +5,9 @@
 
 body {
     margin: 0;
-    background-image: url('/images/crosta-sfondo.png'); /* <-- rinomina come preferisci */
+    background-image: url('/images/crosta-sfondo.png'); 
     background-repeat: repeat-y;
-    background-size: cover; /* o 'contain' se vuoi vedere tutta l'immagine */
+    background-size: cover; /* o 'contain' per vedere tutta l'immagine */
     background-position: center;
     background-attachment: fixed;
     font-family: "Sauce Tomato";    
