@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Gestisci Pizze</title>
+</head>
+<body>
+    <header>
+        <div th:if="${userDetails}">
+            <span th:text="${userDetails.username}"></span>
+            <a href="/logout">Logout</a>
+        </div>
+        <div th:unless="${userDetails}">
+            <a href="/login">Login</a>
+        </div>
+    </header>
+	
+	         <div>
+				<a href="/"><img src = "/images/impero-della-pizza.png" width="5%"></a>
+			</div>
+
+    <h1>Gestione Pizze</h1>
+
+    
+	
+	<div th:if="${pizze.isEmpty()}">
+        Non ci sono pizze da gestire.
+    </div>
+	
+	
+	<form method="post" action="/admin/gestisciPizze/elimina">
+		<button type="submit">Elimina le pizze selezionate</button>
+	        <ul>
+	            <li th:each="pizza : ${pizze}">
+	                <label>
+	                    <input type="checkbox"
+	                           name="pizzeDaEliminare"
+	                           th:value="${pizza.id}"/>
+	                    <span th:text="${pizza.nome} + ' (' + ${#numbers.formatDecimal(pizza.prezzo,1,2)} + '€)'"></span>
+	                </label>
+	            </li>
+	        </ul>
+	    </form>
+
+
+</body>
+</html>

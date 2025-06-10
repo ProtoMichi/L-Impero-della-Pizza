@@ -32,5 +32,9 @@ public class PizzaService {
 	public Pizza save(Pizza pizza) {
 	    return this.pizzaRepository.save(pizza);
 	}
+	
+	public void deleteById(Long id) {
+		this.pizzaRepository.deleteById(id);
+	}
 
 }

@@ -70,7 +70,7 @@ public class PizzaController {
 		else {
 			List<Long> ids = new ArrayList<>();
 			for (Ingrediente i : pizza.getListaIngredienti()) {
-			    ids.add(i.getId());
+				ids.add(i.getId());
 			}
 			List<Ingrediente> ingredientiSelezionati = ingredienteService.findAllById(ids);
 			pizza.setListaIngredienti(ingredientiSelezionati);
@@ -87,7 +87,7 @@ public class PizzaController {
 		}
 		List<Long> ids = new ArrayList<>();
 		for (Ingrediente i : pizza.getListaIngredienti()) {
-		    ids.add(i.getId());
+			ids.add(i.getId());
 		}
 		List<Ingrediente> ingredientiAttuali = new ArrayList<>(ingredienteService.findAllById(ids));
 		Ingrediente nuovo = ingredienteService.getIngredienteById(ingredienteSelezionatoId);
@@ -127,6 +127,23 @@ public class PizzaController {
 	@GetMapping("/admin/homePizza")
 	public String homePizza() {
 		return "admin/homePizza.html";
+	}
+
+	@GetMapping("/admin/gestisciPizze")
+	public String getListaPizzeDaEliminare(Model model) {
+	    model.addAttribute("pizze", pizzaService.getAllPizzas());
+	    return "admin/pizzeAdmin.html";
+	}
+
+	@PostMapping("/admin/gestisciPizze/elimina")
+	public String eliminaPizze(
+	        @RequestParam(name = "pizzeDaEliminare", required = false) List<Long> pizzeDaEliminare) {
+	    if (pizzeDaEliminare != null) {
+	        for (Long id : pizzeDaEliminare) {
+	            pizzaService.deleteById(id);
+	        }
+	    }
+	    return "redirect:/admin/gestisciPizze";
 	}
 
 }
