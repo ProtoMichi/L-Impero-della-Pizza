@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>
+		Impero della Pizza - Homepage
+	</title>
+	<link rel="stylesheet" href="/css/stile.css" />
+</head>
+
+<body>
+	<header>
+		<div th:if="${userDetails}">
+			<span th:text="${userDetails.username}"></span>
+			<a href="/logout">Logout</a>
+		</div>
+		<div th:unless="${userDetails}">
+			<a href="/login">Login</a>
+		</div>
+	</header>
+
+	<div><a href="/"><img src="/images/impero-della-pizza.png" width="15%" /></a></div>
+	<h1>Impero della Pizza</h1>
+  	
+		<h2><a href="/pizza">Dai un'occhiata alle nostre gustose pizze</a></h2>
+  	
+		<h2><a href="/formNewPizza">Crea la tua pizza</a></h2>
+  	
+		<h2><a href= "/ingrediente">Consulta tutti i nostri ingredienti <3</a></h2>
+		
+		<h2><a href= "/recensione">Consulta le recensioni <3</a></h2>	
+	
+	<h1>Operazioni per amministratore</h1>
+	<div>
+		<a href="/admin/homePizza">Operazioni sulle Pizze</a>
+	</div>
+	<div>
+		<a href="/admin/homeIngrediente">Operazioni sugli Ingredienti</a>
+	</div>
+	<div>
+		 <a href="/admin/homeRecensione">Operazioni sulle Recensioni</a>
+		</div>
+</body>
+</html>
