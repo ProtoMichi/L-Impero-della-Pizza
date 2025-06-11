@@ -1,0 +1,103 @@
+@font-face {
+    font-family: 'Sauce Tomato';
+    src: url('/fonts/Sauce-Tomato.otf') format('opentype');
+}
+
+body {
+    margin: 0;
+    background-image: url('/images/crosta-sfondo.png');
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: "Sauce Tomato";
+    color: #3e3e3e;
+}
+
+header {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    padding: 1rem 2rem;
+    border-style: outset;
+    border-color: #b33e3e;
+    border-width: 0.5rem;
+    background-color: #f1e4cd;
+    font-size: 1.2rem;
+}
+
+header a {
+    text-decoration: none;
+    color: #b33e3e;
+    font-weight: bold;
+}
+
+header a:hover {
+    text-shadow: 1px 1px 2px #3E7D3B;
+}
+
+h1 {
+    text-align: center;
+    font-size: 3rem;
+    margin-top: 1rem;
+    color: #f1e4cd;
+    text-shadow:
+        -1px -1px 0 #000,
+         1px -1px 0 #000,
+        -1px  1px 0 #000,
+         1px  1px 0 #000;
+}
+
+h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin: 1rem;
+}
+
+a {
+    color: #b33e3e;
+    text-decoration: none;
+    font-size: 1.3rem;
+}
+
+a:hover {
+    text-shadow: 1px 1px 2px #3E7D3B;
+}
+
+img {
+    display: block;
+    margin: 1rem auto;
+    border-radius: 12px;
+    box-shadow: 3px 3px 10px rgba(0,0,0,0.3);
+}
+
+ul {
+    list-style: none;
+    padding: 0 2rem;
+    max-width: 800px;
+    margin: 0 auto 2rem auto;
+}
+
+li {
+    background-color: #f1e4cd;
+    border: 4px outset #b33e3e;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 10px;
+    font-size: 1.4rem;
+    box-shadow: 3px 3px 10px rgba(0,0,0,0.3);
+}
+
+li a {
+    font-weight: bold;
+    color: #b33e3e;
+}
+
+li a:hover {
+    text-shadow: 2px 2px 3px #3E7D3B;
+}
+
+span img {
+    width: 20%;
+    vertical-align: middle;
+    border-radius: 25%;
+    box-shadow: 0 2px 4px #2a5328;
+}

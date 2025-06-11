@@ -1,9 +1,12 @@
 <!DOCTYPE html>
+
 <html>
-<head>
-<title>SIW</title>
-</head>
-<body>
+	<head>
+		<title>Ingredienti</title>
+		<link rel="stylesheet", th:href="@{css/ingredienti.css}">
+	</head>
+	
+	<body>
 	<header>
 		<div th:if="${userDetails}">
 			<span th:text="${userDetails.username}"></span> <a href="/logout">Logout</a>
@@ -30,5 +33,5 @@
 				<span th:if="${ingrediente.celiaco}"> <img src="/images/GlutenFree.jpg" width="1.5%"></span> 
 			</li>
 	</ul>
-</body>
+	</body>
 </html>

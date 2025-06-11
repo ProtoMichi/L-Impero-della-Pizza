@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Pizza X</title>
+	<title>Pizza X</title>
+	<link rel="stylesheet" th:href="@{/css/pizza.css}" />
 </head>
 
 <body>
@@ -20,8 +21,9 @@
 		<h1> 
 			<span th:text="${pizza.nome} + ' ' + ${#numbers.formatDecimal(pizza.prezzo, 1, 2)} + ' €' ">NomePizza</span>
 		 	<span th:if="${pizza.isCeliaco}"> <img src="/images/GlutenFree.jpg" width="3%"/></span>
-		 	<span th:if="${pizza.isVegan}"> <img src="/images/Vegan_friendly_icon.jpg" width="3%"/></span></h1>
-		 	<span><img width="30%" th:src="${pizza.URLImmagine}" /></span>
+		 	<span th:if="${pizza.isVegan}"> <img src="/images/Vegan_friendly_icon.jpg" width="3%"/></span>
+		</h1>
+		<span><img width="30%" th:src="${pizza.URLImmagine}" /></span>
 	</div>
 	<div th:unless="${pizza}">Non Esiste</div>
 	<div th:if="${pizza.farina != null}">
