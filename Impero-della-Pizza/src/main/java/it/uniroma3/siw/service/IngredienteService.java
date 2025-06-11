@@ -37,4 +37,15 @@ public class IngredienteService {
 	public List<Ingrediente> getAllIngredientiNotFarina(){
 		return ingredienteRepository.findByNomeNotContaining("Farina");
 	}
+	
+	public void updateIngrediente(Ingrediente ingredienteEsistente,Ingrediente ingredienteAggiornato) {
+		
+		if (ingredienteEsistente != null) {
+			ingredienteEsistente.setNome(ingredienteAggiornato.getNome());
+			ingredienteEsistente.setPrezzo(ingredienteAggiornato.getPrezzo());
+			ingredienteEsistente.setCeliaco(ingredienteAggiornato.getCeliaco());
+			ingredienteEsistente.setVegan(ingredienteAggiornato.getVegan());
+			ingredienteRepository.save(ingredienteEsistente);
+		}
+	}
 }
