@@ -29,11 +29,6 @@
 				th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
 		</div>
 		<div>
-			<label>Prezzo: €</label> <span><input type="number" min="0"
-				step="0.25" th:field="${pizza.prezzo}"> </span> <span
-				th:if="${#fields.hasErrors('prezzo')}" th:errors="*{prezzo}"></span>
-		</div>
-		<div>
 			<label>URL Immagine:</label> <span><input type="text"
 				th:field="${pizza.URLImmagine}" /></span>
 		</div>

@@ -28,8 +28,6 @@ public class Pizza {
 	@NotBlank
 	private String nome;
 	@Column(nullable = false)
-	@NotNull
-	@Min(1)
 	private Float prezzo;
 	private Float mediaStelle;
 	private String URLImmagine;
@@ -74,6 +72,25 @@ public class Pizza {
 		}
 		return true;
 	}
+	
+	public void calcolaPrezzo() {
+	    float somma = 0f;
+
+	    if (tipoFarina != null && tipoFarina.getPrezzo() != null) {
+	        somma += tipoFarina.getPrezzo();
+	    }
+
+	    if (listaIngredienti != null) {
+	        for (Ingrediente ingrediente : listaIngredienti) {
+	            if (ingrediente != null && ingrediente.getPrezzo() != null) {
+	                somma += ingrediente.getPrezzo();
+	            }
+	        }
+	    }
+
+	    this.setPrezzo(somma);
+	}
+
 	
 	public Long getId() {
 		return id;

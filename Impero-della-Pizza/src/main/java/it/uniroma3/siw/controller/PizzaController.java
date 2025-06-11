@@ -38,6 +38,7 @@ public class PizzaController {
 	@GetMapping("/pizza/{id}")
 	public String getPizza(@PathVariable("id") Long id, Model model) {
 		Pizza pizza = this.pizzaService.getPizzabyId(id);
+		pizza.calcolaPrezzo();
 		List <Recensione> reversed = pizza.getListaRecensioni();
 		Collections.reverse(reversed);
 		pizza.setListaRecensioni(reversed);
@@ -47,7 +48,14 @@ public class PizzaController {
 
 	@GetMapping("/pizza")
 	public String showPizze(Model model) {
-		model.addAttribute("pizze", this.pizzaService.getAllPizzas());
+		List<Pizza> pizze = (List<Pizza>) this.pizzaService.getAllPizzas();
+	    
+	    // Calcola il prezzo per ogni pizza
+	    for (Pizza pizza : pizze) {
+	        pizza.calcolaPrezzo();
+	    }
+
+		model.addAttribute("pizze",pizze);
 		return "pizze.html";
 	}
 
@@ -74,6 +82,7 @@ public class PizzaController {
 			}
 			List<Ingrediente> ingredientiSelezionati = ingredienteService.findAllById(ids);
 			pizza.setListaIngredienti(ingredientiSelezionati);
+			pizza.calcolaPrezzo();
 			this.pizzaService.save(pizza);
 			return "redirect:/pizza/" + pizza.getId();
 		}
@@ -131,7 +140,15 @@ public class PizzaController {
 
 	@GetMapping("/admin/gestisciPizze")
 	public String getListaPizzeDaEliminare(Model model) {
-	    model.addAttribute("pizze", pizzaService.getAllPizzas());
+		List<Pizza> pizze = (List<Pizza>) this.pizzaService.getAllPizzas();
+		 
+		// Calcola il prezzo per ogni pizza
+	    for (Pizza pizza : pizze) {
+	        pizza.calcolaPrezzo();
+	    }
+
+		
+	    model.addAttribute("pizze", pizze);
 	    return "admin/pizzeAdmin.html";
 	}
 
