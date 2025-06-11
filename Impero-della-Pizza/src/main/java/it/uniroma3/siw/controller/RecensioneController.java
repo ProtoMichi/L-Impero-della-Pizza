@@ -22,7 +22,7 @@ public class RecensioneController {
 		return "recensione.html";
 	}
 	//da lsciare, così che abbiamo un elenco di recensioni
-	@GetMapping("/recensioni")
+	@GetMapping("/recensione")
 	public String showRecensioni(Model model) {
 		model.addAttribute("recensioni", this.recensioneService.getAllRecensioni());
 		return "recensioni.html";
