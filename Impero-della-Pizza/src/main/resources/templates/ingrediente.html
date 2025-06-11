@@ -19,6 +19,7 @@
 	
   <div th:if="${ingrediente}">
     <h1 th:text="${ingrediente.nome}" style="text-decoration: none;color: brown;">Nome Ingrediente</h1>
+  </div>
 	<div>
 	  Prezzo: <span th:text="${#numbers.formatDecimal(ingrediente.prezzo, 1, 2)} + ' €'">1.50 €</span>
 	</div>
@@ -27,6 +28,7 @@
     </div>
     <div th:if="${ingrediente.celiaco}">
      <img src="/images/GlutenFree.jpg" width="1.5%">
+    </div>
   <div th:unless="${ingrediente}">
     Non Esiste
   </div>
