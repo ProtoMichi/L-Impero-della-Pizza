@@ -31,7 +31,6 @@ public class Pizza {
 	@NotNull
 	@Min(1)
 	private Float prezzo;
-	private Float mediaStelle;
 	private String URLImmagine;
 	@ManyToOne(fetch = FetchType.EAGER)
 	private Ingrediente tipoFarina;
@@ -52,7 +51,19 @@ public class Pizza {
 		this.nome = nome;
 		this.prezzo = prezzo;
 		this.URLImmagine = URLImmagine;
-		this.mediaStelle = mediaStelle != null ? mediaStelle : 0.0f;
+	}
+	
+	public Float calcolaMediaStelle() {
+		Float mediaStelle = 0.f;
+		Float contatore = 0.f;
+		if(this.listaRecensioni.isEmpty()) {
+			return mediaStelle;
+		}
+		for(Recensione rec : this.listaRecensioni) {
+			mediaStelle += rec.getStelle();
+			contatore++;
+		}
+		return mediaStelle/contatore;
 	}
 
 	public boolean isCeliaco() {
@@ -97,14 +108,6 @@ public class Pizza {
 
 	public void setPrezzo(Float prezzo) {
 		this.prezzo = prezzo;
-	}
-
-	public Float getMediaStelle() {
-		return mediaStelle;
-	}
-
-	public void setMediaStelle(Float mediaStelle) {
-		this.mediaStelle = mediaStelle;
 	}
 
 	public String getURLImmagine() {
@@ -168,7 +171,7 @@ public class Pizza {
 
 	@Override
 	public String toString() {
-		return "Pizza [id=" + id + ", nome=" + nome + ", prezzo=" + prezzo + ", mediaStelle=" + mediaStelle
+		return "Pizza [id=" + id + ", nome=" + nome + ", prezzo=" + prezzo
 				+ ", URLImmagine=" + URLImmagine + ", listaIngredienti=" + listaIngredienti + ", listaRecensioni="
 				+ listaRecensioni + ", farina=" + tipoFarina + "]";
 	}
