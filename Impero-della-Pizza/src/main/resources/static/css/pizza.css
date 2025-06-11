@@ -50,6 +50,12 @@ h2 {
     text-align: center;
     font-size: 2rem;
     margin: 1rem;
+    color: #f1e4cd;
+    text-shadow:
+        -1px -1px 0 #000,
+         1px -1px 0 #000,
+        -1px  1px 0 #000,
+         1px  1px 0 #000;
 }
 
 a {
@@ -100,4 +106,26 @@ span img {
     vertical-align: middle;
     border-radius: 25%;
     box-shadow: 0 2px 4px #2a5328;
+}
+
+.stella {
+    width: 100%; /* o 5% se preferisci responsive */
+    height: auto;
+    margin-right: 3px;
+    border-radius: 0;       /* nessun bordo arrotondato per le stelle */
+    box-shadow: none;       /* rimuovi l'ombra se non la vuoi sulle stelle */
+    display: inline-block;     
+}
+
+.stelle {
+    display: flex;
+    justify-content: center;  /* centra orizzontalmente */
+    align-items: center;      /* centra verticalmente (se serve) */
+    gap: 5px;                 /* spazio tra le stelle */
+    margin: 20px auto;        /* margine verticale, centrato */
+    width: fit-content;       /* solo grande quanto le stelle */
+}
+
+.checkbox {
+	 width: 5%;
 }

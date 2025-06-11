@@ -11,13 +11,14 @@ INSERT INTO ingrediente(nome,prezzo,vegan,celiaco)VALUES('Farina di riso',3.50,t
 INSERT INTO ingrediente(nome,prezzo,vegan,celiaco)VALUES('Farina di mais',2.75,true,true);
 INSERT INTO ingrediente(nome,prezzo,vegan,celiaco)VALUES('Farina di grano saraceno',4.50,true,true);
 INSERT INTO ingrediente(nome,prezzo,vegan,celiaco)VALUES('Pomodoro',1.50,true,true);
-INSERT INTO ingrediente(nome,prezzo,vegan,celiaco)VALUES('Mozzarella',2.50,false,true);
+INSERT INTO ingrediente(nome,prezzo,vegan,celiaco)VALUES('Fior di Latte',2.50,false,true);
 INSERT INTO ingrediente(nome,prezzo,vegan,celiaco)VALUES('Basilico',0.50,true,true);
 INSERT INTO ingrediente(nome,prezzo,vegan,celiaco)VALUES('Cheddar',1.50,false,true);
 INSERT INTO ingrediente(nome,prezzo,vegan,celiaco)VALUES('Gorgonzola',2.50,false,true);
 INSERT INTO ingrediente(nome,prezzo,vegan,celiaco)VALUES('Fontina',2.50,false,true);
 INSERT INTO ingrediente(nome,prezzo,vegan,celiaco)VALUES('Parmiggiano Reggiano',2.50,false,true);
 INSERT INTO ingrediente(nome,prezzo,vegan,celiaco)VALUES('Ventricina',1.50,false,true);
+INSERT INTO ingrediente(nome,prezzo,vegan,celiaco)VALUES('Mozzarella di Bufala',3.50,false,true);
 INSERT INTO ingrediente(nome,prezzo,vegan,celiaco)VALUES('Prosciutto Cotto',1.00,false,true);
 INSERT INTO ingrediente(nome,prezzo,vegan,celiaco)VALUES('Alici',2.50,false,true);
 INSERT INTO ingrediente(nome,prezzo,vegan,celiaco)VALUES('Origano',0.50,true,true);
@@ -39,6 +40,7 @@ INSERT INTO pizza_lista_ingredienti(lista_pizze_id,lista_ingredienti_id) VALUES 
 
 INSERT INTO recensione(pizza_id, descrizione, data_di_creazione, stelle) VALUES (51,'DIAVOLA SUPER BUONISSIMA!', '03-10-2023', 5.0);
 INSERT INTO recensione(pizza_id, descrizione, data_di_creazione, stelle) VALUES (1,'Ottime pizze, personale gentile, ma i baffi del titolare puzzano', '16-07-2024', 4.0);
+INSERT INTO recensione(pizza_id, descrizione, data_di_creazione, stelle) VALUES (1,'Supergnam!!', '12-09-2022', 5.0);
 INSERT INTO recensione(pizza_id, descrizione, data_di_creazione, stelle) VALUES (1,'Buono tutto, specie la mozzarella!', '17-07-2024', 4.5);
 INSERT INTO recensione(pizza_id, descrizione, data_di_creazione, stelle) VALUES (101,'Tutto ok.', '01-01-2025', 4.0);
 
