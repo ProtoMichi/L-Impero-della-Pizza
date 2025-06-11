@@ -32,7 +32,7 @@ public class RecensioneController {
 	@GetMapping("/admin/gestioneRecensioni")
 	public String getGestioneRecensioni(Model model) {
 		model.addAttribute("recensioni", this.recensioneService.getAllRecensioni());
-		return "admin/gestioneRecensioni.html";
+		return "admin/formGestioneRecensioni.html";
 	}
 	
 	@GetMapping("/admin/homeRecensione")
@@ -43,6 +43,6 @@ public class RecensioneController {
 	@PostMapping("/admin/gestioneRecensione/delete")
 	public String eliminaRecensione(@RequestParam("id") Long id) {
 		recensioneService.deleteById(id);
-		return "redirect:/admin/gestioneRecensioni";
+		return "redirect:/admin/formGestioneRecensioni";
 	}
 }

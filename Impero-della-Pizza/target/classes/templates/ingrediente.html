@@ -29,6 +29,11 @@
     <div th:if="${ingrediente.celiaco}">
      <img src="/images/GlutenFree.jpg" width="1.5%">
     </div>
+	
+	<div th:if="${ruolo == 'ADMIN'}">
+			    <a th:href="@{'/ingrediente/' + ${ingrediente.id} + '/modifica'}">Modifica Ingrediente</a>
+			  </div>
+			  
   <div th:unless="${ingrediente}">
     Non Esiste
   </div>
