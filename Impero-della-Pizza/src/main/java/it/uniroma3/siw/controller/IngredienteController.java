@@ -19,7 +19,7 @@ public class IngredienteController {
 	@Autowired
 	private IngredienteService ingredienteService;
 	
-	@GetMapping("/ingrediente")
+	@GetMapping("/ingredienti")
 	public String getIngredienti(Model model) {
 		model.addAttribute("ingredienti",this.ingredienteService.getAllIngredienti());
 		return "ingredienti.html";

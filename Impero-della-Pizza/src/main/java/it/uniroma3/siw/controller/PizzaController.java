@@ -45,7 +45,7 @@ public class PizzaController {
 		return "pizza.html";
 	}
 
-	@GetMapping("/pizza")
+	@GetMapping("/pizze")
 	public String showPizze(Model model) {
 		model.addAttribute("pizze", this.pizzaService.getAllPizzas());
 		return "pizze.html";
