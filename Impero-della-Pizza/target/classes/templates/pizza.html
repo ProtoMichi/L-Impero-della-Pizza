@@ -60,10 +60,29 @@
 	<div
 		th:if="${pizza.listaRecensioni==null || pizza.listaRecensioni.isEmpty()}">Non
 		ci sono recensioni per questa pizza</div>
-	<ul>
-		<li th:each="recensione : ${pizza.listaRecensioni}"><a
-			th:text="${recensione.descrizione} + ' (' + ${recensione.stelle} + ')'">Gnam!(4)</a>
-		</li>
-	</ul>
+		<ul>
+		    <li th:each="recensione : ${pizza.listaRecensioni}"
+		        th:with="
+		            valore=${recensione.stelle},
+		            intero=${T(java.lang.Math).floor(valore).intValue()},
+		            haMezza=${(valore - intero) >= 0.5},
+		            mezza=${haMezza ? 1 : 0},
+		            vuote=${5 - intero - mezza}">
+		        
+		        <a th:text="${recensione.descrizione} + ' (' + ${recensione.stelle} + ')'"></a>
+		        
+		        <!-- Stelle piene -->
+		        <img class="stella" src="/images/star-full.png"
+		             th:each="i : ${#numbers.sequence(1, intero)}" />
+		        
+		        <!-- Mezza stella -->
+		        <img class="stella" src="/images/star-half.png"
+		             th:if="${mezza == 1}" />
+		        
+					 <img class="stella" src="/images/star-empty.png"
+					      th:if="${vuote > 0}"
+					      th:each="i : ${#numbers.sequence(1, vuote)}" />
+		    </li>
+		</ul>
 </body>
 </html>
