@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Dettaglio Recensione</title>
+	<link rel="stylesheet" th:href="@{/css/recensione.css}" />
     <meta charset="UTF-8">
 </head>
 <body>
@@ -21,7 +22,27 @@
 		<p><strong>ID:</strong> <span th:text="${recensione.id}">1</span></p>
 		<p><strong>Descrizione:</strong> <span th:text="${recensione.descrizione}">Ottima pizza!</span></p>
 		<p><strong>Data di Creazione:</strong> <span th:text="${recensione.dataCreazione}">2024-04-01</span></p>
-		<p><strong>Stelle:</strong> <span th:text="${recensione.stelle}">4.5</span></p>
+		<p>
+		    <strong>Stelle:</strong> 
+		    <span th:text="${recensione.stelle}">4.5</span>
+
+			<span th:with="
+			    valore=${recensione.stelle},
+			    intero=${T(java.lang.Math).floor(valore).intValue()},
+			    haMezza=${(valore - intero) >= 0.5},
+			    mezza=${haMezza ? 1 : 0},
+			    vuote=${5 - intero - mezza}">
+			    
+			    <!-- Stelle piene -->
+			    <img class="stella" src="/images/star-full.png" th:each="i : ${#numbers.sequence(1, intero)}" />
+			    
+			    <!-- Mezza stella -->
+			    <img class="stella" src="/images/star-half.png" th:if="${mezza == 1}" />
+			    
+			    <!-- Stelle vuote -->
+			    <img class="stella" src="/images/star-empty.png" th:if="${vuote > 0}" th:each="i : ${#numbers.sequence(1, vuote)}" />
+			</span>
+		</p>
 	</main>
 
     <a th:href="@{/recensione}">Torna alla lista</a>
