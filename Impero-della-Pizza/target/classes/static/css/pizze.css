@@ -92,3 +92,18 @@ li img {
     border-radius: 50%;
     box-shadow: 0 2px 4px #2a5328;
 }
+
+.stelle {
+    display: flex;
+    justify-content: center;  /* centra orizzontalmente */
+    align-items: center;      /* centra verticalmente (se serve) */
+    gap: 5px;                 /* spazio tra le stelle */
+    margin: 20px auto;        /* margine verticale, centrato */
+    width: fit-content;       /* solo grande quanto le stelle */
+}
+
+.stella {
+    border-radius: 0;
+    box-shadow: none;
+    margin-left: 0;
+}
