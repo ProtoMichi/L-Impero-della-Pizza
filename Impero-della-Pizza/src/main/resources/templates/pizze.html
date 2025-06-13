@@ -33,6 +33,24 @@
 				<p style="font-size: 1.4rem">
 					<span th:each="ingrediente : ${pizza.listaIngredienti}" th:text="${ingrediente.nome} + ' '"></span>
 				</p>
+				<div class="stelle" th:if="${pizza.listaRecensioni != null and !pizza.listaRecensioni.isEmpty()}"
+							th:with="media = ${pizza.calcolaMediaStelle()},
+				    		piene = ${(T(java.lang.Math).floor(media)).intValue()},
+				    		haMezza = ${(media - piene) >= 0.5},
+				    		mezza = ${haMezza ? 1 : 0},
+				    		vuote = ${5 - piene - mezza}">    		
+				    		<img class="stella" src="/images/star-full.png" th:each="i : ${#numbers.sequence(1, piene)}"/>
+				    		<img class="stella" src="/images/star-half.png" th:if="${haMezza}"/>
+				    		<img class="stella" src="/images/star-empty.png" th:if="${vuote > 0}" th:each="i : ${#numbers.sequence(1, vuote)}"/>
+						</div>
+						<span th:text="${#numbers.formatDecimal(pizza.calcolaMediaStelle(), 1, 2)}" style="font-size: 2rem; color: #f1e4cd;
+						 width: 100%; text-align: center; display: block; font-weight: bold;"></span>
+						<div class="stelle" th:unless="${pizza.listaRecensioni != null and !pizza.listaRecensioni.isEmpty()}">
+				    		<span th:each="i : ${#numbers.sequence(1,5)}">
+				        		<img class="stella" src="/images/star-empty.png" width="25"/>
+				    		</span>
+						</div>
+					</div>
 			</li>
 		</ul>
 	</body>
