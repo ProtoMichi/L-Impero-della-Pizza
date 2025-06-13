@@ -89,8 +89,13 @@ public class PizzaController {
 	}
 
 	@PostMapping(value = "/pizza", params = "aggiungiIngrediente")
-	public String aggiungiIngrediente(@ModelAttribute("pizza") Pizza pizza, @RequestParam Long ingredienteSelezionatoId,
-			Model model) {
+	public String aggiungiIngrediente(@Valid @ModelAttribute("pizza") Pizza pizza, BindingResult bindingResult, 
+			@RequestParam(required = false) Long ingredienteSelezionatoId, Model model) {
+	    if (bindingResult.hasErrors()) {
+	    	model.addAttribute("farine", ingredienteService.getFarine());
+	        model.addAttribute("tuttiIngredientiSenzaFarine", ingredienteService.getAllIngredientiNotFarina());
+	        return "formNewPizza.html";
+	    }
 		if(pizza.getListaIngredienti() == null) {
 			pizza.setListaIngredienti(new ArrayList<>());
 		}
@@ -99,9 +104,14 @@ public class PizzaController {
 			ids.add(i.getId());
 		}
 		List<Ingrediente> ingredientiAttuali = new ArrayList<>(ingredienteService.findAllById(ids));
-		Ingrediente nuovo = ingredienteService.getIngredienteById(ingredienteSelezionatoId);
-		if (nuovo != null && !ingredientiAttuali.contains(nuovo)) {
-			ingredientiAttuali.add(nuovo);
+		if(ingredienteSelezionatoId == null){
+            model.addAttribute("erroreIngredienteSelezionato", "Seleziona un ingrediente");
+        }
+		else{
+			Ingrediente nuovo = ingredienteService.getIngredienteById(ingredienteSelezionatoId);
+			if (nuovo != null && !ingredientiAttuali.contains(nuovo)) {
+				ingredientiAttuali.add(nuovo);
+			}
 		}
 		pizza.setListaIngredienti(ingredientiAttuali);
 		model.addAttribute("farine",this.ingredienteService.getFarine());

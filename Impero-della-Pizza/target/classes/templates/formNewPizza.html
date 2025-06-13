@@ -52,6 +52,9 @@
 					th:value="${ingrediente.id}" th:text="${ingrediente.nome}">
 				</option>
 			</select>
+			<span th:if="${erroreIngredienteSelezionato != null}" 
+     			th:text="${erroreIngredienteSelezionato}"> 
+    		</span>
 		</div>
 
 		<div>
