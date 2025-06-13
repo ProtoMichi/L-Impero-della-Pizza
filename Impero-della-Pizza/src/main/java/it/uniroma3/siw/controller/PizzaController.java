@@ -38,6 +38,10 @@ public class PizzaController {
 	@GetMapping("/pizza/{id}")
 	public String getPizza(@PathVariable("id") Long id, Model model) {
 		Pizza pizza = this.pizzaService.getPizzabyId(id);
+		if(pizza==null) { 
+			System.out.println("Pizza con id " + id + " non trovata!");
+			return "pizzaNonTrovata.html";
+		}
 		pizza.calcolaPrezzo();
 		List <Recensione> reversed = pizza.getListaRecensioni();
 		Collections.reverse(reversed);
@@ -118,6 +122,35 @@ public class PizzaController {
 		model.addAttribute("tuttiIngredientiSenzaFarine", ingredienteService.getAllIngredientiNotFarina());
 		model.addAttribute("pizza", pizza);
 		return "formNewPizza.html";
+	}
+	
+	@PostMapping(value = "/pizza", params = "eliminaIngredienti")
+	public String eliminaIngredienti(@Valid @ModelAttribute("pizza") Pizza pizza,BindingResult bindingResult,@RequestParam(required = false, name = "ingredientiDaRimuovere") List<Long> idsDaRimuovere,Model model) {
+	    if (bindingResult.hasErrors()) {
+	        model.addAttribute("farine", ingredienteService.getFarine());
+	        model.addAttribute("tuttiIngredientiSenzaFarine", ingredienteService.getAllIngredientiNotFarina());
+	        return "formNewPizza.html";
+	    }
+
+	    // Lista ingredienti attuali
+	    List<Long> ids = new ArrayList<>();
+	    for (Ingrediente i : pizza.getListaIngredienti()) {
+	        ids.add(i.getId());
+	    }
+
+	    List<Ingrediente> ingredientiAttuali = new ArrayList<>(ingredienteService.findAllById(ids));
+
+	    // Rimuove gli ingredienti selezionati
+	    if (idsDaRimuovere != null) {
+	        ingredientiAttuali.removeIf(i -> idsDaRimuovere.contains(i.getId()));
+	    }
+
+	    pizza.setListaIngredienti(ingredientiAttuali);
+
+	    model.addAttribute("farine", ingredienteService.getFarine());
+	    model.addAttribute("tuttiIngredientiSenzaFarine", ingredienteService.getAllIngredientiNotFarina());
+	    model.addAttribute("pizza", pizza);
+	    return "formNewPizza.html";
 	}
 
 	@GetMapping("/pizza/{id}/formNewRecensione")
