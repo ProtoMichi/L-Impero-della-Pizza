@@ -24,7 +24,7 @@
 		 	<span th:if="${pizza.isVegan()}"> <img class="checkbox" src="/images/Vegan_friendly_icon.jpg" width="3%"/></span>
 		</h1>
 		<span><img width="30%" th:src="${pizza.URLImmagine}" /></span>
-		<span><img th:if="${pizza.URLImmagine == ''}" src="https://img.freepik.com/foto-gratuito/cuoco-unico-del-colpo-medio-che-prepara-pizza_23-2150235778.jpg?semt=ais_hybrid&w=740"></span>
+		<span><img th:if="${pizza.URLImmagine == ''}" src="https://media1.tenor.com/m/-mGE2cZvHAUAAAAd/pizza-time-food.gif"></span>
 		<div class="stelle" th:if="${pizza.listaRecensioni != null and !pizza.listaRecensioni.isEmpty()}"
 			th:with="media = ${pizza.calcolaMediaStelle()},
     		piene = ${(T(java.lang.Math).floor(media)).intValue()},
