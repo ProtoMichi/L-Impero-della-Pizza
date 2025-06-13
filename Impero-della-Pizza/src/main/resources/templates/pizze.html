@@ -47,7 +47,7 @@
 						 width: 100%; text-align: center; display: block; font-weight: bold;"></span>
 						<div class="stelle" th:unless="${pizza.listaRecensioni != null and !pizza.listaRecensioni.isEmpty()}">
 				    		<span th:each="i : ${#numbers.sequence(1,5)}">
-				        		<img class="stella" src="/images/star-empty.png" width="25"/>
+				        		<img class="stella" src="/images/star-empty.png"/>
 				    		</span>
 						</div>
 					</div>
