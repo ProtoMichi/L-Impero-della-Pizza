@@ -1,10 +1,16 @@
-/* Base */
+@font-face {
+    font-family: 'Sauce Tomato';
+    src: url('/fonts/Sauce-Tomato.otf') format('opentype');
+  }
+
 body {
-  font-family: 'Segoe UI', sans-serif;
-  background-color: #fff8f0;
-  margin: 0;
-  padding: 2rem;
-  color: #4a2c2a;
+    margin: 0;
+    background-image: url('/images/crosta-sfondo.png'); 
+    background-repeat: repeat-y;
+    background-size: cover; 
+    background-position: center;
+    background-attachment: fixed;
+    font-family: "Sauce Tomato";    
 }
 
 /* Header */
@@ -44,21 +50,7 @@ header span {
   color: #44261b;
 }
 
-@font-face {
-    font-family: 'Sauce Tomato';
-    src: url('/fonts/Sauce-Tomato.otf') format('opentype');
-  }
-
-body {
-    margin: 0;
-    background-image: url('/images/crosta-sfondo.png'); 
-    background-repeat: repeat-y;
-    background-size: cover; 
-    background-position: center;
-    background-attachment: fixed;
-    font-family: "Sauce Tomato";    
-}
-
+/* Main content */
 main {
   background-color: #fff1e6;
   padding: 2rem;
@@ -86,7 +78,7 @@ strong {
 }
 
 /* Link di ritorno */
-a[href*="/recensione"] {
+a[href*="/recensioni"] {
   display: block;
   width: fit-content;
   margin: 2rem auto;
@@ -103,3 +95,11 @@ a[href*="/recensione"] {
 a[href*="/recensione"]:hover {
   background-color: #b14e2f;
 }
+
+
+
+.stella {
+        width: 20px;
+        height: 20px;
+        vertical-align: middle;
+    }
