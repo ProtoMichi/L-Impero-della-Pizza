@@ -6,6 +6,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -15,12 +19,16 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import it.uniroma3.siw.model.Credentials;
 import it.uniroma3.siw.model.Ingrediente;
 import it.uniroma3.siw.model.Pizza;
 import it.uniroma3.siw.model.Recensione;
+import it.uniroma3.siw.model.User;
+import it.uniroma3.siw.service.CredentialsService;
 import it.uniroma3.siw.service.IngredienteService;
 import it.uniroma3.siw.service.PizzaService;
 import it.uniroma3.siw.service.RecensioneService;
+import it.uniroma3.siw.service.UserService;
 import jakarta.validation.Valid;
 
 @Controller
@@ -34,6 +42,12 @@ public class PizzaController {
 
 	@Autowired
 	private RecensioneService recensioneService;
+
+	@Autowired
+	private UserService userService;
+
+	@Autowired
+	private CredentialsService credentialsService;
 
 	@GetMapping("/pizza/{id}")
 	public String getPizza(@PathVariable("id") Long id, Model model) {
@@ -161,8 +175,7 @@ public class PizzaController {
 	}
 
 	@PostMapping("/pizza/{id}/recensione")
-	public String addRecensione(@PathVariable("id") Long id, @Valid @ModelAttribute("recensione") Recensione recensione,
-			BindingResult bindingResult, Model model) {
+	public String addRecensione(@PathVariable("id") Long id, @Valid @ModelAttribute("recensione") Recensione recensione,BindingResult bindingResult, Model model,@AuthenticationPrincipal UserDetails userDetails) {
 		if(bindingResult.hasErrors()) {
 			model.addAttribute("pizza", this.pizzaService.getPizzabyId(id));
 			return "formNewRecensione.html";
@@ -171,6 +184,10 @@ public class PizzaController {
 			Pizza pizza = this.pizzaService.getPizzabyId(id);
 			recensione.setId(null);
 			recensione.setPizza(pizza);
+			Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+			String username = auth.getName();
+			Credentials autore = this.credentialsService.getCredentials(username);
+			recensione.setAutore(autore);
 			this.recensioneService.save(recensione);
 			return "redirect:/pizza/"+ pizza.getId();
 		}

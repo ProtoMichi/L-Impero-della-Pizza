@@ -38,13 +38,14 @@ INSERT INTO pizza_lista_ingredienti(lista_pizze_id,lista_ingredienti_id) VALUES 
 INSERT INTO pizza_lista_ingredienti(lista_pizze_id,lista_ingredienti_id) VALUES (101,601);
 INSERT INTO pizza_lista_ingredienti(lista_pizze_id,lista_ingredienti_id) VALUES (101,651);
 
-INSERT INTO recensione(pizza_id, descrizione, data_di_creazione, stelle) VALUES (51,'DIAVOLA SUPER BUONISSIMA!', '03-10-2023', 5.0);
-INSERT INTO recensione(pizza_id, descrizione, data_di_creazione, stelle) VALUES (1,'Ottime pizze, personale gentile, ma i baffi del titolare puzzano', '16-07-2024', 4.0);
-INSERT INTO recensione(pizza_id, descrizione, data_di_creazione, stelle) VALUES (1,'Supergnam!!', '12-09-2022', 5.0);
-INSERT INTO recensione(pizza_id, descrizione, data_di_creazione, stelle) VALUES (1,'Buono tutto, specie la mozzarella!', '17-07-2024', 4.5);
-INSERT INTO recensione(pizza_id, descrizione, data_di_creazione, stelle) VALUES (101,'Tutto ok.', '01-01-2025', 4.0);
-
 INSERT INTO users(id, nome, cognome, email) VALUES(nextval('users_seq'), 'paolo', 'paolo', 'paolo@gmail.com');
 INSERT INTO credentials(id, password, ruolo, username, user_id) VALUES(nextval('credentials_seq'), '$2a$10$F605H0XOC06ODyI.oQnCzeMWpWRPNOH2DM2Lmf.ZSAkNrTG6Kqa3q', 'DEFAULT', 'paolo',currval('users_seq'));
 INSERT INTO users(id, nome, cognome, email) VALUES(nextval('users_seq'), 'admin', 'admin', 'admin@admin.com');
 INSERT INTO credentials(id, password, ruolo, username, user_id) VALUES(nextval('credentials_seq'), '$2a$12$Lzmhtr/JjTVh8zJF.6h6IOswJfrt.zmuS3yjvjZW999TJdDoRroQu', 'ADMIN', 'admin',currval('users_seq'));
+
+INSERT INTO recensione(pizza_id, descrizione, data_di_creazione, stelle, autore_id)VALUES (51,'DIAVOLA SUPER BUONISSIMA!', '2023-10-03', 5.0, 1);
+INSERT INTO recensione(pizza_id, descrizione, data_di_creazione, stelle, autore_id)VALUES (1,'Ottime pizze, personale gentile, ma i baffi del titolare puzzano', '2024-07-16', 4.0, 1);
+INSERT INTO recensione(pizza_id, descrizione, data_di_creazione, stelle, autore_id)VALUES (1,'Supergnam!!', '2022-09-12', 5.0, 1);
+INSERT INTO recensione(pizza_id, descrizione, data_di_creazione, stelle, autore_id)VALUES (1,'Buono tutto, specie la mozzarella!', '2024-07-17', 4.5, 1);
+INSERT INTO recensione(pizza_id, descrizione, data_di_creazione, stelle, autore_id)VALUES (101,'Tutto ok.', '2025-01-01', 4.0, 1);
+

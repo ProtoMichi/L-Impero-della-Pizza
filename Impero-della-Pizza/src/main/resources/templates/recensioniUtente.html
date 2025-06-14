@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Recensioni di [[${utente.username}]]</title>
+    <link rel="stylesheet" th:href="@{/css/pizza.css}" />
+</head>
+<body>
+
+    <header>
+        <div th:if="${#authorization.expression('isAuthenticated()')}">
+            <span th:text="${#authentication.name}"></span>
+            <a href="/logout">Logout</a>
+        </div>
+        <div th:unless="${#authorization.expression('isAuthenticated()')}">
+            <a href="/login">Login</a>
+        </div>
+    </header>
+
+    <div>
+        <a href="/"><img src="/images/impero-della-pizza.png" width="5%"/></a>
+    </div>
+
+    <h1>Recensioni di <span th:text="${utente.username}">Username</span></h1>
+
+    <div th:if="${recensioni.isEmpty()}">
+        <p>Questo utente non ha ancora scritto recensioni.</p>
+    </div>
+
+    <ul th:unless="${recensioni.isEmpty()}">
+        <li th:each="recensione : ${recensioni}">
+            <p>
+                <strong th:text="${recensione.pizza.nome}">Nome Pizza</strong>:
+                <span th:text="${recensione.descrizione}">Descrizione</span>
+                (<span th:text="${recensione.stelle}">5</span> stelle)
+            </p>
+        </li>
+    </ul>
+
+</body>
+</html>
