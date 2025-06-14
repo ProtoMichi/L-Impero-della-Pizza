@@ -26,6 +26,7 @@
                 <th>Descrizione</th>
                 <th>Data</th>
                 <th>Stelle</th>
+				<th>Autore</th>
                 <th>Dettagli</th>
             </tr>
         </thead>
@@ -35,6 +36,7 @@
                 <td><a th:href="@{/pizza/{id}(id=${rec.pizza.id})}" th:text="${rec.pizza.nome}"></a></td>
                 <td th:text="${rec.descrizione}">Descrizione</td>
                 <td th:text="${rec.dataCreazione}">2024-04-01</td>
+				<td> <a th:href="@{/recensione/{username}/recensioni(username=${rec.autore.username})}" th:text="${rec.autore.username}"></a></td>
                 <td th:text="${rec.stelle}">4.5</td>
                 <td><a th:href="@{/recensione/{id}(id=${rec.id})}">Visualizza</a></td>
             </tr>

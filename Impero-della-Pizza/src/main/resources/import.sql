@@ -44,8 +44,6 @@ INSERT INTO users(id, nome, cognome, email) VALUES(nextval('users_seq'), 'admin'
 INSERT INTO credentials(id, password, ruolo, username, user_id) VALUES(nextval('credentials_seq'), '$2a$12$Lzmhtr/JjTVh8zJF.6h6IOswJfrt.zmuS3yjvjZW999TJdDoRroQu', 'ADMIN', 'admin',currval('users_seq'));
 
 INSERT INTO recensione(pizza_id, descrizione, data_di_creazione, stelle, autore_id)VALUES (51,'DIAVOLA SUPER BUONISSIMA!', '2023-10-03', 5.0, 1);
-INSERT INTO recensione(pizza_id, descrizione, data_di_creazione, stelle, autore_id)VALUES (1,'Ottime pizze, personale gentile, ma i baffi del titolare puzzano', '2024-07-16', 4.0, 1);
-INSERT INTO recensione(pizza_id, descrizione, data_di_creazione, stelle, autore_id)VALUES (1,'Supergnam!!', '2022-09-12', 5.0, 1);
 INSERT INTO recensione(pizza_id, descrizione, data_di_creazione, stelle, autore_id)VALUES (1,'Buono tutto, specie la mozzarella!', '2024-07-17', 4.5, 1);
 INSERT INTO recensione(pizza_id, descrizione, data_di_creazione, stelle, autore_id)VALUES (101,'Tutto ok.', '2025-01-01', 4.0, 1);
 

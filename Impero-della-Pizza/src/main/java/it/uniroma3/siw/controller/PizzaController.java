@@ -176,21 +176,28 @@ public class PizzaController {
 
 	@PostMapping("/pizza/{id}/recensione")
 	public String addRecensione(@PathVariable("id") Long id, @Valid @ModelAttribute("recensione") Recensione recensione,BindingResult bindingResult, Model model,@AuthenticationPrincipal UserDetails userDetails) {
-		if(bindingResult.hasErrors()) {
-			model.addAttribute("pizza", this.pizzaService.getPizzabyId(id));
-			return "formNewRecensione.html";
-		}
-		else {
-			Pizza pizza = this.pizzaService.getPizzabyId(id);
-			recensione.setId(null);
-			recensione.setPizza(pizza);
-			Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-			String username = auth.getName();
-			Credentials autore = this.credentialsService.getCredentials(username);
-			recensione.setAutore(autore);
-			this.recensioneService.save(recensione);
-			return "redirect:/pizza/"+ pizza.getId();
-		}
+		
+		Pizza pizza = this.pizzaService.getPizzabyId(id);
+	    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+	    String username = auth.getName();
+	    Credentials autore = this.credentialsService.getCredentials(username);
+	    
+	    if(bindingResult.hasErrors()) {
+	        model.addAttribute("pizza", pizza);
+	        return "formNewRecensione.html";
+	    }
+	    
+	    if(recensioneService.existsByPizzaAndAutore(pizza, autore)) {
+	        model.addAttribute("pizza", pizza);
+	        model.addAttribute("errorMessage", "Hai già scritto una recensione per questa pizza!");
+	        return "formNewRecensione.html";
+	    }
+	    
+	    recensione.setId(null);
+	    recensione.setPizza(pizza);
+	    recensione.setAutore(autore);
+	    this.recensioneService.save(recensione);
+	    return "redirect:/pizza/" + pizza.getId();
 	}
 
 	@GetMapping("/admin/homePizza")

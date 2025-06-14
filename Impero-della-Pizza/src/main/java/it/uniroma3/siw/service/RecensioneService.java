@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import it.uniroma3.siw.model.Credentials;
+import it.uniroma3.siw.model.Pizza;
 import it.uniroma3.siw.model.Recensione;
 import it.uniroma3.siw.model.User;
 import it.uniroma3.siw.repository.RecensioneRepository;
@@ -27,6 +28,10 @@ public class RecensioneService {
 	
 	public List<Recensione> getByAutore(Credentials autore) {
 	    return recensioneRepository.findByAutore(autore);
+	}
+	
+	public boolean existsByPizzaAndAutore(Pizza pizza, Credentials autore) {
+	    return recensioneRepository.existsByPizzaAndAutore(pizza, autore);
 	}
 	
 	public Recensione save(Recensione recensione) {
