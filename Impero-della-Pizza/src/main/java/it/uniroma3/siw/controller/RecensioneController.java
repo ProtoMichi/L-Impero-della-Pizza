@@ -44,6 +44,9 @@ public class RecensioneController {
 	@GetMapping("/recensione/{username}/recensioni")
 	public String recensioniUtente(@PathVariable("username") String username, Model model) {
 		Credentials credentials = this.credentialsService.getCredentials(username);
+		if(credentials == null) {
+			return "pizzaNonTrovata.html";
+		}
 	    List<Recensione> recensioni = this.recensioneService.getByAutore(credentials);
 	    model.addAttribute("recensioni", recensioni);
 	    model.addAttribute("utente", credentials);

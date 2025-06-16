@@ -49,7 +49,7 @@ h1 {
 h2 {
     text-align: center;
     font-size: 2rem;
-    margin: 1rem;
+    margin-top: -2.5rem;
     color: #f1e4cd;
     text-shadow:
         -1px -1px 0 #000,
@@ -108,7 +108,7 @@ span img {
     box-shadow: 0 2px 4px #2a5328;
 }
 
-.stella {
+.stellaPizza{
     width: 100%; /* o 5% se preferisci responsive */
     height: auto;
     margin-right: 3px;
@@ -130,9 +130,11 @@ span img {
 	 width: 5%;
 }
 
-.stella {
-    width: 50px;   /* larghezza desiderata */
-    height: 50px;  /* altezza desiderata */
-    vertical-align: middle; /* per allinearle bene col testo */
-    margin-left: 2px; /* opzionale, un po' di spazio a sinistra */
+.stellaRecensione{
+    width: 10%; /* o 5% se preferisci responsive */
+    height: auto;
+    margin-right: 3px;
+    border-radius: 0;       /* nessun bordo arrotondato per le stelle */
+    box-shadow: none;       /* rimuovi l'ombra se non la vuoi sulle stelle */
+    display: inline-block;     
 }

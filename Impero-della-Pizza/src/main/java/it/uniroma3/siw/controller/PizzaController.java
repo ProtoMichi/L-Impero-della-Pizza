@@ -50,10 +50,9 @@ public class PizzaController {
 	private CredentialsService credentialsService;
 
 	@GetMapping("/pizza/{id}")
-	public String getPizza(@PathVariable("id") Long id, Model model) {
+	public String getPizza(@PathVariable("id") Long id, Model model,@AuthenticationPrincipal UserDetails userDetails) {
 		Pizza pizza = this.pizzaService.getPizzabyId(id);
 		if(pizza==null) { 
-			System.out.println("Pizza con id " + id + " non trovata!");
 			return "pizzaNonTrovata.html";
 		}
 		pizza.calcolaPrezzo();
@@ -61,17 +60,30 @@ public class PizzaController {
 		Collections.reverse(reversed);
 		pizza.setListaRecensioni(reversed);
 		model.addAttribute("pizza", pizza);
+
+		boolean haGiaRecensito = false;
+
+		if (userDetails != null) {
+			String username = userDetails.getUsername();
+			for (Recensione rec : pizza.getListaRecensioni()) {
+				if (rec.getAutore() != null && rec.getAutore().getUsername().equals(username)) {
+					haGiaRecensito = true;
+					break; // esci appena trovi una corrispondenza
+				}
+			}
+		}
+		model.addAttribute("haGiaRecensito", haGiaRecensito);
 		return "pizza.html";
-	}
+	}    
 
 	@GetMapping("/pizza")
 	public String showPizze(Model model) {
 		List<Pizza> pizze = (List<Pizza>) this.pizzaService.getAllPizzas();
-	    
-	    // Calcola il prezzo per ogni pizza
-	    for (Pizza pizza : pizze) {
-	        pizza.calcolaPrezzo();
-	    }
+
+		// Calcola il prezzo per ogni pizza
+		for (Pizza pizza : pizze) {
+			pizza.calcolaPrezzo();
+		}
 
 		model.addAttribute("pizze",pizze);
 		return "pizze.html";
@@ -109,11 +121,11 @@ public class PizzaController {
 	@PostMapping(value = "/pizza", params = "aggiungiIngrediente")
 	public String aggiungiIngrediente(@Valid @ModelAttribute("pizza") Pizza pizza, BindingResult bindingResult, 
 			@RequestParam(required = false) Long ingredienteSelezionatoId, Model model) {
-	    if (bindingResult.hasErrors()) {
-	    	model.addAttribute("farine", ingredienteService.getFarine());
-	        model.addAttribute("tuttiIngredientiSenzaFarine", ingredienteService.getAllIngredientiNotFarina());
-	        return "formNewPizza.html";
-	    }
+		if (bindingResult.hasErrors()) {
+			model.addAttribute("farine", ingredienteService.getFarine());
+			model.addAttribute("tuttiIngredientiSenzaFarine", ingredienteService.getAllIngredientiNotFarina());
+			return "formNewPizza.html";
+		}
 		if(pizza.getListaIngredienti() == null) {
 			pizza.setListaIngredienti(new ArrayList<>());
 		}
@@ -123,8 +135,8 @@ public class PizzaController {
 		}
 		List<Ingrediente> ingredientiAttuali = new ArrayList<>(ingredienteService.findAllById(ids));
 		if(ingredienteSelezionatoId == null){
-            model.addAttribute("erroreIngredienteSelezionato", "Seleziona un ingrediente");
-        }
+			model.addAttribute("erroreIngredienteSelezionato", "Seleziona un ingrediente");
+		}
 		else{
 			Ingrediente nuovo = ingredienteService.getIngredienteById(ingredienteSelezionatoId);
 			if (nuovo != null && !ingredientiAttuali.contains(nuovo)) {
@@ -137,67 +149,75 @@ public class PizzaController {
 		model.addAttribute("pizza", pizza);
 		return "formNewPizza.html";
 	}
-	
+
 	@PostMapping(value = "/pizza", params = "eliminaIngredienti")
 	public String eliminaIngredienti(@Valid @ModelAttribute("pizza") Pizza pizza,BindingResult bindingResult,@RequestParam(required = false, name = "ingredientiDaRimuovere") List<Long> idsDaRimuovere,Model model) {
-	    if (bindingResult.hasErrors()) {
-	        model.addAttribute("farine", ingredienteService.getFarine());
-	        model.addAttribute("tuttiIngredientiSenzaFarine", ingredienteService.getAllIngredientiNotFarina());
-	        return "formNewPizza.html";
-	    }
+		if (bindingResult.hasErrors()) {
+			model.addAttribute("farine", ingredienteService.getFarine());
+			model.addAttribute("tuttiIngredientiSenzaFarine", ingredienteService.getAllIngredientiNotFarina());
+			return "formNewPizza.html";
+		}
 
-	    // Lista ingredienti attuali
-	    List<Long> ids = new ArrayList<>();
-	    for (Ingrediente i : pizza.getListaIngredienti()) {
-	        ids.add(i.getId());
-	    }
+		// Lista ingredienti attuali
+		List<Long> ids = new ArrayList<>();
+		for (Ingrediente i : pizza.getListaIngredienti()) {
+			ids.add(i.getId());
+		}
 
-	    List<Ingrediente> ingredientiAttuali = new ArrayList<>(ingredienteService.findAllById(ids));
+		List<Ingrediente> ingredientiAttuali = new ArrayList<>(ingredienteService.findAllById(ids));
 
-	    // Rimuove gli ingredienti selezionati
-	    if (idsDaRimuovere != null) {
-	        ingredientiAttuali.removeIf(i -> idsDaRimuovere.contains(i.getId()));
-	    }
+		// Rimuove gli ingredienti selezionati
+		if (idsDaRimuovere != null) {
+			ingredientiAttuali.removeIf(i -> idsDaRimuovere.contains(i.getId()));
+		}
 
-	    pizza.setListaIngredienti(ingredientiAttuali);
+		else{
+			model.addAttribute("erroreIngredienteSelezionato", "Seleziona un ingrediente da eliminare");
+		}
 
-	    model.addAttribute("farine", ingredienteService.getFarine());
-	    model.addAttribute("tuttiIngredientiSenzaFarine", ingredienteService.getAllIngredientiNotFarina());
-	    model.addAttribute("pizza", pizza);
-	    return "formNewPizza.html";
+		pizza.setListaIngredienti(ingredientiAttuali);
+
+		model.addAttribute("farine", ingredienteService.getFarine());
+		model.addAttribute("tuttiIngredientiSenzaFarine", ingredienteService.getAllIngredientiNotFarina());
+		model.addAttribute("pizza", pizza);
+		return "formNewPizza.html";
 	}
 
 	@GetMapping("/pizza/{id}/formNewRecensione")
 	public String formNewRecensione(@PathVariable("id") Long id , Model model) {
-		model.addAttribute("pizza", this.pizzaService.getPizzabyId(id));
+		Pizza pizza = this.pizzaService.getPizzabyId(id);
+		if(pizza==null) { 
+			return "pizzaNonTrovata.html";
+		}
+		model.addAttribute("pizza", pizza);
 		model.addAttribute("recensione",new Recensione());
 		return "formNewRecensione.html";
 	}
 
 	@PostMapping("/pizza/{id}/recensione")
 	public String addRecensione(@PathVariable("id") Long id, @Valid @ModelAttribute("recensione") Recensione recensione,BindingResult bindingResult, Model model,@AuthenticationPrincipal UserDetails userDetails) {
-		
+
 		Pizza pizza = this.pizzaService.getPizzabyId(id);
-	    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-	    String username = auth.getName();
-	    Credentials autore = this.credentialsService.getCredentials(username);
-	    
-	    if(bindingResult.hasErrors()) {
-	        model.addAttribute("pizza", pizza);
-	        return "formNewRecensione.html";
-	    }
-	    
-	    if(recensioneService.existsByPizzaAndAutore(pizza, autore)) {
-	        model.addAttribute("pizza", pizza);
-	        model.addAttribute("errorMessage", "Hai già scritto una recensione per questa pizza!");
-	        return "formNewRecensione.html";
-	    }
-	    
-	    recensione.setId(null);
-	    recensione.setPizza(pizza);
-	    recensione.setAutore(autore);
-	    this.recensioneService.save(recensione);
-	    return "redirect:/pizza/" + pizza.getId();
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String username = auth.getName();
+		Credentials autore = this.credentialsService.getCredentials(username);
+
+		if(bindingResult.hasErrors()) {
+			model.addAttribute("pizza", pizza);
+			return "formNewRecensione.html";
+		}
+
+		if(recensioneService.existsByPizzaAndAutore(pizza, autore)) {
+			model.addAttribute("pizza", pizza);
+			model.addAttribute("errorMessage", "Hai già scritto una recensione per questa pizza!");
+			return "formNewRecensione.html";
+		}
+
+		recensione.setId(null);
+		recensione.setPizza(pizza);
+		recensione.setAutore(autore);
+		this.recensioneService.save(recensione);
+		return "redirect:/pizza/" + pizza.getId();
 	}
 
 	@GetMapping("/admin/homePizza")
@@ -208,26 +228,26 @@ public class PizzaController {
 	@GetMapping("/admin/gestisciPizze")
 	public String getListaPizzeDaEliminare(Model model) {
 		List<Pizza> pizze = (List<Pizza>) this.pizzaService.getAllPizzas();
-		 
-		// Calcola il prezzo per ogni pizza
-	    for (Pizza pizza : pizze) {
-	        pizza.calcolaPrezzo();
-	    }
 
-		
-	    model.addAttribute("pizze", pizze);
-	    return "admin/pizzeAdmin.html";
+		// Calcola il prezzo per ogni pizza
+		for (Pizza pizza : pizze) {
+			pizza.calcolaPrezzo();
+		}
+
+
+		model.addAttribute("pizze", pizze);
+		return "admin/pizzeAdmin.html";
 	}
 
 	@PostMapping("/admin/gestisciPizze/elimina")
 	public String eliminaPizze(
-	        @RequestParam(name = "pizzeDaEliminare", required = false) List<Long> pizzeDaEliminare) {
-	    if (pizzeDaEliminare != null) {
-	        for (Long id : pizzeDaEliminare) {
-	            pizzaService.deleteById(id);
-	        }
-	    }
-	    return "redirect:/admin/gestisciPizze";
+			@RequestParam(name = "pizzeDaEliminare", required = false) List<Long> pizzeDaEliminare) {
+		if (pizzeDaEliminare != null) {
+			for (Long id : pizzeDaEliminare) {
+				pizzaService.deleteById(id);
+			}
+		}
+		return "redirect:/admin/gestisciPizze";
 	}
 
 }
