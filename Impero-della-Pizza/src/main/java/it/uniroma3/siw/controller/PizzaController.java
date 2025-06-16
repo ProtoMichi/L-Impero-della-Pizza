@@ -187,7 +187,7 @@ public class PizzaController {
 	public String formNewRecensione(@PathVariable("id") Long id , Model model) {
 		Pizza pizza = this.pizzaService.getPizzabyId(id);
 		if(pizza==null) { 
-			return "pizzaNonTrovata.html";
+			return "pizzaNonTrovata.html"; //aggiungere errore
 		}
 		model.addAttribute("pizza", pizza);
 		model.addAttribute("recensione",new Recensione());

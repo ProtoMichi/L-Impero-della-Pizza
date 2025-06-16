@@ -31,7 +31,11 @@ public class RecensioneController {
 	//da lasciare, potrebbe interessarci una recensione singola
 	@GetMapping("/recensione/{id}")
 	public String getRecensione(@PathVariable("id") Long id, Model model) {
-		model.addAttribute("recensione", this.recensioneService.getRecensioneById(id));
+		Recensione recensione = this.recensioneService.getRecensioneById(id);
+		if(recensione==null) {
+			return "pizzaNonTrovata.html"; //inserire errore
+		}
+		model.addAttribute("recensione", recensione);
 		return "recensione.html";
 	}
 	//da lsciare, così che abbiamo un elenco di recensioni
@@ -45,7 +49,7 @@ public class RecensioneController {
 	public String recensioniUtente(@PathVariable("username") String username, Model model) {
 		Credentials credentials = this.credentialsService.getCredentials(username);
 		if(credentials == null) {
-			return "pizzaNonTrovata.html";
+			return "pizzaNonTrovata.html"; //inserire errore
 		}
 	    List<Recensione> recensioni = this.recensioneService.getByAutore(credentials);
 	    model.addAttribute("recensioni", recensioni);
