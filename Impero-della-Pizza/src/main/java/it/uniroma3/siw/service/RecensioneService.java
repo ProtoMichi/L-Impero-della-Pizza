@@ -18,7 +18,7 @@ public class RecensioneService {
 	RecensioneRepository recensioneRepository;
 	
 	public Recensione getRecensioneById(Long id) {
-		return recensioneRepository.findById(id).get();		
+		return recensioneRepository.findById(id).orElse(null);		
 	}
 	
 	public Iterable<Recensione> getAllRecensioni(){
