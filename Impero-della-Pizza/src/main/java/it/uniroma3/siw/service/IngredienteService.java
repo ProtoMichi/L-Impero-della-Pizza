@@ -15,7 +15,7 @@ public class IngredienteService {
 	private IngredienteRepository ingredienteRepository;
 	
 	public Ingrediente getIngredienteById(Long id) {
-		return ingredienteRepository.findById(id).get();
+		return ingredienteRepository.findById(id).orElse(null);
 	}
 	
 	public List<Ingrediente> findAllById(Iterable<Long> ids) {

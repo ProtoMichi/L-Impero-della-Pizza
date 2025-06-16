@@ -35,7 +35,12 @@ public class IngredienteController {
 
 	@GetMapping("/ingrediente/{id}")
 	public String getIngrediente(@PathVariable("id") Long id,Model model,Principal principal) {
-		model.addAttribute("ingrediente",this.ingredienteService.getIngredienteById(id));
+		Ingrediente ingrediente = this.ingredienteService.getIngredienteById(id);
+		if(ingrediente==null) {
+			return "pizzaNonTrovata.html";
+		}
+		
+		model.addAttribute("ingrediente",ingrediente);
 
 		if (principal != null) {
 			UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -71,11 +76,16 @@ public class IngredienteController {
 
 	@GetMapping("/ingrediente/{id}/modifica")
 	public String modificaIngrediente(@PathVariable Long id, Model model, Principal principal) {
+		Ingrediente ingrediente = this.ingredienteService.getIngredienteById(id);
+		if(ingrediente==null) {
+			return "pizzaNonTrovata.html";
+		}
+		
 		if (principal == null) {
 			return "redirect:/login";
 		}
 
-		model.addAttribute("ingrediente", this.ingredienteService.getIngredienteById(id));
+		model.addAttribute("ingrediente", ingrediente);
 		model.addAttribute("ingredientiEsistenti", this.ingredienteService.getAllIngredienti());
 		return "admin/formModificaIngrediente.html";
 	}

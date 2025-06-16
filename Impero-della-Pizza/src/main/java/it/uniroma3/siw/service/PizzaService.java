@@ -20,7 +20,7 @@ public class PizzaService {
 	private IngredienteService ingredienteService;
 	
 	public Pizza getPizzabyId(Long id) {
-		return pizzaRepository.findById(id).get();
+		return pizzaRepository.findById(id).orElse(null);
 	}
 	
 	

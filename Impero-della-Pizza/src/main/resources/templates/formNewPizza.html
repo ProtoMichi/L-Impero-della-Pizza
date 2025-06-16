@@ -42,9 +42,11 @@
 		<div>
 			<label>Ingredienti:</label>
 			<ul>
-				<li th:each="ing, i: *{listaIngredienti}"><span
-					th:text="${ing.nome} + ' ' + ${ing.prezzo} + '€'">Ingrediente</span><input type="hidden"
-					th:field="*{listaIngredienti[__${i.index}__].id}" /></li>
+				<li th:each="ing, i: *{listaIngredienti}">
+					<input type="checkbox" th:name="'ingredientiDaRimuovere'" th:value="${ing.id}" />
+					<span th:text="${ing.nome} + ' ' + ${ing.prezzo} + '€'">Ingrediente</span>
+					<input type="hidden" th:field="*{listaIngredienti[__${i.index}__].id}" />
+				</li>
 			</ul>
 			<select name="ingredienteSelezionatoId">
 				<option value="" disabled selected>Seleziona ingrediente</option>
@@ -53,14 +55,14 @@
 				</option>
 			</select>
 			<span th:if="${erroreIngredienteSelezionato != null}" 
-     			th:text="${erroreIngredienteSelezionato}"> 
-    		</span>
+				  th:text="${erroreIngredienteSelezionato}"> 
+			</span>
 		</div>
 
 		<div>
-			<button type="submit" name="aggiungiIngrediente">Aggiungi
-				ingrediente</button>
-			<span><button type="submit" name="Conferma">Conferma!</button></span>
+			<button type="submit" name="aggiungiIngrediente">Aggiungi ingrediente</button>
+			<button type="submit" name="eliminaIngredienti">Elimina ingredienti</button>
+			<button type="submit" name="Conferma">Conferma!</button>
 		</div>
 	</form>
 

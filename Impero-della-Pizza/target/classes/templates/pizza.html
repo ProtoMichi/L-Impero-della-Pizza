@@ -31,15 +31,15 @@
     		haMezza = ${(media - piene) >= 0.5},
     		mezza = ${haMezza ? 1 : 0},
     		vuote = ${5 - piene - mezza}">    		
-    		<img class="stella" src="/images/star-full.png" th:each="i : ${#numbers.sequence(1, piene)}"/>
-    		<img class="stella" src="/images/star-half.png" th:if="${haMezza}"/>
-    		<img class="stella" src="/images/star-empty.png" th:if="${vuote > 0}" th:each="i : ${#numbers.sequence(1, vuote)}"/>
+    		<img class="stellaPizza" src="/images/star-full.png" th:each="i : ${#numbers.sequence(1, piene)}"/>
+    		<img class="stellaPizza" src="/images/star-half.png" th:if="${haMezza}"/>
+    		<img class="stellaPizza" src="/images/star-empty.png" th:if="${vuote > 0}" th:each="i : ${#numbers.sequence(1, vuote)}"/>
 		</div>
 		<span th:text="${#numbers.formatDecimal(pizza.calcolaMediaStelle(), 1, 2)}" style="font-size: 2rem; color: #f1e4cd;
 		 width: 100%; text-align: center; display: block; font-weight: bold;"></span>
 		<div class="stelle" th:unless="${pizza.listaRecensioni != null and !pizza.listaRecensioni.isEmpty()}">
     		<span th:each="i : ${#numbers.sequence(1,5)}">
-        		<img class="stella" src="/images/star-empty.png" width="25"/>
+        		<img class="stellaPizza" src="/images/star-empty.png" width="25"/>
     		</span>
 		</div>
 	</div>
@@ -54,36 +54,42 @@
 		</ul>
 	</div>
 	<h1>Recensioni</h1>
-	<h2>
-		<a th:href="@{'/pizza' + '/' + ${pizza.id} + '/formNewRecensione'}">Aggiungi
-			una recensione!</a>
+	<h2 th:if="${haGiaRecensito}">
+	    Hai già lasciato una recensione, grazie mille!
 	</h2>
-	<div
-		th:if="${pizza.listaRecensioni==null || pizza.listaRecensioni.isEmpty()}">Non
-		ci sono recensioni per questa pizza</div>
+	<h2 th:unless="${haGiaRecensito}">
+	    <a th:href="@{'/pizza/' + ${pizza.id} + '/formNewRecensione'}">Aggiungi una recensione!</a>
+	</h2>
+	<div th:if="${pizza.listaRecensioni==null || pizza.listaRecensioni.isEmpty()}">Non ci sono recensioni per questa pizza</div>
 		<ul>
-		    <li th:each="recensione : ${pizza.listaRecensioni}"
-		        th:with="
-		            valore=${recensione.stelle},
-		            intero=${T(java.lang.Math).floor(valore).intValue()},
-		            haMezza=${(valore - intero) >= 0.5},
-		            mezza=${haMezza ? 1 : 0},
-		            vuote=${5 - intero - mezza}">
-		        
-		        <a th:text="${recensione.descrizione} + ' (' + ${recensione.stelle} + ')'"></a>
-		        
-		        <!-- Stelle piene -->
-		        <img class="stella" src="/images/star-full.png"
-		             th:each="i : ${#numbers.sequence(1, intero)}" />
-		        
-		        <!-- Mezza stella -->
-		        <img class="stella" src="/images/star-half.png"
-		             th:if="${mezza == 1}" />
-		        
-					 <img class="stella" src="/images/star-empty.png"
-					      th:if="${vuote > 0}"
-					      th:each="i : ${#numbers.sequence(1, vuote)}" />
-		    </li>
+			<li th:each="recensione : ${pizza.listaRecensioni}"
+			    th:with="
+			        valore=${recensione.stelle},
+			        intero=${T(java.lang.Math).floor(valore).intValue()},
+			        haMezza=${(valore - intero) >= 0.5},
+			        mezza=${haMezza ? 1 : 0},
+			        vuote=${5 - intero - mezza}">
+			    
+					
+			    <!-- Stelle piene -->
+			    <img class="stellaRecensione" src="/images/star-full.png"
+			         th:each="i : ${#numbers.sequence(1, intero)}" />
+
+			    <!-- Mezza stella -->
+			    <img class="stellaRecensione" src="/images/star-half.png"
+			         th:if="${mezza == 1}" />
+
+			    <!-- Stelle vuote -->
+			    <img class="stellaRecensione" src="/images/star-empty.png"
+			         th:if="${vuote > 0}"
+			         th:each="i : ${#numbers.sequence(1, vuote)}" />
+					 
+					 <div>
+					 	<span th:text="${recensione.descrizione}"></span><br/>
+					    <small>Scritta da: <a th:href="@{/recensione/{username}/recensioni(username=${recensione.autore.username})}" th:text="${recensione.autore.username}">NomeUtente</a></small>
+					 </div>
+
+			</li>
 		</ul>
 </body>
 </html>
