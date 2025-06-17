@@ -1,6 +1,5 @@
 package it.uniroma3.siw.service;
 
-import java.util.LinkedList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,4 +36,7 @@ public class PizzaService {
 		this.pizzaRepository.deleteById(id);
 	}
 
+	public List<Pizza> findPizzabyIngrediente(String ingrediente){
+		return this.pizzaRepository.findByListaIngredienti_NomeIgnoreCase(ingrediente);
+	}
 }

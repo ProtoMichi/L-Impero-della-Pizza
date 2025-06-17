@@ -6,11 +6,10 @@
 body {
     margin: 0;
     background-image: url('/images/crosta-sfondo.png');
-    background-repeat: repeat-y;
     background-size: cover;
-    background-position: center;
     background-attachment: fixed;
     font-family: "Sauce Tomato";
+    color: #3e3e3e;
 }
 
 header {
@@ -37,9 +36,9 @@ header a:hover {
 
 h1 {
     text-align: center;
-    color: #f1e4cd;
     font-size: 3rem;
     margin-top: 1rem;
+    color: #f1e4cd;
     text-shadow:
         -1px -1px 0 #000,
          1px -1px 0 #000,
@@ -47,70 +46,80 @@ h1 {
          1px  1px 0 #000;
 }
 
-h2 {
+div {
 	text-align: center;
-	text-shadow:
+	color: #f1e4cd;
+}
+
+h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-top: -2.5rem;
+    color: #f1e4cd;
+    text-shadow:
         -1px -1px 0 #000,
          1px -1px 0 #000,
         -1px  1px 0 #000,
          1px  1px 0 #000;
 }
 
-h2 a{
-	color: #f1e4cd;
-	text-decoration: none;
+a {
+    color: #b33e3e;
+    text-decoration: none;
+    font-size: 1.3rem;
 }
 
-h2 a:hover {
-    transform: scale(1.02);
+a:hover {
     text-shadow: 1px 1px 2px #3E7D3B;
 }
 
+img {
+    display: block;
+    margin: 1rem auto;
+    border-radius: 12px;
+    box-shadow: 3px 3px 10px rgba(0,0,0,0.3);
+}
 
 ul {
     list-style: none;
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    align-items: center;
+    padding: 0 2rem;
+    max-width: 800px;
+    margin: 0 auto 2rem auto;
 }
 
 li {
     background-color: #f1e4cd;
     border: 4px outset #b33e3e;
-    padding: 1rem 2rem;
-    border-radius: 12px;
-    width: 70%;
-    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
-    transition: transform 0.2s ease;
-}
-
-li:hover {
-    transform: scale(1.02);
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 10px;
+    font-size: 1.4rem;
+    box-shadow: 3px 3px 10px rgba(0,0,0,0.3);
 }
 
 li a {
-    font-size: 2rem;
+    font-weight: bold;
     color: #b33e3e;
-    text-decoration: none;
 }
 
 li a:hover {
     text-shadow: 2px 2px 3px #3E7D3B;
 }
 
-li p {
-    font-size: 1.4rem;
-    margin-top: 0.5rem;
-    color: #3e3e3e;
+span img {
+    width: 20%;
+    vertical-align: middle;
+    border-radius: 25%;
+    box-shadow: 0 2px 4px #2a5328;
 }
 
-li img {
-    vertical-align: middle;
-    margin-left: 0.5rem;
-    border-radius: 50%;
-    box-shadow: 0 2px 4px #2a5328;
+.stellaPizza{
+    width: 100%; /* o 5% se preferisci responsive */
+    height: auto;
+    margin-right: 3px;
+    border-radius: 0;       /* nessun bordo arrotondato per le stelle */
+    box-shadow: none;       /* rimuovi l'ombra se non la vuoi sulle stelle */
+    display: inline-block;     
 }
 
 .stelle {
@@ -122,8 +131,15 @@ li img {
     width: fit-content;       /* solo grande quanto le stelle */
 }
 
-.stella {
-    border-radius: 0;
-    box-shadow: none;
-    margin-left: 0;
+.checkbox {
+	 width: 5%;
+}
+
+.stellaRecensione{
+    width: 10%; /* o 5% se preferisci responsive */
+    height: auto;
+    margin-right: 3px;
+    border-radius: 0;       /* nessun bordo arrotondato per le stelle */
+    box-shadow: none;       /* rimuovi l'ombra se non la vuoi sulle stelle */
+    display: inline-block;     
 }

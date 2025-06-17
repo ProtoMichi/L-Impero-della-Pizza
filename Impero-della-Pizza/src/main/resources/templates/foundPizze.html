@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Pizze Trovate</title>
+	<link rel="stylesheet" href="/css/search.css" />
+</head>
+
+<body>
+	<header>
+		<div th:if="${userDetails}">
+			<span th:text="${userDetails.username}"></span>
+			<a href="/logout">Logout</a>
+		</div>
+		<div th:unless="${userDetails}">
+			<a href="/login">Login</a>
+		</div>
+	</header>
+
+	<div><a href="/"><img src="/images/impero-della-pizza.png" width="5%"/></a></div>
+	<h1 th:text="'Pizze con ' + ${ingNome}"></h1>
+	<div th:if="${trovate.isEmpty()}">Non ci sono pizze con questo ingrediente :(
+		<br><a href="/pizza/formCercaPizza">Torna alla sezione di ricerca :)</a>
+	</div>
+	<ul th:if="${!trovate.isEmpty()}">
+		<li th:each="pizza : ${trovate}">
+			<a href="pizza.html" th:href="@{'/pizza' + '/' + ${pizza.id}}" th:text="${pizza.nome}"></a>
+		</li>
+	</ul>
+</body>
+
+</html>

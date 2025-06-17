@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Cerca Pizza per Ingrediente</title>
+	<link rel="stylesheet" href="/css/search.css" />
+</head>
+
+<body>
+	<header>
+		<div th:if="${userDetails}">
+			<span th:text="${userDetails.username}"></span>
+			<a href="/logout">Logout</a>
+		</div>
+		<div th:unless="${userDetails}">
+			<a href="/login">Login</a>
+		</div>
+	</header>
+
+	<div><a href="/"><img src="/images/impero-della-pizza.png" width="5%"/></a></div>
+	<h1>Cerca Pizza per Ingrediente</h1>
+	<form th:action="@{/pizza/cercaPizza}" method="post">
+		<div>
+			Ingrediente: <input type="text" name="nomeIngrediente" />
+		</div>
+		<div><input type="submit" /></div>
+	</form>
+</body>
+
+</html>
