@@ -22,6 +22,10 @@
 		
 		<h1>Le nostre Pizze</h1>
 		
+		<h2> 
+			<a href="/pizza/formCercaPizza">Cerchi qualche pizza con un ingrediente particolare?</a>
+		</h2>
+		
 		<div th:if="${pizze.isEmpty()}">Non ci sono pizze da gustare :(</div>
 		<ul>
 			<li th:each="pizza : ${pizze}" style="font-size: 2rem">

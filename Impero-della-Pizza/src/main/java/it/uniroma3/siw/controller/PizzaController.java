@@ -3,7 +3,6 @@ package it.uniroma3.siw.controller;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -23,12 +22,10 @@ import it.uniroma3.siw.model.Credentials;
 import it.uniroma3.siw.model.Ingrediente;
 import it.uniroma3.siw.model.Pizza;
 import it.uniroma3.siw.model.Recensione;
-import it.uniroma3.siw.model.User;
 import it.uniroma3.siw.service.CredentialsService;
 import it.uniroma3.siw.service.IngredienteService;
 import it.uniroma3.siw.service.PizzaService;
 import it.uniroma3.siw.service.RecensioneService;
-import it.uniroma3.siw.service.UserService;
 import jakarta.validation.Valid;
 
 @Controller
@@ -42,9 +39,6 @@ public class PizzaController {
 
 	@Autowired
 	private RecensioneService recensioneService;
-
-	@Autowired
-	private UserService userService;
 
 	@Autowired
 	private CredentialsService credentialsService;
@@ -249,5 +243,20 @@ public class PizzaController {
 		}
 		return "redirect:/admin/gestisciPizze";
 	}
+	
+	@GetMapping("/pizza/formCercaPizza")
+	public String cercaPizza() {
+		return "formSearchPizzabyIngrediente.html";
+	}
+	
+	@PostMapping("/pizza/cercaPizza")
+	public String searchMovies(Model model, @RequestParam String nomeIngrediente) {
+		List<Pizza> pizzeTrovate = new ArrayList<>();
+		pizzeTrovate = this.pizzaService.findPizzabyIngrediente(nomeIngrediente);
+		model.addAttribute("ingNome",  nomeIngrediente);
+		model.addAttribute("trovate", pizzeTrovate);
+		return "foundPizze.html";
+	}
+	
 
 }

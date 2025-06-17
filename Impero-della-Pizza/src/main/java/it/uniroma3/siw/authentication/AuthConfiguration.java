@@ -52,7 +52,7 @@ public class AuthConfiguration {
 				// .requestMatchers("/**").permitAll()
 				// chiunque (autenticato o no) può accedere alle pagine index, login, register, ai css e alle immagini
 				.requestMatchers(HttpMethod.GET, "/", "/homepage", "/registrazione", "/css/**", "/images/**","/fonts/**","/pizza/{id}","/pizza","/ingrediente","/ingrediente/{id}","/recensione","/recensione/**").permitAll()
-				.requestMatchers(HttpMethod.POST, "/registrazione", "/login").permitAll()
+				.requestMatchers(HttpMethod.POST, "/registrazione", "/login", "/pizza/cercaPizza").permitAll()
 				// chiunque (autenticato o no) può mandare richieste POST al punto di accesso per login e register
 				.requestMatchers(HttpMethod.GET, "/admin/**").hasAuthority(ADMIN_ROLE)
 				.requestMatchers(HttpMethod.POST, "/admin/**").hasAuthority(ADMIN_ROLE)
