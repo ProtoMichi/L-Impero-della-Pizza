@@ -1,32 +1,78 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="it">
 <head>
+    <meta charset="UTF-8">
     <title>Pizza non trovata</title>
-    <link rel="stylesheet" th:href="@{/css/stile.css}" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff5e6;
+            text-align: center;
+            padding: 50px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        #videoPlaceholder {
+            margin-top: 30px;
+        }
+
+        #playButton {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #d9534f;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #playButton:hover {
+            background-color: #c9302c;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
         <h1>Oops! 🍕</h1>
         <p>La pizza che stai cercando non esiste.</p>
         <a href="/pizza">Torna alla lista delle pizze</a>
-		
-		<!-- 🎬 Video YouTube divertente-->
-		        <div style="margin-top: 30px;">
-		            <iframe width="1080" height="720" 
-		                    src="https://www.youtube.com/embed/7kqYEEpvuok?si=YvdxxnKz66stAKnJ&autoplay=1&mute=1&cc_load_policy=1" 
-		                    title="YouTube video player" 
-		                    frameborder="0" 
-		                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-		                    referrerpolicy="strict-origin-when-cross-origin" 
-		                    allowfullscreen>
-		            </iframe>
-		        </div>
-				
-				<!-- 🔊 Audio che parte in parallelo -->
-				        <audio id="audioPizza" autoplay>
-				            <source src="images/EH_VOLEVI.mp3" type="audio/mp3">
-				            Il tuo browser non supporta l'audio.
-				        </audio>
+
+        <div id="videoPlaceholder">
+            <button id="playButton">▶️ Guarda il video</button>
+        </div>
     </div>
+
+    <!-- YouTube Player API -->
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script>
+        let player;
+
+        function onYouTubeIframeAPIReady() {
+            // Prepariamo ma NON creiamo ancora il player (solo su clic)
+        }
+
+        document.getElementById("playButton").addEventListener("click", () => {
+            const placeholder = document.getElementById("videoPlaceholder");
+            placeholder.innerHTML = '<div id="ytPlayer"></div>';
+
+            player = new YT.Player('ytPlayer', {
+                height: '405',
+                width: '720',
+                videoId: '7kqYEEpvuok', // ID del video
+                playerVars: {
+                    autoplay: 1,
+                    controls: 1
+                },
+                events: {
+                    onReady: event => event.target.playVideo()
+                }
+            });
+        });
+    </script>
 </body>
 </html>
