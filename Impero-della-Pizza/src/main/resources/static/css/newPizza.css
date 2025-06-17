@@ -1,0 +1,115 @@
+@font-face {
+    font-family: 'Sauce Tomato';
+    src: url('/fonts/Sauce-Tomato.otf') format('opentype');
+  }
+
+body {
+    margin: 0;
+    background-image: url('/images/crosta-sfondo.png'); 
+    background-repeat: repeat-y;
+    background-size: cover; /* o 'contain' per vedere tutta l'immagine */
+    background-position: center;
+    background-attachment: fixed;
+    font-family: "Sauce Tomato";    
+}
+
+/* Header */
+header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 1rem;
+  background-color: #fce4d6;
+  border-bottom: 2px solid #e0c1b3;
+  position: relative;
+}
+
+header img {
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  width: 70px;
+}
+
+header a {
+  text-decoration: none;
+  color: #6d3d33;
+  font-weight: bold;
+  margin-left: 1rem;
+}
+
+header span {
+  font-weight: bold;
+  color: #44261b;
+}
+
+/* Titolo */
+h1 {
+  text-align: center;
+  color: #fff1e6;
+  margin: 2rem 0 1rem;
+}
+
+/* Form */
+form {
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #fff1e6;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 2px 2px 12px rgba(0,0,0,0.1);
+}
+
+form div {
+  margin-bottom: 1.5rem;
+}
+
+label {
+  font-weight: bold;
+  color: #5c2d24;
+  display: inline-block;
+  width: 150px;
+}
+
+input[type="text"],
+select {
+  padding: 0.5rem;
+  border: 1px solid #c9a89d;
+  border-radius: 6px;
+  width: 60%;
+  background-color: #fff8f0;
+}
+
+input[type="checkbox"] {
+  margin-right: 0.5rem;
+}
+
+/* Lista ingredienti */
+ul {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 0.5rem;
+}
+
+li {
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+
+/* Bottoni */
+button {
+  padding: 0.6rem 1.2rem;
+  background-color: #d36b43;
+  border: none;
+  color: white;
+  font-weight: bold;
+  border-radius: 8px;
+  margin-right: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+button:hover {
+  background-color: #b14e2f;
+}
