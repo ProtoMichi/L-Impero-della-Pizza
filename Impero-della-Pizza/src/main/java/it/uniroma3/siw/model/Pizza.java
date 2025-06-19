@@ -45,7 +45,7 @@ public class Pizza {
 		this.listaIngredienti = new LinkedList<>();
 	}
 	
-	public Pizza(String nome, Float prezzo, String URLImmagine, Float mediaStelle) {
+	public Pizza(String nome, Float prezzo, String URLImmagine) {
 		this.nome = nome;
 		this.prezzo = prezzo;
 		this.URLImmagine = URLImmagine;
@@ -158,8 +158,6 @@ public class Pizza {
 	public void setListaRecensioni(List<Recensione> listaRecensioni) {
 		this.listaRecensioni = listaRecensioni;
 	}
-	
-	
 
 	public Ingrediente getFarina() {
 		return tipoFarina;
