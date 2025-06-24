@@ -192,13 +192,16 @@ public class PizzaController {
 		if(pizza==null) { 
 			return "pizzaNonTrovata.html"; //aggiungere errore
 		}
-		model.addAttribute("pizza", pizza);
-		model.addAttribute("recensione",new Recensione());
+		if(!model.containsAttribute("recensione")) {
+			model.addAttribute("pizza", pizza);
+			model.addAttribute("recensione",new Recensione());
+		}
 		return "formNewRecensione.html";
 	}
 
 	@PostMapping("/pizza/{id}/recensione")
-	public String addRecensione(@PathVariable("id") Long id, @Valid @ModelAttribute("recensione") Recensione recensione,BindingResult bindingResult, Model model,@AuthenticationPrincipal UserDetails userDetails) {
+	public String addRecensione(@PathVariable("id") Long id, @Valid @ModelAttribute("recensione") Recensione recensione,
+			BindingResult bindingResult,RedirectAttributes redirectAttributes, Model model, @AuthenticationPrincipal UserDetails userDetails) {
 
 		Pizza pizza = this.pizzaService.getPizzabyId(id);
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -206,8 +209,10 @@ public class PizzaController {
 		Credentials autore = this.credentialsService.getCredentials(username);
 
 		if(bindingResult.hasErrors()) {
-			model.addAttribute("pizza", pizza);
-			return "formNewRecensione.html";
+			redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.recensione", bindingResult);
+			redirectAttributes.addFlashAttribute("recensione", recensione);
+			redirectAttributes.addFlashAttribute("pizza", pizza);
+			return "redirect:/pizza/" + pizza.getId() +"/formNewRecensione";
 		}
 
 		if(recensioneService.existsByPizzaAndAutore(pizza, autore)) {

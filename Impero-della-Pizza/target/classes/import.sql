@@ -22,10 +22,29 @@ INSERT INTO ingrediente(nome,prezzo,vegan,celiaco)VALUES('Mozzarella di Bufala',
 INSERT INTO ingrediente(nome,prezzo,vegan,celiaco)VALUES('Prosciutto Cotto',1.00,false,true);
 INSERT INTO ingrediente(nome,prezzo,vegan,celiaco)VALUES('Alici',2.50,false,true);
 INSERT INTO ingrediente(nome,prezzo,vegan,celiaco)VALUES('Origano',0.50,true,true);
+INSERT INTO ingrediente(nome,prezzo,vegan,celiaco)VALUES('Funghi Champignon',1.50,true,true);
+INSERT INTO ingrediente(nome,prezzo,vegan,celiaco)VALUES('Funghi Porcini',2.50,true,true);
+INSERT INTO ingrediente(nome,prezzo,vegan,celiaco)VALUES('Uova',1.00,false,true);
+INSERT INTO ingrediente(nome,prezzo,vegan,celiaco)VALUES('Broccoli',0.60,true,true);
+INSERT INTO ingrediente(nome,prezzo,vegan,celiaco)VALUES('Zucchine',0.50,true,true);
+INSERT INTO ingrediente(nome,prezzo,vegan,celiaco)VALUES('Melanzane',1.20,true,true);
+INSERT INTO ingrediente(nome,prezzo,vegan,celiaco)VALUES('Peperoni',1.50,true,true);
+INSERT INTO ingrediente(nome,prezzo,vegan,celiaco)VALUES('Nduja',2.50,true,true);
+INSERT INTO ingrediente(nome,prezzo,vegan,celiaco)VALUES('Patate',0.50,true,true);
+INSERT INTO ingrediente(nome,prezzo,vegan,celiaco)VALUES('Pomodori Ciliegino',1.50,true,true);
+INSERT INTO ingrediente(nome,prezzo,vegan,celiaco)VALUES('Salsiccia',2.50,false,true);
+INSERT INTO ingrediente(nome,prezzo,vegan,celiaco)VALUES('Peperoncino',0.50,true,true);
+INSERT INTO ingrediente(nome,prezzo,vegan,celiaco)VALUES('Olive Nere',1.50,true,true);
 
 INSERT INTO pizza (nome,prezzo, URLImmagine,tipo_farina_id) VALUES ('Margherita',5.00, '/images/pizza-margherita.jpg',1);
 INSERT INTO pizza (nome,prezzo, URLImmagine,tipo_farina_id) VALUES ('Diavola',7.00, '/images/pizza-diavola.jpg',51);	
 INSERT INTO pizza (nome,prezzo, URLImmagine,tipo_farina_id) VALUES ('Quattro Formaggi',8.00,'/images/pizza-quattro-formaggi.jpg',101);
+INSERT INTO pizza (nome,prezzo, URLImmagine,tipo_farina_id) VALUES ('Crostino',8.00,'/images/pizza-crostino.png',1);
+INSERT INTO pizza (nome,prezzo, URLImmagine,tipo_farina_id) VALUES ('Pollice Verde',8.00,'/images/pizza-vegetariana.png',51);
+INSERT INTO pizza (nome,prezzo, URLImmagine,tipo_farina_id) VALUES ('Patate e Salsiccia',8.00,'/images/Pizza-patate-e-salsiccia.png',51);
+INSERT INTO pizza (nome,prezzo, URLImmagine,tipo_farina_id) VALUES ('Calabrese',8.00,'/images/pizza-nduja.webp',101);
+INSERT INTO pizza (nome,prezzo, URLImmagine,tipo_farina_id) VALUES ('Margerita++',8.00,'/images/pizza-margherita.jpg',251);
+INSERT INTO pizza (nome,prezzo, URLImmagine,tipo_farina_id) VALUES ('Bufalina',8.00,'/images/pizza-bufalina.jpg',251);
 
 INSERT INTO pizza_lista_ingredienti(lista_pizze_id,lista_ingredienti_id) VALUES (1,401);
 INSERT INTO pizza_lista_ingredienti(lista_pizze_id,lista_ingredienti_id) VALUES (1,451);
@@ -37,13 +56,49 @@ INSERT INTO pizza_lista_ingredienti(lista_pizze_id,lista_ingredienti_id) VALUES 
 INSERT INTO pizza_lista_ingredienti(lista_pizze_id,lista_ingredienti_id) VALUES (101,451);
 INSERT INTO pizza_lista_ingredienti(lista_pizze_id,lista_ingredienti_id) VALUES (101,601);
 INSERT INTO pizza_lista_ingredienti(lista_pizze_id,lista_ingredienti_id) VALUES (101,651);
+INSERT INTO pizza_lista_ingredienti(lista_pizze_id,lista_ingredienti_id) VALUES (151,451);
+INSERT INTO pizza_lista_ingredienti(lista_pizze_id,lista_ingredienti_id) VALUES (151,851);
+INSERT INTO pizza_lista_ingredienti(lista_pizze_id,lista_ingredienti_id) VALUES (201,501);
+INSERT INTO pizza_lista_ingredienti(lista_pizze_id,lista_ingredienti_id) VALUES (201,1001);
+INSERT INTO pizza_lista_ingredienti(lista_pizze_id,lista_ingredienti_id) VALUES (201,1151);
+INSERT INTO pizza_lista_ingredienti(lista_pizze_id,lista_ingredienti_id) VALUES (201,1201);
+INSERT INTO pizza_lista_ingredienti(lista_pizze_id,lista_ingredienti_id) VALUES (201,1301);
+INSERT INTO pizza_lista_ingredienti(lista_pizze_id,lista_ingredienti_id) VALUES (201,1251);
+INSERT INTO pizza_lista_ingredienti(lista_pizze_id,lista_ingredienti_id) VALUES (201,1451);
+INSERT INTO pizza_lista_ingredienti(lista_pizze_id,lista_ingredienti_id) VALUES (251,451);
+INSERT INTO pizza_lista_ingredienti(lista_pizze_id,lista_ingredienti_id) VALUES (251,1401);
+INSERT INTO pizza_lista_ingredienti(lista_pizze_id,lista_ingredienti_id) VALUES (251,1501);
+INSERT INTO pizza_lista_ingredienti(lista_pizze_id,lista_ingredienti_id) VALUES (301,401);
+INSERT INTO pizza_lista_ingredienti(lista_pizze_id,lista_ingredienti_id) VALUES (301,451);
+INSERT INTO pizza_lista_ingredienti(lista_pizze_id,lista_ingredienti_id) VALUES (301,1601);
+INSERT INTO pizza_lista_ingredienti(lista_pizze_id,lista_ingredienti_id) VALUES (301,1351);
+INSERT INTO pizza_lista_ingredienti(lista_pizze_id,lista_ingredienti_id) VALUES (301,1551);
+INSERT INTO pizza_lista_ingredienti(lista_pizze_id,lista_ingredienti_id) VALUES (351,401);
+INSERT INTO pizza_lista_ingredienti(lista_pizze_id,lista_ingredienti_id) VALUES (351,451);
+INSERT INTO pizza_lista_ingredienti(lista_pizze_id,lista_ingredienti_id) VALUES (351,501);
+INSERT INTO pizza_lista_ingredienti(lista_pizze_id,lista_ingredienti_id) VALUES (401,401);
+INSERT INTO pizza_lista_ingredienti(lista_pizze_id,lista_ingredienti_id) VALUES (401,801);
+INSERT INTO pizza_lista_ingredienti(lista_pizze_id,lista_ingredienti_id) VALUES (401,501);
+
 
 INSERT INTO users(id, nome, cognome, email) VALUES(nextval('users_seq'), 'paolo', 'paolo', 'paolo@gmail.com');
 INSERT INTO credentials(id, password, ruolo, username, user_id) VALUES(nextval('credentials_seq'), '$2a$10$F605H0XOC06ODyI.oQnCzeMWpWRPNOH2DM2Lmf.ZSAkNrTG6Kqa3q', 'DEFAULT', 'paolo',currval('users_seq'));
 INSERT INTO users(id, nome, cognome, email) VALUES(nextval('users_seq'), 'admin', 'admin', 'admin@admin.com');
 INSERT INTO credentials(id, password, ruolo, username, user_id) VALUES(nextval('credentials_seq'), '$2a$12$Lzmhtr/JjTVh8zJF.6h6IOswJfrt.zmuS3yjvjZW999TJdDoRroQu', 'ADMIN', 'admin',currval('users_seq'));
+INSERT INTO users(id, nome, cognome, email) VALUES(nextval('users_seq'), 'gab', 'gab', 'gab@gmail.com');
+INSERT INTO credentials(id, password, ruolo, username, user_id) VALUES(nextval('credentials_seq'), '$2a$12$PQe2m5BJW1AFWQPx0mNo0.RLn9ovbRE80FL/jBxQXK7g22bQmQ/XK', 'DEFAUL', 'gab',currval('users_seq'));
+INSERT INTO users(id, nome, cognome, email) VALUES(nextval('users_seq'), 'mic', 'mic', 'mic@gmail.com');
+INSERT INTO credentials(id, password, ruolo, username, user_id) VALUES(nextval('credentials_seq'), '$2a$12$h1htYATmLrimpuKOSoJ2yep8Gdzbc0rnahtUM73/qJQB82kGXJCuW', 'DEFAUL', 'mic',currval('users_seq'));
 
 INSERT INTO recensione(pizza_id, descrizione, data_di_creazione, stelle, autore_id)VALUES (51,'DIAVOLA SUPER BUONISSIMA!', '2023-10-03', 5.0, 1);
 INSERT INTO recensione(pizza_id, descrizione, data_di_creazione, stelle, autore_id)VALUES (1,'Buono tutto, specie la mozzarella!', '2024-07-17', 4.5, 1);
 INSERT INTO recensione(pizza_id, descrizione, data_di_creazione, stelle, autore_id)VALUES (101,'Tutto ok.', '2025-01-01', 4.0, 1);
+INSERT INTO recensione(pizza_id, descrizione, data_di_creazione, stelle, autore_id)VALUES (1,'Come sempre la regina della pizze me la sposerei!', '2025-06-24', 5.0, 101);
+INSERT INTO recensione(pizza_id, descrizione, data_di_creazione, stelle, autore_id)VALUES (101,'Possiamo sempre aspirare a qualcosa di più', '2020-03-20', 3.0, 51);
+INSERT INTO recensione(pizza_id, descrizione, data_di_creazione, stelle, autore_id)VALUES (151,'EH volevi! GUardalo che faccia non se la aspettava una recensione del genere eh!?', '2025-01-01', 0, 101);
+INSERT INTO recensione(pizza_id, descrizione, data_di_creazione, stelle, autore_id)VALUES (251,'Che artista!', '2025-01-01', 5.0, 51);
+INSERT INTO recensione(pizza_id, descrizione, data_di_creazione, stelle, autore_id)VALUES (351,'Il mio voto può ribaltare o confermare la situazione!', '2025-01-01', 0, 101);
+INSERT INTO recensione(pizza_id, descrizione, data_di_creazione, stelle, autore_id)VALUES (351,'Non so piu che dire', '2025-01-01', 0, 1);
+INSERT INTO recensione(pizza_id, descrizione, data_di_creazione, stelle, autore_id)VALUES (1,'Questa pizza sfonderà', '2025-01-01', 5, 51);
+INSERT INTO recensione(pizza_id, descrizione, data_di_creazione, stelle, autore_id)VALUES (251,'Ho visto cose che voi umani non potete capire! Ma sono compassionevole', '2025-01-01', 1, 101);
 
