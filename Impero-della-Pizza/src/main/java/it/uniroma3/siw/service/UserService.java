@@ -22,6 +22,7 @@ public class UserService {
 	public Iterable<User> getAllUsers(){
 		return userRepository.findAll();
 	}
+	
 	@Transactional
 	public User saveUser(User user) {
 		return this.userRepository.save(user);

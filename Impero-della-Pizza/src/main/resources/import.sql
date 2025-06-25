@@ -43,7 +43,7 @@ INSERT INTO pizza (nome,prezzo, URLImmagine,tipo_farina_id) VALUES ('Crostino',8
 INSERT INTO pizza (nome,prezzo, URLImmagine,tipo_farina_id) VALUES ('Pollice Verde',8.00,'/images/pizza-vegetariana.png',51);
 INSERT INTO pizza (nome,prezzo, URLImmagine,tipo_farina_id) VALUES ('Patate e Salsiccia',8.00,'/images/Pizza-patate-e-salsiccia.png',51);
 INSERT INTO pizza (nome,prezzo, URLImmagine,tipo_farina_id) VALUES ('Calabrese',8.00,'/images/pizza-nduja.webp',101);
-INSERT INTO pizza (nome,prezzo, URLImmagine,tipo_farina_id) VALUES ('Margerita++',8.00,'/images/pizza-margherita.jpg',251);
+INSERT INTO pizza (nome,prezzo, URLImmagine,tipo_farina_id) VALUES ('Margherita++',8.00,'/images/pizza-margherita.jpg',251);
 INSERT INTO pizza (nome,prezzo, URLImmagine,tipo_farina_id) VALUES ('Bufalina',8.00,'/images/pizza-bufalina.jpg',251);
 
 INSERT INTO pizza_lista_ingredienti(lista_pizze_id,lista_ingredienti_id) VALUES (1,401);
@@ -93,12 +93,12 @@ INSERT INTO credentials(id, password, ruolo, username, user_id) VALUES(nextval('
 INSERT INTO recensione(pizza_id, descrizione, data_di_creazione, stelle, autore_id)VALUES (51,'DIAVOLA SUPER BUONISSIMA!', '2023-10-03', 5.0, 1);
 INSERT INTO recensione(pizza_id, descrizione, data_di_creazione, stelle, autore_id)VALUES (1,'Buono tutto, specie la mozzarella!', '2024-07-17', 4.5, 1);
 INSERT INTO recensione(pizza_id, descrizione, data_di_creazione, stelle, autore_id)VALUES (101,'Tutto ok.', '2025-01-01', 4.0, 1);
-INSERT INTO recensione(pizza_id, descrizione, data_di_creazione, stelle, autore_id)VALUES (1,'Come sempre la regina della pizze me la sposerei!', '2025-06-24', 5.0, 101);
-INSERT INTO recensione(pizza_id, descrizione, data_di_creazione, stelle, autore_id)VALUES (101,'Possiamo sempre aspirare a qualcosa di più', '2020-03-20', 3.0, 51);
-INSERT INTO recensione(pizza_id, descrizione, data_di_creazione, stelle, autore_id)VALUES (151,'EH volevi! GUardalo che faccia non se la aspettava una recensione del genere eh!?', '2025-01-01', 0, 101);
+INSERT INTO recensione(pizza_id, descrizione, data_di_creazione, stelle, autore_id)VALUES (1,'Come sempre la regina della pizze me la sposerei!', '2025-06-24', 5.0, 151);
+INSERT INTO recensione(pizza_id, descrizione, data_di_creazione, stelle, autore_id)VALUES (101,'Possiamo sempre aspirare a qualcosa di più', '2020-03-20', 3.0, 101);
+INSERT INTO recensione(pizza_id, descrizione, data_di_creazione, stelle, autore_id)VALUES (151,'EH volevi! GUardalo che faccia non se la aspettava una recensione del genere eh!?', '2025-01-01', 1, 101);
 INSERT INTO recensione(pizza_id, descrizione, data_di_creazione, stelle, autore_id)VALUES (251,'Che artista!', '2025-01-01', 5.0, 51);
 INSERT INTO recensione(pizza_id, descrizione, data_di_creazione, stelle, autore_id)VALUES (351,'Il mio voto può ribaltare o confermare la situazione!', '2025-01-01', 0, 101);
-INSERT INTO recensione(pizza_id, descrizione, data_di_creazione, stelle, autore_id)VALUES (351,'Non so piu che dire', '2025-01-01', 0, 1);
-INSERT INTO recensione(pizza_id, descrizione, data_di_creazione, stelle, autore_id)VALUES (1,'Questa pizza sfonderà', '2025-01-01', 5, 51);
-INSERT INTO recensione(pizza_id, descrizione, data_di_creazione, stelle, autore_id)VALUES (251,'Ho visto cose che voi umani non potete capire! Ma sono compassionevole', '2025-01-01', 1, 101);
+INSERT INTO recensione(pizza_id, descrizione, data_di_creazione, stelle, autore_id)VALUES (351,'Non so piu che dire', '2025-01-01', 1, 1);
+INSERT INTO recensione(pizza_id, descrizione, data_di_creazione, stelle, autore_id)VALUES (1,'Questa pizza sfonderà', '2025-01-01', 5, 101);
+INSERT INTO recensione(pizza_id, descrizione, data_di_creazione, stelle, autore_id)VALUES (251,'Ho visto cose che voi umani non potete capire! Ma sono compassionevole', '2025-01-01', 1, 151);
 
