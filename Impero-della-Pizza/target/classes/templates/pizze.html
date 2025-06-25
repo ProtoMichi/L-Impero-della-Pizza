@@ -33,7 +33,8 @@
 				 ' (' + ${#numbers.formatDecimal(pizza.prezzo, 1, 2)} + '€)'" style="text-decoration: none;color: brown;">Margherita (€ 5)</a>
 				<span th:if="${pizza.isCeliaco()}"> <img src="/images/GlutenFree.jpg" width="1.5%"/></span>
 				<span th:if="${pizza.isVegan()}"> <img src="/images/Vegan_friendly_icon.jpg" width="1.5%"/></span>
-				<span th:text="${pizza.calcolaMediaStelle()} + ' Stelle'"></span>
+				<span th:if="${pizza.listaRecensioni.isEmpty()}" th:text="'Non esiste alcuna recensione'"></span>
+				<span th:unless="${pizza.listaRecensioni.isEmpty()}" th:text="${pizza.calcolaMediaStelle()} + ' Stelle'"></span>
 				<p style="font-size: 1.4rem">
 					<span th:each="ingrediente : ${pizza.listaIngredienti}" th:text="${ingrediente.nome} + ' '"></span>
 				</p>
