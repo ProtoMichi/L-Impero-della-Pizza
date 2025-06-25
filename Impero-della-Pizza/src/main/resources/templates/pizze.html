@@ -9,7 +9,7 @@
 	<body>
 	<header>
 		<div th:if="${userDetails}">
-			<span th:text="${userDetails.username}"></span>
+			<a class="username" th:href="@{'/recensione' + '/' + ${userDetails.username} + '/' + 'recensioni'}" th:text="${userDetails.username}"></a>
 			<a href="/logout">Logout</a>
 		</div>
 		<div th:unless="${userDetails}">
@@ -33,8 +33,6 @@
 				 ' (' + ${#numbers.formatDecimal(pizza.prezzo, 1, 2)} + '€)'" style="text-decoration: none;color: brown;">Margherita (€ 5)</a>
 				<span th:if="${pizza.isCeliaco()}"> <img src="/images/GlutenFree.jpg" width="1.5%"/></span>
 				<span th:if="${pizza.isVegan()}"> <img src="/images/Vegan_friendly_icon.jpg" width="1.5%"/></span>
-				<span th:if="${pizza.listaRecensioni.isEmpty()}" th:text="'Non esiste alcuna recensione'"></span>
-				<span th:unless="${pizza.listaRecensioni.isEmpty()}" th:text="${pizza.calcolaMediaStelle()} + ' Stelle'"></span>
 				<p style="font-size: 1.4rem">
 					<span th:each="ingrediente : ${pizza.listaIngredienti}" th:text="${ingrediente.nome} + ' '"></span>
 				</p>
@@ -48,13 +46,17 @@
 				    		<img class="stella" src="/images/star-half.png" th:if="${haMezza}"/>
 				    		<img class="stella" src="/images/star-empty.png" th:if="${vuote > 0}" th:each="i : ${#numbers.sequence(1, vuote)}"/>
 						</div>
-						<span th:text="${#numbers.formatDecimal(pizza.calcolaMediaStelle(), 1, 2)}" style="font-size: 2rem; color: #f1e4cd;
-						 width: 100%; text-align: center; display: block; font-weight: bold;"></span>
 						<div class="stelle" th:unless="${pizza.listaRecensioni != null and !pizza.listaRecensioni.isEmpty()}">
 				    		<span th:each="i : ${#numbers.sequence(1,5)}">
 				        		<img class="stella" src="/images/star-empty.png"/>
 				    		</span>
 						</div>
+						<span th:if="${pizza.listaRecensioni.isEmpty()}" th:text="'Non esiste alcuna recensione'" style="font-size: 2rem; color: brown;
+						 width: 100%; text-align: center; display: block; font-weight: bold;"></span>
+						<span th:unless="${pizza.listaRecensioni.isEmpty()}" 
+						th:text="${#numbers.formatDecimal(pizza.calcolaMediaStelle(), 1, 1)}" style="font-size: 2rem; color: brown;
+						 width: 100%; text-align: center; display: block; font-weight: bold;">
+						</span>
 			</li>
 		</ul>
 	</body>

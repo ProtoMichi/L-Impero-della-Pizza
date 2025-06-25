@@ -22,7 +22,7 @@
                     <a href="/pizza/formCercaPizza" style="text-decoration:none">Cerca una Pizza</a>
                 </div>
                 <div th:if="${userDetails}">
-                    <span th:text="${userDetails.username}"></span>
+                    <a class="username" th:href="@{'/recensione' + '/' + ${userDetails.username} + '/' + 'recensioni'}" th:text="${userDetails.username}"></a>
                     <a href="/logout" style="text-decoration:none">Logout</a>
                 </div>
                 <div th:unless="${userDetails}">
@@ -33,14 +33,12 @@
 
         <section class="richieste">
             <h1>Crea oggi stesso la tua pizza!</h1>
-            <fieldset>
                 <legend><h2>Le più amate</h2></legend>
                 <div class="pizze">
                     <img src="/images/pizza-margherita.jpg" alt="Margherita">
                     <img src="/images/pizza-diavola.jpg" alt="Diavola">
                     <img src="/images/pizza-quattro-formaggi.jpg" alt="Boscaiola">
                 </div>
-            </fieldset>
             
         </section>
 

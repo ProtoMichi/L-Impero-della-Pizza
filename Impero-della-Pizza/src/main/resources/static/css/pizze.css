@@ -26,13 +26,26 @@ header {
 }
 
 header a {
+	font-size: 0.6rem;
     text-decoration: none;
     color: #b33e3e;
     font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
 }
 
 header a:hover {
     text-shadow: 1px 1px 2px #3E7D3B;
+}
+
+.username {
+	font-size: 1.4rem;
+	color: green;
+	display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 h1 {
@@ -127,3 +140,4 @@ li img {
     box-shadow: none;
     margin-left: 0;
 }
+

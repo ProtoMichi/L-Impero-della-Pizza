@@ -13,6 +13,14 @@ body {
     font-family: "Sauce Tomato";    
 }
 
+.username {
+	font-size: 1.4rem;
+	color: green;
+	display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -70,7 +78,3 @@ body {
     box-shadow: 0 4px 8px #2a5328;
     transition: transform 0.3s ease;
 }
-
-.pizze img:hover {
-    transform: scale(1.05);
-  }
