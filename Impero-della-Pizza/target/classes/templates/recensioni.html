@@ -6,16 +6,20 @@
 	<link rel="stylesheet" th:href="@{/css/recensione.css}" />
 </head>
 <body>
-<header>
-		<div th:if="${userDetails}">
-			<a class="username" th:href="@{'/recensione' + '/' + ${userDetails.username} + '/' + 'recensioni'}" th:text="${userDetails.username}"></a>
-			<a href="/logout">Logout</a>
-		</div>
-		<div th:unless="${userDetails}">
-			<a href="/login">Login</a>
-		</div>
+	<header>
+	  <div class="logo">
+	    <a href="/"><img src="/images/impero-della-pizza.png" width="70" alt="Logo" /></a>
+	  </div>
+
+	  <div class="user-area" th:if="${userDetails}">
+	    <a class="username" th:href="@{'/recensione/' + ${userDetails.username} + '/recensioni'}" th:text="${userDetails.username}"></a>
+	    <a href="/logout">Logout</a>
+	  </div>
+
+	  <div class="user-area" th:unless="${userDetails}">
+	    <a href="/login">Login</a>
+	  </div>
 	</header>
-	<a href="/"><img src="/images/impero-della-pizza.png" width="5%"/></a>
     <h1>Tutte le Recensioni</h1>
 
     <table border="1">
