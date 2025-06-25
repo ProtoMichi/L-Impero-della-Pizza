@@ -43,7 +43,7 @@
 				    		haMezza = ${(media - piene) >= 0.5},
 				    		mezza = ${haMezza ? 1 : 0},
 				    		vuote = ${5 - piene - mezza}">    		
-				    		<img class="stella" src="/images/star-full.png" th:each="i : ${#numbers.sequence(1, piene)}"/>
+				    		<img class="stella" src="/images/star-full.png" th:if="${piene > 0}" th:each="i : ${#numbers.sequence(1, piene)}"/>
 				    		<img class="stella" src="/images/star-half.png" th:if="${haMezza}"/>
 				    		<img class="stella" src="/images/star-empty.png" th:if="${vuote > 0}" th:each="i : ${#numbers.sequence(1, vuote)}"/>
 						</div>
@@ -54,7 +54,6 @@
 				        		<img class="stella" src="/images/star-empty.png"/>
 				    		</span>
 						</div>
-					</div>
 			</li>
 		</ul>
 	</body>

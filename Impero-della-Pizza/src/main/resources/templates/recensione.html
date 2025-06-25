@@ -28,13 +28,13 @@
 
 			<span th:with="
 			    valore=${recensione.stelle},
-			    intero=${T(java.lang.Math).floor(valore).intValue()},
-			    haMezza=${(valore - intero) >= 0.5},
+			    piene=${T(java.lang.Math).floor(valore).intValue()},
+			    haMezza=${(valore - piene) >= 0.5},
 			    mezza=${haMezza ? 1 : 0},
-			    vuote=${5 - intero - mezza}">
+			    vuote=${5 - piene - mezza}">
 			    
 			    <!-- Stelle piene -->
-			    <img class="stella" src="/images/star-full.png" th:each="i : ${#numbers.sequence(1, intero)}" />
+			    <img class="stella" src="/images/star-full.png" th:if="${piene > 0}" th:each="i : ${#numbers.sequence(1, piene)}" />
 			    
 			    <!-- Mezza stella -->
 			    <img class="stella" src="/images/star-half.png" th:if="${mezza == 1}" />
