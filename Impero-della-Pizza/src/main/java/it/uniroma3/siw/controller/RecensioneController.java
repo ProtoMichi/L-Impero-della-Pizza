@@ -57,17 +57,10 @@ public class RecensioneController {
 	    return "recensioniUtente.html";
 	}
 
-	
-	
 	@GetMapping("/admin/formGestioneRecensioni")
 	public String getGestioneRecensioni(Model model) {
 		model.addAttribute("recensioni", this.recensioneService.getAllRecensioni());
 		return "admin/formGestioneRecensioni.html";
-	}
-	
-	@GetMapping("/admin/homeRecensione")
-	public String homeRecensione() {
-		return "admin/homeRecensione.html";
 	}
 	
 	@PostMapping("/admin/gestioneRecensione/delete")

@@ -228,11 +228,6 @@ public class PizzaController {
 		return "redirect:/pizza/" + pizza.getId();
 	}
 
-	@GetMapping("/admin/homePizza")
-	public String homePizza() {
-		return "admin/homePizza.html";
-	}
-
 	@GetMapping("/admin/gestisciPizze")
 	public String getListaPizzeDaEliminare(Model model) {
 		List<Pizza> pizze = (List<Pizza>) this.pizzaService.getAllPizzas();

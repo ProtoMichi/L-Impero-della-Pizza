@@ -74,12 +74,6 @@ public class IngredienteController {
 		}
 	}
 
-
-	@GetMapping("/admin/homeIngrediente")
-	public String homeIngrediente() {
-		return "admin/homeIngrediente.html";
-	}
-
 	@GetMapping("/ingrediente/{id}/modifica")
 	public String modificaIngrediente(@PathVariable Long id, Model model, Principal principal) {
 		Ingrediente ingrediente = this.ingredienteService.getIngredienteById(id);
