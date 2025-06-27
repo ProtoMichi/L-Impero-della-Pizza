@@ -23,6 +23,7 @@ import it.uniroma3.siw.model.Credentials;
 import it.uniroma3.siw.model.Ingrediente;
 import it.uniroma3.siw.model.Pizza;
 import it.uniroma3.siw.model.Recensione;
+import it.uniroma3.siw.model.User;
 import it.uniroma3.siw.service.CredentialsService;
 import it.uniroma3.siw.service.IngredienteService;
 import it.uniroma3.siw.service.PizzaService;
@@ -198,34 +199,41 @@ public class PizzaController {
 		}
 		return "formNewRecensione.html";
 	}
-
 	@PostMapping("/pizza/{id}/recensione")
-	public String addRecensione(@PathVariable("id") Long id, @Valid @ModelAttribute("recensione") Recensione recensione,
-			BindingResult bindingResult,RedirectAttributes redirectAttributes, Model model, @AuthenticationPrincipal UserDetails userDetails) {
+	public String addRecensione(@PathVariable("id") Long id,
+	                            @Valid @ModelAttribute("recensione") Recensione recensione,
+	                            BindingResult bindingResult,
+	                            RedirectAttributes redirectAttributes,
+	                            Model model,
+	                            @AuthenticationPrincipal UserDetails userDetails) {
 
-		Pizza pizza = this.pizzaService.getPizzabyId(id);
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		String username = auth.getName();
-		Credentials autore = this.credentialsService.getCredentials(username);
+	    Pizza pizza = this.pizzaService.getPizzabyId(id);
+	    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+	    String username = auth.getName();
 
-		if(bindingResult.hasErrors()) {
-			redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.recensione", bindingResult);
-			redirectAttributes.addFlashAttribute("recensione", recensione);
-			redirectAttributes.addFlashAttribute("pizza", pizza);
-			return "redirect:/pizza/" + pizza.getId() +"/formNewRecensione";
-		}
+	    // ✅ Recupera l'utente (User) dal sistema
+	    Credentials credentials = this.credentialsService.getCredentials(username);
+	    User autore = credentials.getUser();
 
-		if(recensioneService.existsByPizzaAndAutore(pizza, autore)) {
-			model.addAttribute("pizza", pizza);
-			model.addAttribute("errorMessage", "Hai già scritto una recensione per questa pizza!");
-			return "formNewRecensione.html";
-		}
+	    if (bindingResult.hasErrors()) {
+	        redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.recensione", bindingResult);
+	        redirectAttributes.addFlashAttribute("recensione", recensione);
+	        redirectAttributes.addFlashAttribute("pizza", pizza);
+	        return "redirect:/pizza/" + pizza.getId() + "/formNewRecensione";
+	    }
 
-		recensione.setId(null);
-		recensione.setPizza(pizza);
-		recensione.setAutore(autore);
-		this.recensioneService.save(recensione);
-		return "redirect:/pizza/" + pizza.getId();
+	    if (recensioneService.existsByPizzaAndAutore(pizza, autore)) {
+	        model.addAttribute("pizza", pizza);
+	        model.addAttribute("errorMessage", "Hai già scritto una recensione per questa pizza!");
+	        return "formNewRecensione.html";
+	    }
+
+	    recensione.setId(null);
+	    recensione.setPizza(pizza);
+	    recensione.setAutore(autore); // 👈 ora autore è un User
+	    this.recensioneService.save(recensione);
+
+	    return "redirect:/pizza/" + pizza.getId();
 	}
 
 	@GetMapping("/admin/gestisciPizze")

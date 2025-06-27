@@ -47,13 +47,16 @@ public class RecensioneController {
 	
 	@GetMapping("/recensione/{username}/recensioni")
 	public String recensioniUtente(@PathVariable("username") String username, Model model) {
-		Credentials credentials = this.credentialsService.getCredentials(username);
-		if(credentials == null) {
-			return "pizzaNonTrovata.html"; //inserire errore
-		}
-	    List<Recensione> recensioni = this.recensioneService.getByAutore(credentials);
+	    Credentials credentials = this.credentialsService.getCredentials(username);
+	    if (credentials == null || credentials.getUser() == null) {
+	        return "pizzaNonTrovata.html"; // inserire errore
+	    }
+
+	    User user = credentials.getUser();
+	    List<Recensione> recensioni = this.recensioneService.getByAutore(user);
+
 	    model.addAttribute("recensioni", recensioni);
-	    model.addAttribute("utente", credentials);
+	    model.addAttribute("utente", user);
 	    return "recensioniUtente.html";
 	}
 
