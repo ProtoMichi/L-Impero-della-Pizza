@@ -45,6 +45,7 @@ INSERT INTO pizza (nome,prezzo, URLImmagine,tipo_farina_id) VALUES ('Patate e Sa
 INSERT INTO pizza (nome,prezzo, URLImmagine,tipo_farina_id) VALUES ('Calabrese',8.00,'/images/pizza-nduja.webp',101);
 INSERT INTO pizza (nome,prezzo, URLImmagine,tipo_farina_id) VALUES ('Margherita++',8.00,'/images/pizza-margherita.jpg',251);
 INSERT INTO pizza (nome,prezzo, URLImmagine,tipo_farina_id) VALUES ('Bufalina',8.00,'/images/pizza-bufalina.jpg',251);
+INSERT INTO pizza (nome,prezzo, URLImmagine,tipo_farina_id) VALUES ('Pizza Bianca++',8.00,'/images/Pizza-bianca.jpg',251);
 
 INSERT INTO pizza_lista_ingredienti(lista_pizze_id,lista_ingredienti_id) VALUES (1,401);
 INSERT INTO pizza_lista_ingredienti(lista_pizze_id,lista_ingredienti_id) VALUES (1,451);
