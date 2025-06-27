@@ -38,7 +38,7 @@ public class Recensione {
 	@ManyToOne()
 	private Pizza pizza;
 	@ManyToOne
-    private Credentials autore;
+    private User autore;
 
 	
 	public Recensione() {
@@ -87,11 +87,11 @@ public class Recensione {
 		this.pizza = pizza;
 	}
 
-	public Credentials getAutore() {
+	public User getAutore() {
 		return autore;
 	}
 
-	public void setAutore(Credentials autore) {
+	public void setAutore(User autore) {
 		this.autore = autore;
 	}
 

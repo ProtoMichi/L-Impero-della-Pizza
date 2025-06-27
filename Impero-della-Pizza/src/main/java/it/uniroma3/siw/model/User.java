@@ -7,6 +7,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 
@@ -29,6 +30,10 @@ public class User {
 	@Column(nullable=false)
 	@NotBlank
 	private String email;
+	
+	@OneToOne(mappedBy = "user")
+	private Credentials credentials;
+
 	
 	public Long getId() {
 		return id;
@@ -66,7 +71,14 @@ public class User {
 	public int hashCode() {
 		return Objects.hash(cognome, email, nome);
 	}
-
+	
+	public String getUsername() {
+	    if (this.credentials != null) {
+	        return this.credentials.getUsername();
+	    }
+	    return null;
+	}
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
