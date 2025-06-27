@@ -120,6 +120,9 @@ li p {
 }
 
 li img {
+	width: 30%;
+    height: 30%;
+    object-fit: cover;
     vertical-align: middle;
     margin-left: 0.5rem;
     border-radius: 50%;
@@ -127,17 +130,103 @@ li img {
 }
 
 .stelle {
+	margin-top: 0;     /* niente margine sopra */
+    margin-bottom: 4px;
+    margin: 0 auto; 
     display: flex;
     justify-content: center;  /* centra orizzontalmente */
     align-items: center;      /* centra verticalmente (se serve) */
     gap: 5px;                 /* spazio tra le stelle */
-    margin: 20px auto;        /* margine verticale, centrato */
     width: fit-content;       /* solo grande quanto le stelle */
 }
 
 .stella {
+	width: 1.5em;     /* più piccolo rispetto al testo circostante */
+    height: auto;
     border-radius: 0;
     box-shadow: none;
     margin-left: 0;
 }
 
+.pizza-item {
+    font-size: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.pizza-row {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+}
+
+.pizza-img img {
+    width: 40vw;        /* larghezza relativa alla viewport (es. 8% della larghezza schermo) */
+    height: 40vw;
+    max-width: 350px;  /* limite massimo per schermi grandi */
+    max-height: 350px;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px #2a5328;
+}
+
+.pizza-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.pizza-title {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-weight: bold;
+    color: brown;
+    text-decoration: none;
+}
+
+.pizza-title a {
+    color: brown;
+    text-decoration: none;
+}
+
+.pizza-title a:hover {
+    text-shadow: 2px 2px 3px #3E7D3B;
+}
+
+.pizza-ingredients {
+    font-size: 1.4rem;
+    margin-top: 0.5rem;
+    color: #3e3e3e;
+}
+
+.logo {
+    width: 1.1em;     /* più piccolo rispetto al testo circostante */
+    height: auto;
+}
+
+.pizza-voto {
+	margin-bottom: 0;  /* margine sotto nullo */
+    font-size: 1.5rem;      /* mantieni grandezza comoda */
+    color: brown;
+    font-weight: bold;
+    width: 100%;
+    text-align: center;
+    display: block;
+    line-height: 1.2;  /* compatta il testo verticalmente */
+}
+
+.ingrediente-pillola {
+    display: inline-block;     /* si adatta al contenuto */
+    background-color: #f1e4cd; /* colore chiaro, coerente col tema */
+    border: 2px solid #b33e3e; /* bordo rosso */
+    border-radius: 12px;       /* angoli arrotondati */
+    padding: 0.2rem 0.8rem;    /* verticale e orizzontale */
+    margin: 0.2rem 0.4rem;     /* spaziatura tra le pillole */
+    font-size: 1.1rem;         /* leggermente più piccolo */
+    color: #b33e3e;
+    font-weight: bold;
+    user-select: none;         /* opzionale, per evitare selezione accidentale */
+}
