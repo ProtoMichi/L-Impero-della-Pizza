@@ -9,7 +9,8 @@
 <body>
 	<header>
 		<div th:if="${userDetails}">
-			<span th:text="${userDetails.username}"></span> <a href="/logout">Logout</a>
+			<a class="username" th:href="@{'/recensione' + '/' + ${userDetails.username} + '/' + 'recensioni'}" th:text="${userDetails.username}"></a>
+			<a href="/logout">Logout</a>
 		</div>
 		<div th:unless="${userDetails}">
 			<a href="/login">Login</a>
@@ -66,6 +67,10 @@
 			<button type="submit" name="Conferma">Conferma!</button>
 		</div>
 	</form>
+
+	<div style="text-align: center">
+		<span > Se vuoi cancellare tutto e ricominciare da capo, puoi semplicemente ricaricare la pagina!</span>
+	</div>
 
 </body>
 

@@ -21,7 +21,7 @@ body {
     justify-content: center;
     align-items: center;
 }
-/*#a00d05*/
+
 
 .navbar {
     display: flex;
@@ -89,14 +89,10 @@ nav a {
     border-radius: 8px;
     box-shadow: 0 4px 8px #2a5328;
     transition: transform 0.3s ease;
+
 }
 
 .pizze img:hover {
     transform: scale(1.05);
   }
-  
 
-  
-  
-  
-  

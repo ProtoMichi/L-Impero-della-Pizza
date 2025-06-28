@@ -26,11 +26,11 @@ public class RecensioneService {
 	}
 	
 	
-	public List<Recensione> getByAutore(Credentials autore) {
+	public List<Recensione> getByAutore(User autore) {
 	    return recensioneRepository.findByAutore(autore);
 	}
 	
-	public boolean existsByPizzaAndAutore(Pizza pizza, Credentials autore) {
+	public boolean existsByPizzaAndAutore(Pizza pizza, User autore) {
 	    return recensioneRepository.existsByPizzaAndAutore(pizza, autore);
 	}
 	

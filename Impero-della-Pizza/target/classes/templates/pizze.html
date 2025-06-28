@@ -9,7 +9,7 @@
 	<body>
 	<header>
 		<div th:if="${userDetails}">
-			<span th:text="${userDetails.username}"></span>
+			<a class="username" th:href="@{'/recensione' + '/' + ${userDetails.username} + '/' + 'recensioni'}" th:text="${userDetails.username}"></a>
 			<a href="/logout">Logout</a>
 		</div>
 		<div th:unless="${userDetails}">
@@ -28,34 +28,76 @@
 		
 		<div th:if="${pizze.isEmpty()}">Non ci sono pizze da gustare :(</div>
 		<ul>
-			<li th:each="pizza : ${pizze}" style="font-size: 2rem">
-				<a th:href="@{'/pizza' + '/' + ${pizza.id}}" th:text="${pizza.nome} +
-				 ' (' + ${#numbers.formatDecimal(pizza.prezzo, 1, 2)} + '€)'" style="text-decoration: none;color: brown;">Margherita (€ 5)</a>
-				<span th:if="${pizza.isCeliaco()}"> <img src="/images/GlutenFree.jpg" width="1.5%"/></span>
-				<span th:if="${pizza.isVegan()}"> <img src="/images/Vegan_friendly_icon.jpg" width="1.5%"/></span>
-				<span th:text="${pizza.calcolaMediaStelle()} + ' Stelle'"></span>
-				<p style="font-size: 1.4rem">
-					<span th:each="ingrediente : ${pizza.listaIngredienti}" th:text="${ingrediente.nome} + ' '"></span>
-				</p>
-				<div class="stelle" th:if="${pizza.listaRecensioni != null and !pizza.listaRecensioni.isEmpty()}"
-							th:with="media = ${pizza.calcolaMediaStelle()},
-				    		piene = ${(T(java.lang.Math).floor(media)).intValue()},
-				    		haMezza = ${(media - piene) >= 0.5},
-				    		mezza = ${haMezza ? 1 : 0},
-				    		vuote = ${5 - piene - mezza}">    		
-				    		<img class="stella" src="/images/star-full.png" th:each="i : ${#numbers.sequence(1, piene)}"/>
-				    		<img class="stella" src="/images/star-half.png" th:if="${haMezza}"/>
-				    		<img class="stella" src="/images/star-empty.png" th:if="${vuote > 0}" th:each="i : ${#numbers.sequence(1, vuote)}"/>
-						</div>
-						<span th:text="${#numbers.formatDecimal(pizza.calcolaMediaStelle(), 1, 2)}" style="font-size: 2rem; color: #f1e4cd;
-						 width: 100%; text-align: center; display: block; font-weight: bold;"></span>
-						<div class="stelle" th:unless="${pizza.listaRecensioni != null and !pizza.listaRecensioni.isEmpty()}">
-				    		<span th:each="i : ${#numbers.sequence(1,5)}">
-				        		<img class="stella" src="/images/star-empty.png"/>
-				    		</span>
-						</div>
-					</div>
-			</li>
+			<li th:each="pizza : ${pizze}" class="pizza-item">
+
+    <div class="pizza-row">
+        <!-- IMMAGINE -->
+        <div class="pizza-img">
+            <img th:src="${pizza.URLImmagine}" alt="Pizza" />
+        </div>
+
+        <!-- BLOCCO TESTO A DESTRA -->
+        <div class="pizza-info">
+            
+            <!-- NOME + PREZZO + ICONE -->
+            <div class="pizza-title">
+                <a th:href="@{'/pizza' + '/' + ${pizza.id}}"
+                   th:text="${pizza.nome} + ' (' + ${#numbers.formatDecimal(pizza.prezzo, 1, 2)} + '€)'">
+                </a>
+
+                <span th:if="${pizza.isCeliaco()}">
+                    <img class="logo" src="/images/GlutenFree.jpg" />
+                </span>
+                <span th:if="${pizza.isVegan()}">
+                    <img class="logo" src="/images/Vegan_friendly_icon.jpg" />
+                </span>
+            </div>
+            
+            <!-- INGREDIENTI -->
+            <div class="pizza-ingredients">
+                <span class="ingrediente-pillola" th:each="ingrediente : ${pizza.listaIngredienti}"
+                      th:text="${ingrediente.nome}">
+                </span>
+            </div>
+        </div>
+    </div>
+    
+    <!-- TESTO MEDIA STELLE -->
+    <span th:if="${pizza.listaRecensioni.isEmpty()}"
+          th:text="'Non esiste alcuna recensione'"
+          class="pizza-voto">
+    </span>
+
+    <span th:unless="${pizza.listaRecensioni.isEmpty()}"
+          th:text="${#numbers.formatDecimal(pizza.calcolaMediaStelle(), 1, 1)}"
+          class="pizza-voto">
+    </span>
+    
+    <!-- STELLE -->
+    <div class="stelle" th:if="${pizza.listaRecensioni != null and !pizza.listaRecensioni.isEmpty()}"
+         th:with="media = ${pizza.calcolaMediaStelle()},
+                  piene = ${(T(java.lang.Math).floor(media)).intValue()},
+                  haMezza = ${(media - piene) >= 0.5},
+                  mezza = ${haMezza ? 1 : 0},
+                  vuote = ${5 - piene - mezza}">
+
+        <img class="stella" src="/images/star-full.png"
+             th:if="${piene > 0}"
+             th:each="i : ${#numbers.sequence(1, piene)}"/>
+
+        <img class="stella" src="/images/star-half.png" th:if="${haMezza}"/>
+
+        <img class="stella" src="/images/star-empty.png"
+             th:if="${vuote > 0}"
+             th:each="i : ${#numbers.sequence(1, vuote)}"/>
+    </div>
+    
+    <div class="stelle" th:unless="${pizza.listaRecensioni != null and !pizza.listaRecensioni.isEmpty()}">
+        <img class="stella" src="/images/star-empty.png"
+             th:each="i : ${#numbers.sequence(1,5)}"/>
+    </div>
+</li>
+
 		</ul>
 	</body>
 	

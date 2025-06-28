@@ -6,7 +6,7 @@
 <body>
     <header>
         <div th:if="${userDetails}">
-            <span th:text="${userDetails.username}"></span>
+            <a class="username" th:href="@{'/recensione' + '/' + ${userDetails.username} + '/' + 'recensioni'}" th:text="${userDetails.username}"></a>
             <a href="/logout">Logout</a>
         </div>
         <div th:unless="${userDetails}">

@@ -29,6 +29,15 @@
 				</div>
 		    </div>
 		</nav>
+
+		<div th:if="${userDetails}">
+			<a class="username" th:href="@{'/recensione' + '/' + ${userDetails.username} + '/' + 'recensioni'}" th:text="${userDetails.username}"></a>
+			<a href="/logout">Logout</a>
+		</div>
+		<div th:unless="${userDetails}">
+			<a href="/login">Login</a>
+		</div>
+
 	</header>
 
   <div th:if="${ingrediente}">

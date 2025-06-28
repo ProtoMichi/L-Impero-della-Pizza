@@ -18,7 +18,8 @@
 			                    <a href="/formNewPizza" style="text-decoration:none">Crea</a>
 			                    <a href="/pizza/formCercaPizza" style="text-decoration:none">Cerca</a>
 		<div th:if="${userDetails}">
-			<span th:text="${userDetails.username}"></span> <a href="/logout">Logout</a>
+			<a class="username" th:href="@{'/recensione' + '/' + ${userDetails.username} + '/' + 'recensioni'}" th:text="${userDetails.username}"></a>
+			<a href="/logout">Logout</a>
 		</div>
 		<div th:unless="${userDetails}">
 			<a href="/login">Login</a>
@@ -40,7 +41,7 @@
     		haMezza = ${(media - piene) >= 0.5},
     		mezza = ${haMezza ? 1 : 0},
     		vuote = ${5 - piene - mezza}">    		
-    		<img class="stellaPizza" src="/images/star-full.png" th:each="i : ${#numbers.sequence(1, piene)}"/>
+    		<img class="stellaPizza" src="/images/star-full.png" th:if="${piene > 0}" th:each="i : ${#numbers.sequence(1, piene)}"/>
     		<img class="stellaPizza" src="/images/star-half.png" th:if="${haMezza}"/>
     		<img class="stellaPizza" src="/images/star-empty.png" th:if="${vuote > 0}" th:each="i : ${#numbers.sequence(1, vuote)}"/>
 		</div>
@@ -74,15 +75,16 @@
 			<li th:each="recensione : ${pizza.listaRecensioni}"
 			    th:with="
 			        valore=${recensione.stelle},
-			        intero=${T(java.lang.Math).floor(valore).intValue()},
-			        haMezza=${(valore - intero) >= 0.5},
+			        piene=${T(java.lang.Math).floor(valore).intValue()},
+			        haMezza=${(valore - piene) >= 0.5},
 			        mezza=${haMezza ? 1 : 0},
-			        vuote=${5 - intero - mezza}">
+			        vuote=${5 - piene - mezza}">
 			    
 					
 			    <!-- Stelle piene -->
 			    <img class="stellaRecensione" src="/images/star-full.png"
-			         th:each="i : ${#numbers.sequence(1, intero)}" />
+			    	 th:if="${piene > 0}"
+			         th:each="i : ${#numbers.sequence(1, piene)}" />
 
 			    <!-- Mezza stella -->
 			    <img class="stellaRecensione" src="/images/star-half.png"

@@ -11,7 +11,7 @@
 <body>
 	<header>
 		<div th:if="${userDetails}">
-			<span th:text="${userDetails.username}"></span>
+			<a class="username" th:href="@{'/recensione' + '/' + ${userDetails.username} + '/' + 'recensioni'}" th:text="${userDetails.username}"></a>
 			<a href="/logout">Logout</a>
 		</div>
 		<div th:unless="${userDetails}">
@@ -30,7 +30,7 @@
 		</div>
 		<div>
 			<span>Password:</span>
-			<span><input name="password" type="text" required/></span> 
+			<span><input name="password" type="password" required/></span> 
 		</div>
 		<div>
 			<span th:if="${param.error != null}">Username e/o password errati!</span>

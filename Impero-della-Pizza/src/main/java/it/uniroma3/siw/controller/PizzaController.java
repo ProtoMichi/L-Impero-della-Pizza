@@ -17,11 +17,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import it.uniroma3.siw.model.Credentials;
 import it.uniroma3.siw.model.Ingrediente;
 import it.uniroma3.siw.model.Pizza;
 import it.uniroma3.siw.model.Recensione;
+import it.uniroma3.siw.model.User;
 import it.uniroma3.siw.service.CredentialsService;
 import it.uniroma3.siw.service.IngredienteService;
 import it.uniroma3.siw.service.PizzaService;
@@ -72,7 +74,7 @@ public class PizzaController {
 
 	@GetMapping("/pizza")
 	public String showPizze(Model model) {
-		List<Pizza> pizze = (List<Pizza>) this.pizzaService.getAllPizzas();
+		List<Pizza> pizze = (List<Pizza>)this.pizzaService.getAllPizzas();
 
 		// Calcola il prezzo per ogni pizza
 		for (Pizza pizza : pizze) {
@@ -85,19 +87,23 @@ public class PizzaController {
 
 	@GetMapping("/formNewPizza")
 	public String formNewPizza(Model model) {
-		List<Ingrediente> tuttiIngredientiSenzaFarine = (this.ingredienteService.getAllIngredientiNotFarina());
+		if(!model.containsAttribute("pizza")) {
 		model.addAttribute("pizza", new Pizza());
 		model.addAttribute("farine",this.ingredienteService.getFarine());
-		model.addAttribute("tuttiIngredientiSenzaFarine", tuttiIngredientiSenzaFarine);
+		model.addAttribute("tuttiIngredientiSenzaFarine", this.ingredienteService.getAllIngredientiNotFarina());
+		}
 		return "formNewPizza.html";
+		
 	}
 
 	@PostMapping(value = "/pizza", params = "Conferma")
-	public String newPizza(@Valid @ModelAttribute("pizza") Pizza pizza, BindingResult bindingResult, Model model) {
+	public String newPizza(@Valid @ModelAttribute("pizza") Pizza pizza, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
 		if(bindingResult.hasErrors()) {
-			model.addAttribute("farine",this.ingredienteService.getFarine());
-			model.addAttribute("tuttiIngredientiSenzaFarine", ingredienteService.getAllIngredientiNotFarina());
-			return "formNewPizza.html";
+			redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.pizza", bindingResult);
+			redirectAttributes.addFlashAttribute("farine", ingredienteService.getFarine());
+			redirectAttributes.addFlashAttribute("tuttiIngredientiSenzaFarine", ingredienteService.getAllIngredientiNotFarina());
+			redirectAttributes.addFlashAttribute("pizza", pizza);
+			return "redirect:/formNewPizza";
 		} 
 		else {
 			List<Long> ids = new ArrayList<>();
@@ -114,11 +120,13 @@ public class PizzaController {
 
 	@PostMapping(value = "/pizza", params = "aggiungiIngrediente")
 	public String aggiungiIngrediente(@Valid @ModelAttribute("pizza") Pizza pizza, BindingResult bindingResult, 
-			@RequestParam(required = false) Long ingredienteSelezionatoId, Model model) {
+			@RequestParam(required = false) Long ingredienteSelezionatoId, RedirectAttributes redirectAttributes) {
 		if (bindingResult.hasErrors()) {
-			model.addAttribute("farine", ingredienteService.getFarine());
-			model.addAttribute("tuttiIngredientiSenzaFarine", ingredienteService.getAllIngredientiNotFarina());
-			return "formNewPizza.html";
+			redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.pizza", bindingResult);
+			redirectAttributes.addFlashAttribute("farine", ingredienteService.getFarine());
+			redirectAttributes.addFlashAttribute("tuttiIngredientiSenzaFarine", ingredienteService.getAllIngredientiNotFarina());
+			redirectAttributes.addFlashAttribute("pizza", pizza);
+			return "redirect:/formNewPizza";
 		}
 		if(pizza.getListaIngredienti() == null) {
 			pizza.setListaIngredienti(new ArrayList<>());
@@ -129,7 +137,7 @@ public class PizzaController {
 		}
 		List<Ingrediente> ingredientiAttuali = new ArrayList<>(ingredienteService.findAllById(ids));
 		if(ingredienteSelezionatoId == null){
-			model.addAttribute("erroreIngredienteSelezionato", "Seleziona un ingrediente");
+			redirectAttributes.addFlashAttribute("erroreIngredienteSelezionato", "Seleziona un ingrediente");
 		}
 		else{
 			Ingrediente nuovo = ingredienteService.getIngredienteById(ingredienteSelezionatoId);
@@ -138,18 +146,21 @@ public class PizzaController {
 			}
 		}
 		pizza.setListaIngredienti(ingredientiAttuali);
-		model.addAttribute("farine",this.ingredienteService.getFarine());
-		model.addAttribute("tuttiIngredientiSenzaFarine", ingredienteService.getAllIngredientiNotFarina());
-		model.addAttribute("pizza", pizza);
-		return "formNewPizza.html";
+		redirectAttributes.addFlashAttribute("farine", ingredienteService.getFarine());
+		redirectAttributes.addFlashAttribute("tuttiIngredientiSenzaFarine", ingredienteService.getAllIngredientiNotFarina());
+		redirectAttributes.addFlashAttribute("pizza", pizza);
+	    return "redirect:/formNewPizza";
 	}
 
 	@PostMapping(value = "/pizza", params = "eliminaIngredienti")
-	public String eliminaIngredienti(@Valid @ModelAttribute("pizza") Pizza pizza,BindingResult bindingResult,@RequestParam(required = false, name = "ingredientiDaRimuovere") List<Long> idsDaRimuovere,Model model) {
+	public String eliminaIngredienti(@Valid @ModelAttribute("pizza") Pizza pizza, BindingResult bindingResult, RedirectAttributes redirectAttributes,
+			@RequestParam(required = false, name = "ingredientiDaRimuovere") List<Long> idsDaRimuovere) {
 		if (bindingResult.hasErrors()) {
-			model.addAttribute("farine", ingredienteService.getFarine());
-			model.addAttribute("tuttiIngredientiSenzaFarine", ingredienteService.getAllIngredientiNotFarina());
-			return "formNewPizza.html";
+			redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.pizza", bindingResult);
+			redirectAttributes.addFlashAttribute("farine", ingredienteService.getFarine());
+			redirectAttributes.addFlashAttribute("tuttiIngredientiSenzaFarine", ingredienteService.getAllIngredientiNotFarina());
+			redirectAttributes.addFlashAttribute("pizza", pizza);
+			return "redirect:/formNewPizza";
 		}
 
 		// Lista ingredienti attuali
@@ -166,15 +177,14 @@ public class PizzaController {
 		}
 
 		else{
-			model.addAttribute("erroreIngredienteSelezionato", "Seleziona un ingrediente da eliminare");
+			redirectAttributes.addFlashAttribute("erroreIngredienteSelezionato", "Seleziona un ingrediente da eliminare");
 		}
 
 		pizza.setListaIngredienti(ingredientiAttuali);
-
-		model.addAttribute("farine", ingredienteService.getFarine());
-		model.addAttribute("tuttiIngredientiSenzaFarine", ingredienteService.getAllIngredientiNotFarina());
-		model.addAttribute("pizza", pizza);
-		return "formNewPizza.html";
+		redirectAttributes.addFlashAttribute("farine", ingredienteService.getFarine());
+		redirectAttributes.addFlashAttribute("tuttiIngredientiSenzaFarine", ingredienteService.getAllIngredientiNotFarina());
+		redirectAttributes.addFlashAttribute("pizza", pizza);
+		return "redirect:/formNewPizza";
 	}
 
 	@GetMapping("/pizza/{id}/formNewRecensione")
@@ -183,40 +193,47 @@ public class PizzaController {
 		if(pizza==null) { 
 			return "pizzaNonTrovata.html"; //aggiungere errore
 		}
-		model.addAttribute("pizza", pizza);
-		model.addAttribute("recensione",new Recensione());
+		if(!model.containsAttribute("recensione")) {
+			model.addAttribute("pizza", pizza);
+			model.addAttribute("recensione",new Recensione());
+		}
 		return "formNewRecensione.html";
 	}
-
 	@PostMapping("/pizza/{id}/recensione")
-	public String addRecensione(@PathVariable("id") Long id, @Valid @ModelAttribute("recensione") Recensione recensione,BindingResult bindingResult, Model model,@AuthenticationPrincipal UserDetails userDetails) {
+	public String addRecensione(@PathVariable("id") Long id,
+	                            @Valid @ModelAttribute("recensione") Recensione recensione,
+	                            BindingResult bindingResult,
+	                            RedirectAttributes redirectAttributes,
+	                            Model model,
+	                            @AuthenticationPrincipal UserDetails userDetails) {
 
-		Pizza pizza = this.pizzaService.getPizzabyId(id);
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		String username = auth.getName();
-		Credentials autore = this.credentialsService.getCredentials(username);
+	    Pizza pizza = this.pizzaService.getPizzabyId(id);
+	    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+	    String username = auth.getName();
 
-		if(bindingResult.hasErrors()) {
-			model.addAttribute("pizza", pizza);
-			return "formNewRecensione.html";
-		}
+	    // ✅ Recupera l'utente (User) dal sistema
+	    Credentials credentials = this.credentialsService.getCredentials(username);
+	    User autore = credentials.getUser();
 
-		if(recensioneService.existsByPizzaAndAutore(pizza, autore)) {
-			model.addAttribute("pizza", pizza);
-			model.addAttribute("errorMessage", "Hai già scritto una recensione per questa pizza!");
-			return "formNewRecensione.html";
-		}
+	    if (bindingResult.hasErrors()) {
+	        redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.recensione", bindingResult);
+	        redirectAttributes.addFlashAttribute("recensione", recensione);
+	        redirectAttributes.addFlashAttribute("pizza", pizza);
+	        return "redirect:/pizza/" + pizza.getId() + "/formNewRecensione";
+	    }
 
-		recensione.setId(null);
-		recensione.setPizza(pizza);
-		recensione.setAutore(autore);
-		this.recensioneService.save(recensione);
-		return "redirect:/pizza/" + pizza.getId();
-	}
+	    if (recensioneService.existsByPizzaAndAutore(pizza, autore)) {
+	        model.addAttribute("pizza", pizza);
+	        model.addAttribute("errorMessage", "Hai già scritto una recensione per questa pizza!");
+	        return "formNewRecensione.html";
+	    }
 
-	@GetMapping("/admin/homePizza")
-	public String homePizza() {
-		return "admin/homePizza.html";
+	    recensione.setId(null);
+	    recensione.setPizza(pizza);
+	    recensione.setAutore(autore); // 👈 ora autore è un User
+	    this.recensioneService.save(recensione);
+
+	    return "redirect:/pizza/" + pizza.getId();
 	}
 
 	@GetMapping("/admin/gestisciPizze")
@@ -250,7 +267,7 @@ public class PizzaController {
 	}
 	
 	@PostMapping("/pizza/cercaPizza")
-	public String searchMovies(Model model, @RequestParam String nomeIngrediente) {
+	public String searchPizze(Model model, @RequestParam String nomeIngrediente) {
 		List<Pizza> pizzeTrovate = new ArrayList<>();
 		pizzeTrovate = this.pizzaService.findPizzabyIngrediente(nomeIngrediente);
 		model.addAttribute("ingNome",  nomeIngrediente);

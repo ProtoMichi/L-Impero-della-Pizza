@@ -12,9 +12,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import it.uniroma3.siw.model.Credentials;
 import it.uniroma3.siw.model.Ingrediente;
+import it.uniroma3.siw.model.Pizza;
 import it.uniroma3.siw.service.CredentialsService;
 import it.uniroma3.siw.service.IngredienteService;
 import jakarta.validation.Valid;
@@ -52,26 +54,24 @@ public class IngredienteController {
 
 	@GetMapping("/admin/formNewIngrediente")
 	public String formNewIngrediente(Model model) {
+		if(!model.containsAttribute("ingrediente"))
 		model.addAttribute("ingrediente",new Ingrediente());
 		return "admin/formNewIngrediente.html";
 	}
 
 	@PostMapping("/admin/ingrediente")
-	public String newIngrediente(@Valid @ModelAttribute("ingrediente") Ingrediente ingrediente,BindingResult bindingResult,Model model) {
+	public String newIngrediente(@Valid @ModelAttribute("ingrediente") Ingrediente ingrediente, BindingResult bindingResult,
+			RedirectAttributes redirectAttributes, Model model) {
 		if(bindingResult.hasErrors()) {
-			return "admin/formNewIngrediente.html";
+			redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.ingrediente", bindingResult);
+			redirectAttributes.addFlashAttribute("ingrediente", ingrediente);
+			return "redirect:/admin/formNewIngrediente";
 		}
 		else {
 			this.ingredienteService.save(ingrediente);
 			model.addAttribute("ingrediente",ingrediente);
-			return "redirect:/ingrediente/"+ingrediente.getId();
+			return "redirect:/ingrediente/"+ingrediente.getId(); 
 		}
-	}
-
-
-	@GetMapping("/admin/homeIngrediente")
-	public String homeIngrediente() {
-		return "admin/homeIngrediente.html";
 	}
 
 	@GetMapping("/ingrediente/{id}/modifica")
