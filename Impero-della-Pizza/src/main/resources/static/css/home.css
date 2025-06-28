@@ -13,28 +13,53 @@ body {
     font-family: "Sauce Tomato";    
 }
 
+<<<<<<< Updated upstream
+=======
+.username {
+	font-size: 1.4rem;
+	color: green;
+	display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/*#a00d05*/
+
+>>>>>>> Stashed changes
 .navbar {
     display: flex;
     justify-content: space-between;
     padding: 1rem 2 rem;
-    border-style: outset;
-    border-color: #b33e3e;
+	background-color: #a00d05;
     border-width: 0.5rem;
-    background-color: #f1e4cd;
+    
+}
+nav img{
+    
+    width: 5rem;
+    height: 5rem;
+    border-style: dashed;
+    border-color: #ffffff;
+    border-radius: 50%;
+    margin-left: 1rem;
+}
+
+nav a {
+    color: #ffffff;
+    
 }
 
 .nav-links { 
     display: flex;
     align-items: center;
-    gap: 6rem;
+    gap: 9rem;
     text-decoration: none;
-    color: #b33e3e;
+    color: #c5a4a4;
     font-weight: bold;
 
 }
 
 .nav-links a:hover {
-    text-shadow: 2px 2px 2px #3E7D3B;
+    text-shadow: 2px 2px 2px #4f65c5;
 }
 
 .richieste {

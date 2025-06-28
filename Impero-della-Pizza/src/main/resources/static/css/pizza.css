@@ -12,26 +12,50 @@ body {
     color: #3e3e3e;
 }
 
-header {
+.username {
+	font-size: 1.4rem;
+	color: green;
+	display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/*#a00d05*/
+
+.navbar {
     display: flex;
-    justify-content: flex-end;
-    gap: 1rem;
-    padding: 1rem 2rem;
-    border-style: outset;
-    border-color: #b33e3e;
+    justify-content: space-between;
+    padding: 1rem 2 rem;
+	background-color: #a00d05;
     border-width: 0.5rem;
-    background-color: #f1e4cd;
-    font-size: 1.2rem;
+    
+}
+nav img{
+    
+    width: 5rem;
+    height: 5rem;
+    border-style: dashed;
+    border-color: #ffffff;
+    border-radius: 50%;
+    margin-left: 1rem;
 }
 
-header a {
+nav a {
+    color: #ffffff;
+    
+}
+
+.nav-links { 
+    display: flex;
+    align-items: center;
+    gap: 9rem;
     text-decoration: none;
-    color: #b33e3e;
+    color: #c5a4a4;
     font-weight: bold;
+
 }
 
-header a:hover {
-    text-shadow: 1px 1px 2px #3E7D3B;
+.nav-links a:hover {
+    text-shadow: 2px 2px 2px #4f65c5;
 }
 
 h1 {
