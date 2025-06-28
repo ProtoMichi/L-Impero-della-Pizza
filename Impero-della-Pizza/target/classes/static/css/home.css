@@ -13,8 +13,7 @@ body {
     font-family: "Sauce Tomato";    
 }
 
-<<<<<<< Updated upstream
-=======
+
 .username {
 	font-size: 1.4rem;
 	color: green;
@@ -24,7 +23,6 @@ body {
 }
 /*#a00d05*/
 
->>>>>>> Stashed changes
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -52,9 +50,6 @@ nav a {
     display: flex;
     align-items: center;
     gap: 9rem;
-    text-decoration: none;
-    color: #c5a4a4;
-    font-weight: bold;
 
 }
 
@@ -99,3 +94,9 @@ nav a {
 .pizze img:hover {
     transform: scale(1.05);
   }
+  
+
+  
+  
+  
+  
