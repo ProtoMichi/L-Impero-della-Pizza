@@ -1,0 +1,84 @@
+@font-face {
+    font-family: 'Sauce Tomato';
+    src: url('/fonts/Sauce-Tomato.otf') format('opentype');
+  }
+
+body {
+    margin: 0;
+    background-image: url('/images/crosta-sfondo.png'); 
+    background-repeat: repeat-y;
+    background-size: cover; /* o 'contain' per vedere tutta l'immagine */
+    background-position: center;
+    background-attachment: fixed;
+    font-family: "Sauce Tomato";    
+}
+
+
+.username {
+	font-size: 1.4rem;
+	color: green;
+	display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/*#a00d05*/
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 2 rem;
+	background-color: #a00d05;
+    border-width: 0.5rem;
+    
+}
+nav img{
+    
+    width: 5rem;
+    height: 5rem;
+    border-style: dashed;
+    border-color: #ffffff;
+    border-radius: 50%;
+    margin-left: 1rem;
+}
+
+nav a {
+    color: #ffffff;
+    
+}
+
+.nav-links { 
+    display: flex;
+    align-items: center;
+    gap: 9rem;
+
+}
+
+.nav-links a:hover {
+    text-shadow: 2px 2px 2px #4f65c5;
+}
+
+.nome-ing {
+	text-align: center;
+	color: #ffffff;
+}
+
+.prezzo {
+	text-align: center;
+	color: #ffffff;
+}
+
+.vegan {
+	text-align: center;
+}
+
+.vegan img {
+  width: 3rem;
+}
+
+.gluten {
+	text-align: center;
+}
+
+.gluten img {
+	width: 3rem;
+}

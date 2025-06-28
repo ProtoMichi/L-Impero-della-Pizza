@@ -24,16 +24,13 @@
 			        <a href="/pizza/formCercaPizza" style="text-decoration:none">Cerca</a>
 					<!-- Blocco utente -->
 					<div>
-					    <div th:if="${userDetails}">
-					        <a class="username"
-					           th:href="@{'/recensione/' + ${userDetails.username} + '/recensioni'}"
-					           th:text="${userDetails.username}">
-					        </a>
-					        <a href="/logout" style="text-decoration:none">Logout</a>
-					    </div>
-					    <div th:unless="${userDetails}">
-					        <a href="/login" style="text-decoration:none">Login</a>
-					    </div>
+						<div th:if="${userDetails}">
+							<span th:text="${userDetails.username}"></span>
+							<a href="/logout">Logout</a>
+						</div>
+						<div th:unless="${userDetails}">
+							<a href="/login">Login</a>
+						</div>
 					</div>
 			    </div>
 			</nav>
