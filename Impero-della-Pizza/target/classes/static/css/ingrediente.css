@@ -21,9 +21,7 @@ body {
     justify-content: center;
     align-items: center;
 }
-
 /*#a00d05*/
-
 
 .navbar {
     display: flex;
@@ -59,43 +57,28 @@ nav a {
     text-shadow: 2px 2px 2px #4f65c5;
 }
 
-.richieste {
-    text-align: center;
-    padding: 2rem;
+.nome-ing {
+	text-align: center;
+	color: #ffffff;
 }
 
-.richieste h1, h2 {
-    color: #f1e4cd;
-    font-size: 2rem;
-  text-shadow:
-    -1px -1px 0 #000,  
-     1px -1px 0 #000,
-    -1px  1px 0 #000,
-     1px  1px 0 #000;
+.prezzo {
+	text-align: center;
+	color: #ffffff;
 }
 
-
-.pizze {
-    display: flex;
-    justify-content: center;
-    gap: 2rem; 
-    flex-wrap: wrap; 
-    margin-top: 1rem;
-  }
-
-.pizze img {
-    width: 300px;
-    height: auto;
-    border-style: outset;
-    border-color: #b33e3e;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px #2a5328;
-    transition: transform 0.3s ease;
-
+.vegan {
+	text-align: center;
 }
 
-.pizze img:hover {
-    transform: scale(1.05);
+.vegan img {
+  width: 3rem;
 }
 
+.gluten {
+	text-align: center;
+}
 
+.gluten img {
+	width: 3rem;
+}

@@ -2,9 +2,34 @@
 <html>
 <head>
   <title>Ingrediente</title>
+  <link rel="stylesheet" href="/css/ingrediente.css">
 </head>
 <body>
 	<header>
+		<nav class="navbar">
+		    <div class="nav-links">
+		        <a class="logo">
+		            <img src="/images/impero-della-pizza.png" alt="logo" title="Home"
+		                height="70" width="70" class="logo">
+		        </a>               
+		        <a href="/pizza" style="text-decoration:none">Menù</a>
+		        <a href="/ingrediente" style="text-decoration:none">Ingredienti</a>
+		        <a href="/recensione" style="text-decoration:none">Recensioni</a>
+		        <a href="/formNewPizza" style="text-decoration:none">Crea</a>
+		        <a href="/pizza/formCercaPizza" style="text-decoration:none">Cerca</a>
+				<!-- Blocco utente -->
+				<div>
+					<div th:if="${userDetails}">
+						<span th:text="${userDetails.username}"></span>
+						<a href="/logout">Logout</a>
+					</div>
+					<div th:unless="${userDetails}">
+						<a href="/login">Login</a>
+					</div>
+				</div>
+		    </div>
+		</nav>
+
 		<div th:if="${userDetails}">
 			<a class="username" th:href="@{'/recensione' + '/' + ${userDetails.username} + '/' + 'recensioni'}" th:text="${userDetails.username}"></a>
 			<a href="/logout">Logout</a>
@@ -12,29 +37,27 @@
 		<div th:unless="${userDetails}">
 			<a href="/login">Login</a>
 		</div>
+
 	</header>
-	<div>
-				<a href="/"><img src="/images/impero-della-pizza.png" width="5%" /></a>
-			</div>
-	
+
   <div th:if="${ingrediente}">
-    <h1 th:text="${ingrediente.nome}" style="text-decoration: none;color: brown;">Nome Ingrediente</h1>
+    <h1 class="nome-ing" th:text="${ingrediente.nome}">Nome Ingrediente</h1>
   </div>
-	<div>
+	<div class="prezzo">
 	  Prezzo: <span th:text="${#numbers.formatDecimal(ingrediente.prezzo, 1, 2)} + ' €'">1.50 €</span>
 	</div>
-    <div th:if="${ingrediente.vegan}">
-      <span><img src="/images/Vegan_friendly_icon.jpg" width="1.5%"></span>
+    <div class="vegan" th:if="${ingrediente.vegan}">
+      <span><img src="/images/Vegan_friendly_icon.jpg"></span>
     </div>
-    <div th:if="${ingrediente.celiaco}">
-     <img src="/images/GlutenFree.jpg" width="1.5%">
+    <div class="gluten" th:if="${ingrediente.celiaco}">
+     <img src="/images/GlutenFree.jpg">
     </div>
 	
 	<div th:if="${ruolo == 'ADMIN'}">
 			    <a th:href="@{'/ingrediente/' + ${ingrediente.id} + '/modifica'}">Modifica Ingrediente</a>
 			  </div>
 			  
-  <div th:unless="${ingrediente}">
+  <div class="non-esiste" th:unless="${ingrediente}">
     Non Esiste
   </div>
 </body>
