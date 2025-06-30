@@ -13,53 +13,9 @@ body {
     font-family: "Sauce Tomato";    
 }
 
-.username {
-	font-size: 1.4rem;
-	color: green;
-	display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    padding: 1rem 2 rem;
-	background-color: #fce4d6;
-    border-width: 0.5rem;
-    
-}
-nav img{
-    
-    width: 5rem;
-    height: 5rem;
-    border-style: dashed;
-    border-color: #ffffff;
-    border-radius: 50%;
-    margin-left: 1rem;
-}
-
-nav a {
-    color: #a00d05;
-    
-}
-
-.nav-links { 
-    display: flex;
-    align-items: center;
-    gap: 9rem;
-
-}
-
-.nav-links a:hover {
-    text-shadow: 2px 2px 2px #4f65c5;
-}
-
 
 h1 {
-	vertical-align: middle;
-	align-content: center;
+  text-align: center;
   font-size: 2.5rem;
   margin-bottom: 1rem;
   color: #fce4d6;
@@ -68,14 +24,17 @@ h1 {
 
 ul {
   list-style-type: none;
-  padding: 0;
   margin-top: 1rem;
+  padding: 0;
 }
 
 li {
+  width: 50rem;    
+  display: block;
   background-color: #fff1e6;
   padding: 1rem;
   border-radius: 12px;
+  margin: 0 auto;
   margin-bottom: 1rem;
   box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
   transition: transform 0.2s ease;
@@ -83,12 +42,12 @@ li {
 }
 
 li:hover {
-  transform: scale(1.02);
+  transform: scale(1.1);
 }
 
 
 li a {
-  color: #7b3f3f;
+  color: rgb(181, 45, 45);
   text-decoration: none;
   font-weight: bold;
 }

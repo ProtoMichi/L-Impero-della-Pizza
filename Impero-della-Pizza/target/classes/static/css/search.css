@@ -16,7 +16,7 @@ h1 {
     text-align: center;
     font-size: 3rem;
     margin-top: 1rem;
-    color: #f1e4cd;
+    color: #ffffff;
     text-shadow:
         -1px -1px 0 #000,
          1px -1px 0 #000,
@@ -120,4 +120,34 @@ span img {
     border-radius: 0;       /* nessun bordo arrotondato per le stelle */
     box-shadow: none;       /* rimuovi l'ombra se non la vuoi sulle stelle */
     display: inline-block;     
+}
+
+form {
+    background-color: #f1e4cde6;
+    max-width: 400px;
+    margin: 2rem auto;
+    padding: 2rem;
+    border: 4px outset #b33e3e;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #2a5328;
+	text-align: center;
+}
+
+.label {
+	color: #a00d05;
+}
+
+button {
+    background-color: #b33e3e;
+    color: white;
+    padding: 1rem 1.2rem;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #3E7D3B;
 }

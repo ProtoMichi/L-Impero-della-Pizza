@@ -13,6 +13,60 @@ body {
     font-family: "Sauce Tomato";    
 }
 
+h1 {
+	text-align: center;
+	color: #ffffff;
+}
+
+table {
+  table-layout: fixed;
+  width: 75%;
+  min-width: 1000px;
+  margin: 0 auto;
+  border-collapse: collapse;
+  background-color: #f1e4cde6;
+  border-radius: 2%;
+}
+
+th {
+	color: #a00d05;
+}
+
+th,
+td {
+  padding: 0.6em;
+}
+
+th,
+td {
+	border-bottom: 1px solid #ffffff;
+}
+
+tr :nth-child(2),
+tr :nth-child(4),
+tr :nth-child(5),
+tr :nth-child(6) {
+  text-align: right;
+  width: 35%;
+}
+
+tr :nth-child(3){
+	text-align: left;
+	width: 40%;
+	font-size: small;
+}
+
+tr :nth-child(1),
+tr :nth-child(7) {
+  text-align: left;
+  width: 35%;
+}
+
+tr a{
+	color: green;
+}
+
+
 
 
 

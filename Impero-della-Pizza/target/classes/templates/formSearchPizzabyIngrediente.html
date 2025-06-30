@@ -36,9 +36,11 @@
 	<h1>Cerca Pizza per Ingrediente</h1>
 	<form th:action="@{/pizza/cercaPizza}" method="post">
 		<div>
-			Ingrediente: <input type="text" name="nomeIngrediente" />
+		  <span class="label">Ingrediente:</span>
+		  <input type="text" name="nomeIngrediente" />
+		  <span><button type="submit">Cerca</button></span>
 		</div>
-		<div><input type="submit" /></div>
+
 	</form>
 </body>
 
