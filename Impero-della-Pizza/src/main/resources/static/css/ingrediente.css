@@ -13,58 +13,21 @@ body {
     font-family: "Sauce Tomato";    
 }
 
-
-.username {
-	font-size: 1.4rem;
-	color: green;
-	display: flex;
-    justify-content: center;
-    align-items: center;
-}
-/*#a00d05*/
-
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    padding: 1rem 2 rem;
-	background-color: #a00d05;
-    border-width: 0.5rem;
-    
-}
-nav img{
-    
-    width: 5rem;
-    height: 5rem;
-    border-style: dashed;
-    border-color: #ffffff;
-    border-radius: 50%;
-    margin-left: 1rem;
-}
-
-nav a {
-    color: #ffffff;
-    
-}
-
-.nav-links { 
-    display: flex;
-    align-items: center;
-    gap: 9rem;
-
-}
-
-.nav-links a:hover {
-    text-shadow: 2px 2px 2px #4f65c5;
+section {
+	text-align: center;
+	background-color: #f1e4cde6;
+	width: 35%;
+	border-radius: 15px;
+	margin: 0 auto;
 }
 
 .nome-ing {
-	text-align: center;
-	color: #ffffff;
+	color: #a00d05;
 }
 
 .prezzo {
-	text-align: center;
-	color: #ffffff;
+	color: black;
+	margin-bottom: 1rem;
 }
 
 .vegan {
@@ -82,3 +45,15 @@ nav a {
 .gluten img {
 	width: 3rem;
 }
+
+.modifica a {
+	color: green;
+	margin-bottom: 1rem;
+	transition: ease;
+}
+
+.modifica a:hover{
+	transform: scale(1.1, 1.1);
+	color: blue;
+	
+} 

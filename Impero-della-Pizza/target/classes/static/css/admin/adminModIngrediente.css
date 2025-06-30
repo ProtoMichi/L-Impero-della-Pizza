@@ -13,26 +13,51 @@ body {
     font-family: "Sauce Tomato";    
 }
 
-section {
+h1 {
 	text-align: center;
-	background-color: #f1e4cde6;
-	width: 50%;
-	border-radius: 15px;
-	margin: 0 auto;
-	margin-top: 3rem;
+	color: #ffffff;
 }
 
-section h1{
+form {
+	text-align: center;
+	width: 40%;
+	margin: 0 auto;
+	background-color: #f1e4cde6;
+	border-radius: 15px;
+	padding-top: 1rem;
+}
+
+form button {
+    background-color: #b33e3e;
+    color: white;
+	margin-bottom: 1rem;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #3E7D3B;
+}
+
+.nome .prezzo {
 	color: #b33e3e;
 }
 
-section a{
+.veg {
 	color: green;
-	transition: ease;
-}
-section a:hover{
-	transform: scale(1.1);
 }
 
+.cel {
+	color: saddlebrown;
+}
 
+div {
+	text-align: center;
+	margin-top: 1rem;
+}
 
+div a {
+	color: #ffffff;
+}

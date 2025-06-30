@@ -13,53 +13,7 @@ body {
     font-family: "Sauce Tomato";    
 }
 
-/* Header */
-header {
-  background-color: #fce4d6;
-  padding: 1.5rem;
-  border-bottom: 2px solid #e0c1b3;
-  position: relative;
-}
 
-header h1 {
-  color: #a84332;
-  margin-bottom: 1rem;
-}
-
-header img {
-  position: absolute;
-  top: 1.5rem;
-  right: 2rem;
-  width: 70px;
-}
-
-header a {
-  margin-right: 1rem;
-  text-decoration: none;
-  color: #6d3d33;
-  font-weight: bold;
-}
-
-header span {
-  font-weight: bold;
-  color: #44261b;
-}
-
-/* Navigation */
-nav {
-  margin-top: 1rem;
-}
-
-nav a {
-  margin-right: 1.5rem;
-  font-size: 1rem;
-  text-decoration: none;
-  color: #5b2a1f;
-}
-
-nav a:hover {
-  text-decoration: underline;
-}
 
 /* Main form */
 main {

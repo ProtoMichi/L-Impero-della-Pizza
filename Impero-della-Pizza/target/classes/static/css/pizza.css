@@ -118,3 +118,8 @@ span img {
     box-shadow: none;       /* rimuovi l'ombra se non la vuoi sulle stelle */
     display: inline-block;     
 }
+
+.no-rece {
+	text-align: center;
+	color: #ffffff;
+}
