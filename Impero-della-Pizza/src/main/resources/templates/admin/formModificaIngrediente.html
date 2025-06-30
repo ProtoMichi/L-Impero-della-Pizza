@@ -3,27 +3,56 @@
 <head>
     <meta charset="UTF-8" />
     <title>Modifica Ingrediente</title>
-
+	
+	<link rel="stylesheet" href="/css/admin/adminModIngrediente.css">
 	<link rel="stylesheet" href="/css/navbar.css">
 </head>
+
 <body>
+	
+	<header>
+		<nav class="navbar">
+		    <div class="nav-links">
+		        <a class="logo">
+		            <img src="/images/impero-della-pizza.png" alt="logo" title="Home"
+		                height="70" width="70" class="logo">
+		        </a>               
+		        <a href="/pizza">Menù</a>
+		        <a href="/ingrediente">Ingredienti</a>
+		        <a href="/recensione">Recensioni</a>
+		        <a href="/formNewPizza">Crea</a>
+		        <a href="/pizza/formCercaPizza">Cerca</a>
+				<!-- Blocco utente -->
+				
+					<div th:if="${userDetails}">
+						<a class="username" th:href="@{'/recensione' + '/' + ${userDetails.username} + '/' + 'recensioni'}" th:text="${userDetails.username}"></a>
+						<a href="/logout">Logout</a>
+					</div>
+					<div th:unless="${userDetails}">
+						<a href="/login">Login</a>
+					</div>
+				</div>
+		</nav>
+	</header>
+	
     <h1>Modifica Ingrediente</h1>
 	<form th:action="@{'/ingrediente/' + ${ingrediente.id} + '/modifica'}" th:object="${ingrediente}" method="POST">
 	    
-	    <label for="nome">Nome:</label>
+	    <label class="nome" for="nome">Nome:</label>
 	    <input type="text" id="nome" th:field="*{nome}" required /><br />
 
-	    <label for="prezzo">Prezzo:</label>
+	    <label class="prezzo" for="prezzo">Prezzo:</label>
 	    <input type="number" id="prezzo" th:field="*{prezzo}" step="0.01" min="0" required /><br />
 
-	    <label for="celiaco">Celiaco:</label>
+	    <label class="cel" for="celiaco">Celiaco:</label>
 	    <input type="checkbox" id="celiaco" th:field="*{celiaco}" /><br />
 
-	    <label for="vegano">Vegano:</label>
+	    <label class="veg" for="vegano">Vegano:</label>
 	    <input type="checkbox" id="vegano" th:field="*{vegan}" /><br />
 
 	    <button type="submit">Salva modifiche</button>
 	</form>
-    <a href="/">Torna alla home</a>
+	
+    <div><a href="/">Torna alla Home</a></div>
 </body>
 </html>

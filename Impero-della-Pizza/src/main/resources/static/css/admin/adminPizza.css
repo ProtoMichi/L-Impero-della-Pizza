@@ -13,47 +13,37 @@ body {
     font-family: "Sauce Tomato";    
 }
 
-section {
+h1 {
 	text-align: center;
-	background-color: #f1e4cde6;
-	width: 35%;
-	border-radius: 15px;
 	margin: 0 auto;
+	color: #ffffff;
 }
 
-.nome-ing {
-	color: #a00d05;
-}
-
-.prezzo {
-	color: black;
-	margin-bottom: 1rem;
-}
-
-.vegan {
+form {
+	width: 40%;
+	margin: 0 auto;
+	background-color: #f1e4cde6;
+	border-radius: 15px;
 	text-align: center;
 }
 
-.vegan img {
-  width: 3rem;
+ul {
+	list-style-type: none;
+	padding-left: 1rem;
 }
 
-.gluten {
-	text-align: center;
+button {
+    background-color: #b33e3e;
+    color: white;
+    padding: 0.7rem 1.2rem;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+	margin-top: 1rem;
 }
 
-.gluten img {
-	width: 3rem;
+button:hover {
+    background-color: #3E7D3B;
 }
-
-.modifica a {
-	color: green;
-	margin-bottom: 1rem;
-	transition: ease;
-}
-
-.modifica a:hover{
-	transform: scale(1.1, 1.1);
-	color: blue;
-	
-} 

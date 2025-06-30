@@ -1,0 +1,63 @@
+@font-face {
+    font-family: 'Sauce Tomato';
+    src: url('/fonts/Sauce-Tomato.otf') format('opentype');
+  }
+
+body {
+    margin: 0;
+    background-image: url('/images/crosta-sfondo.png'); 
+    background-repeat: repeat-y;
+    background-size: cover; /* o 'contain' per vedere tutta l'immagine */
+    background-position: center;
+    background-attachment: fixed;
+    font-family: "Sauce Tomato";    
+}
+
+h1 {
+	text-align: center;
+	color: #ffffff;
+}
+
+form {
+	text-align: center;
+	width: 40%;
+	margin: 0 auto;
+	background-color: #f1e4cde6;
+	border-radius: 15px;
+	padding-top: 1rem;
+}
+
+form button {
+    background-color: #b33e3e;
+    color: white;
+	margin-bottom: 1rem;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #3E7D3B;
+}
+
+.nome .prezzo {
+	color: #b33e3e;
+}
+
+.veg {
+	color: green;
+}
+
+.cel {
+	color: saddlebrown;
+}
+
+div {
+	text-align: center;
+	margin-top: 1rem;
+}
+
+div a {
+	color: #ffffff;
+}

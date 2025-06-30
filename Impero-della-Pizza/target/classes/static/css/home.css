@@ -29,6 +29,13 @@ body {
      1px  1px 0 #000;
 }
 
+.pizze-fieldset {
+	background-color: #f1e4cde6;
+	width: 60%;
+	text-align: center;
+	margin: 0 auto;
+	border-radius: 15px;
+}
 
 .pizze {
     display: flex;
