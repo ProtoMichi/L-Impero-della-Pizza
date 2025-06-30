@@ -1,0 +1,58 @@
+@font-face {
+    font-family: 'Sauce Tomato';
+    src: url('/fonts/Sauce-Tomato.otf') format('opentype');
+  }
+
+body {
+    margin: 0;
+    background-image: url('/images/crosta-sfondo.png'); 
+    background-repeat: repeat-y;
+    background-size: cover; /* o 'contain' per vedere tutta l'immagine */
+    background-position: center;
+    background-attachment: fixed;
+    font-family: "Sauce Tomato";    
+}
+
+
+h1 {
+	color: #ffffff;
+	text-align: center;
+}
+
+form {
+	text-align: center;
+	width: 35%;
+	margin: 0 auto;
+	background-color: #f1e4cde6;
+	border-radius: 15px;
+	
+}
+
+.nome , .prezzo {
+	color: #a00d05;
+}
+
+.vegan {
+	color: green;
+}
+
+.celiaco {
+	color: saddlebrown
+}
+
+button {
+    background-color: #b33e3e;
+    color: white;
+    padding: 0.7rem 1.2rem;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #3E7D3B;
+}
