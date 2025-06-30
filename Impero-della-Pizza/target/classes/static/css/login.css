@@ -14,25 +14,6 @@ body {
     font-family: "Sauce Tomato";    
 }
 
-header {
-    display: flex;
-    justify-content: flex-end;
-    background-color: #f1e4cd;
-    padding: 1rem 2rem;
-    border-bottom: 4px solid #b33e3e;
-    font-weight: bold;
-    color: #b33e3e;
-}
-
-header a {
-    text-decoration: none;
-    color: #b33e3e;
-    margin-left: 1rem;
-}
-
-header a:hover {
-    text-shadow: 2px 2px 2px #3E7D3B;
-}
 
 h1 {
     text-align: center;
@@ -43,13 +24,14 @@ h1 {
 }
 
 form {
-    background-color: rgba(241, 228, 205, 0.9);
+    background-color: #f1e4cde6;
     max-width: 400px;
     margin: 2rem auto;
     padding: 2rem;
     border: 4px outset #b33e3e;
     border-radius: 10px;
     box-shadow: 0 0 10px #2a5328;
+	text-align: center;
 }
 
 form div {

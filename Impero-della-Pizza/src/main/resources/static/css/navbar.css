@@ -1,0 +1,48 @@
+@font-face {
+    font-family: 'Sauce Tomato';
+    src: url('/fonts/Sauce-Tomato.otf') format('opentype');
+  }
+  
+ 
+  .username {
+  	font-size: 1.4rem;
+  	color: green;
+  	display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+
+
+  .navbar {
+      display: flex;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+  	background-color: #f1e4cd;
+      border-width: 0.5rem;
+      
+  }
+  nav img{
+      
+      width: 5rem;
+      height: 5rem;
+      border-style: dashed;
+      border-color: #ffffff;
+      border-radius: 50%;
+      margin-left: 1rem;
+  }
+
+  nav a {
+      color: #a00d05;
+      
+  }
+
+  .nav-links { 
+      display: flex;
+      align-items: center;
+      gap: 9rem;
+
+  }
+
+  .nav-links a:hover {
+      text-shadow: 2px 2px 2px #4f65c5;
+  }

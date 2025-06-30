@@ -26,8 +26,8 @@ body {
 .navbar {
     display: flex;
     justify-content: space-between;
-    padding: 1rem 2 rem;
-	background-color: #a00d05;
+    padding: 1rem 2rem;
+	background-color: #fce4d6;
     border-width: 0.5rem;
     
 }
@@ -42,7 +42,7 @@ nav img{
 }
 
 nav a {
-    color: #ffffff;
+    color: #a00d05;
     
 }
 
