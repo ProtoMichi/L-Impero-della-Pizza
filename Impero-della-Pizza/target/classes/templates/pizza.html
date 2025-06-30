@@ -2,28 +2,34 @@
 <html>
 <head>
 	<title>Pizza X</title>
+	<link rel="stylesheet" th:href="@{/css/navbar.css}"/>
 	<link rel="stylesheet" th:href="@{/css/pizza.css}" />
+	
 </head>
 
 <body>
 	<header>
 		<nav class="navbar">
-			<div class="nav-links">
-			                    <a class="logo"><img src="/images/impero-della-pizza.png" alt="logo" title="Home"
-			                        height="70" width="70" class="logo">
-			                    </a>               
-			                    <a href="/pizza" style="text-decoration:none">Menù</a>
-			                    <a href="/ingrediente" style="text-decoration:none">Ingredienti</a>
-			                    <a href="/recensione" style="text-decoration:none">Recensioni</a>
-			                    <a href="/formNewPizza" style="text-decoration:none">Crea</a>
-			                    <a href="/pizza/formCercaPizza" style="text-decoration:none">Cerca</a>
-		<div th:if="${userDetails}">
-			<a class="username" th:href="@{'/recensione' + '/' + ${userDetails.username} + '/' + 'recensioni'}" th:text="${userDetails.username}"></a>
-			<a href="/logout">Logout</a>
-		</div>
-		<div th:unless="${userDetails}">
-			<a href="/login">Login</a>
-		</div>
+		    <div class="nav-links">
+		        <a class="logo">
+		            <img src="/images/impero-della-pizza.png" alt="logo" title="Home"
+		                height="70" width="70" class="logo">
+		        </a>               
+		        <a href="/pizza" style="text-decoration:none">Menù</a>
+		        <a href="/ingrediente" style="text-decoration:none">Ingredienti</a>
+		        <a href="/recensione" style="text-decoration:none">Recensioni</a>
+		        <a href="/formNewPizza" style="text-decoration:none">Crea</a>
+		        <a href="/pizza/formCercaPizza" style="text-decoration:none">Cerca</a>
+				<!-- Blocco utente -->
+				
+					<div th:if="${userDetails}">
+						<a class="username" th:href="@{'/recensione' + '/' + ${userDetails.username} + '/' + 'recensioni'}" th:text="${userDetails.username}"></a>
+						<a href="/logout">Logout</a>
+					</div>
+					<div th:unless="${userDetails}">
+						<a href="/login">Login</a>
+					</div>
+				</div>
 		</nav>
 	</header>
 	

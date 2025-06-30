@@ -14,25 +14,6 @@ body {
     font-family: "Sauce Tomato";    
 }
 
-header {
-    display: flex;
-    justify-content: flex-end;
-    background-color: #f1e4cd;
-    padding: 1rem 2rem;
-    border-bottom: 4px solid #b33e3e;
-    font-weight: bold;
-    color: #b33e3e;
-}
-
-header a {
-    text-decoration: none;
-    color: #b33e3e;
-    margin-left: 1rem;
-}
-
-header a:hover {
-    text-shadow: 2px 2px 2px #3E7D3B;
-}
 
 h1 {
     text-align: center;

@@ -12,28 +12,6 @@ body {
     color: #3e3e3e;
 }
 
-header {
-    display: flex;
-    justify-content: flex-end;
-    gap: 1rem;
-    padding: 1rem 2rem;
-    border-style: outset;
-    border-color: #b33e3e;
-    border-width: 0.5rem;
-    background-color: #f1e4cd;
-    font-size: 1.2rem;
-}
-
-header a {
-    text-decoration: none;
-    color: #b33e3e;
-    font-weight: bold;
-}
-
-header a:hover {
-    text-shadow: 1px 1px 2px #3E7D3B;
-}
-
 h1 {
     text-align: center;
     font-size: 3rem;

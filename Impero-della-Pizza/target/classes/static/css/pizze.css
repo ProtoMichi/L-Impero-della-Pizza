@@ -13,40 +13,7 @@ body {
     font-family: "Sauce Tomato";
 }
 
-header {
-    display: flex;
-    justify-content: flex-end;
-    gap: 1rem;
-    padding: 1rem 2rem;
-    border-style: outset;
-    border-color: #b33e3e;
-    border-width: 0.5rem;
-    background-color: #f1e4cd;
-    font-size: 1.2rem;
-}
 
-header a {
-	font-size: 0.6rem;
-    text-decoration: none;
-    color: #b33e3e;
-    font-weight: bold;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 2rem;
-}
-
-header a:hover {
-    text-shadow: 1px 1px 2px #3E7D3B;
-}
-
-.username {
-	font-size: 1.4rem;
-	color: green;
-	display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
 h1 {
     text-align: center;
@@ -202,10 +169,6 @@ li img {
     color: #3e3e3e;
 }
 
-.logo {
-    width: 1.1em;     /* più piccolo rispetto al testo circostante */
-    height: auto;
-}
 
 .pizza-voto {
 	margin-bottom: 0;  /* margine sotto nullo */
