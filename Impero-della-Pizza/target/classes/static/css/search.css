@@ -151,3 +151,7 @@ button {
 button:hover {
     background-color: #3E7D3B;
 }
+
+div a {
+	color: green;
+}

@@ -17,7 +17,7 @@ body {
 
 
 main {
-  background-color: #fff1e6;
+  background-color: #f1e4cde6;
   padding: 2rem;
   border-radius: 12px;
   box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
@@ -42,29 +42,23 @@ strong {
   margin-right: 2px;
 }
 
-/* Link di ritorno */
-a[href*="/recensioni"] {
-  display: block;
-  width: fit-content;
-  margin: 2rem auto;
-  padding: 0.7rem 1.5rem;
-  background-color: #d36b43;
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-  border-radius: 8px;
-  box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.1);
-  transition: background-color 0.2s ease;
-}
-
-a[href*="/recensione"]:hover {
-  background-color: #b14e2f;
-}
-
-
 
 .stella {
         width: 20px;
         height: 20px;
         vertical-align: middle;
     }
+	
+.back {
+	text-align: center;
+	width: 10%;
+	margin: 0 auto;
+	border-radius: 15px;
+	background-color: #f1e4cde6;
+}	
+
+.back a {
+	color: green;
+}
+	
+	

@@ -18,21 +18,27 @@
       justify-content: space-between;
       padding: 1rem 2rem;
   	background-color: #f1e4cd;
-      border-width: 0.5rem;
       
   }
   nav img{
       
       width: 5rem;
       height: 5rem;
-      border-style: dashed;
-      border-color: #ffffff;
+      
+	 
+      display: block;
+      margin: 2rem auto;
+      border: 5px solid red; 
+      box-shadow:
+      0 0 0 7px white,   
+      0 0 0 12px green;     
       border-radius: 50%;
       margin-left: 1rem;
   }
 
   nav a {
       color: #a00d05;
+	  font-size: large;
       
   }
 
