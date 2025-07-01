@@ -7,7 +7,7 @@ body {
     margin: 0;
     background-image: url('/images/crosta-sfondo.png'); 
     background-repeat: repeat-y;
-    background-size: cover; /* o 'contain' per vedere tutta l'immagine */
+    background-size: cover; 
     background-position: center;
     background-attachment: fixed;
     font-family: "Sauce Tomato";    
@@ -50,6 +50,7 @@ tr :nth-child(6) {
   width: 35%;
 }
 
+
 tr :nth-child(3){
 	text-align: left;
 	width: 40%;
@@ -64,6 +65,7 @@ tr :nth-child(7) {
 
 tr a{
 	color: green;
+	text-decoration: none;
 }
 
 

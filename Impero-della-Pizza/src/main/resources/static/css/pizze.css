@@ -89,18 +89,18 @@ li p {
 
 
 .stelle {
-	margin-top: 0;     /* niente margine sopra */
+	margin-top: 0;    
     margin-bottom: 4px;
     margin: 0 auto; 
     display: flex;
-    justify-content: center;  /* centra orizzontalmente */
-    align-items: center;      /* centra verticalmente (se serve) */
-    gap: 5px;                 /* spazio tra le stelle */
-    width: fit-content;       /* solo grande quanto le stelle */
+    justify-content: center;  
+    align-items: center;     
+    gap: 5px;                 
+    width: fit-content;      
 }
 
 .stella {
-	width: 1.5em;     /* più piccolo rispetto al testo circostante */
+	width: 1.5em;    
     height: auto;
     border-radius: 0;
     box-shadow: none;
@@ -121,9 +121,9 @@ li p {
 }
 
 .pizza-img img {
-    width: 40vw;        /* larghezza relativa alla viewport (es. 8% della larghezza schermo) */
+    width: 40vw;        
     height: 40vw;
-    max-width: 350px;  /* limite massimo per schermi grandi */
+    max-width: 350px; 
     max-height: 350px;
     object-fit: cover;
     border-radius: 50%;
@@ -171,25 +171,25 @@ li p {
 
 
 .pizza-voto {
-	margin-bottom: 0;  /* margine sotto nullo */
-    font-size: 1.5rem;      /* mantieni grandezza comoda */
+	margin-bottom: 0;  
+    font-size: 1.5rem;      
     color: brown;
     font-weight: bold;
     width: 100%;
     text-align: center;
     display: block;
-    line-height: 1.2;  /* compatta il testo verticalmente */
+    line-height: 1.2;  
 }
 
 .ingrediente-pillola {
-    display: inline-block;     /* si adatta al contenuto */
-    background-color: #f1e4cd; /* colore chiaro, coerente col tema */
-    border: 2px solid #b33e3e; /* bordo rosso */
-    border-radius: 12px;       /* angoli arrotondati */
-    padding: 0.2rem 0.8rem;    /* verticale e orizzontale */
-    margin: 0.2rem 0.4rem;     /* spaziatura tra le pillole */
-    font-size: 1.1rem;         /* leggermente più piccolo */
+    display: inline-block;     
+    background-color: #f1e4cd; 
+    border: 2px solid #b33e3e; 
+    border-radius: 12px;       
+    padding: 0.2rem 0.8rem;    
+    margin: 0.2rem 0.4rem;     
+    font-size: 1.1rem;         
     color: #b33e3e;
     font-weight: bold;
-    user-select: none;         /* opzionale, per evitare selezione accidentale */
+    user-select: none;        
 }

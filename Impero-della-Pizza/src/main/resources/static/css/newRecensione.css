@@ -7,7 +7,7 @@ body {
     margin: 0;
     background-image: url('/images/crosta-sfondo.png'); 
     background-repeat: repeat-y;
-    background-size: cover; /* o 'contain' per vedere tutta l'immagine */
+    background-size: cover; 
     background-position: center;
     background-attachment: fixed;
     font-family: "Sauce Tomato";    
@@ -15,7 +15,7 @@ body {
 
 
 
-/* Main form */
+
 main {
   max-width: 700px;
   margin: 2rem auto;

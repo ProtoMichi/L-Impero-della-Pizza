@@ -7,7 +7,7 @@ body {
     margin: 0;
     background-image: url('/images/crosta-sfondo.png'); 
     background-repeat: repeat-y;
-    background-size: cover; /* o 'contain' per vedere tutta l'immagine */
+    background-size: cover; 
     background-position: center;
     background-attachment: fixed;
     font-family: "Sauce Tomato";    
@@ -50,6 +50,7 @@ section {
 	color: green;
 	margin-bottom: 1rem;
 	transition: ease;
+	text-decoration: none;
 }
 
 .modifica a:hover{
