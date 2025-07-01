@@ -92,21 +92,21 @@ span img {
 }
 
 .stellaPizza{
-    width: 100%; /* o 5% se preferisci responsive */
+    width: 100%; 
     height: auto;
     margin-right: 3px;
-    border-radius: 0;       /* nessun bordo arrotondato per le stelle */
-    box-shadow: none;       /* rimuovi l'ombra se non la vuoi sulle stelle */
+    border-radius: 0;      
+    box-shadow: none;      
     display: inline-block;     
 }
 
 .stelle {
     display: flex;
-    justify-content: center;  /* centra orizzontalmente */
-    align-items: center;      /* centra verticalmente (se serve) */
-    gap: 5px;                 /* spazio tra le stelle */
-    margin: 20px auto;        /* margine verticale, centrato */
-    width: fit-content;       /* solo grande quanto le stelle */
+    justify-content: center;  
+    align-items: center;     
+    gap: 5px;                 
+    margin: 20px auto;       
+    width: fit-content;      
 }
 
 .checkbox {
@@ -114,11 +114,11 @@ span img {
 }
 
 .stellaRecensione{
-    width: 10%; /* o 5% se preferisci responsive */
+    width: 10%; 
     height: auto;
     margin-right: 3px;
-    border-radius: 0;       /* nessun bordo arrotondato per le stelle */
-    box-shadow: none;       /* rimuovi l'ombra se non la vuoi sulle stelle */
+    border-radius: 0;       
+    box-shadow: none;       
     display: inline-block;     
 }
 
