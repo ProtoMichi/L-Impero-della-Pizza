@@ -86,15 +86,7 @@ li p {
     color: #3e3e3e;
 }
 
-li img {
-	width: 30%;
-    height: 30%;
-    object-fit: cover;
-    vertical-align: middle;
-    margin-left: 0.5rem;
-    border-radius: 50%;
-    box-shadow: 0 2px 4px #2a5328;
-}
+
 
 .stelle {
 	margin-top: 0;     /* niente margine sopra */
@@ -167,6 +159,14 @@ li img {
     font-size: 1.4rem;
     margin-top: 0.5rem;
     color: #3e3e3e;
+}
+
+.celiaco img{
+	width: 50px;
+}
+
+.vegano img{
+	width: 50px;
 }
 
 

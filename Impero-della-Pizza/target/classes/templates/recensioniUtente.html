@@ -34,8 +34,8 @@
 
     <h1 th:text="'Recensioni di '+ ${utente.username}">Username</h1>
 
-    <div th:if="${recensioni.isEmpty()}">
-        <p>Questo utente non ha ancora scritto recensioni.</p>
+    <div class="no-rece" th:if="${recensioni.isEmpty()}">
+        <p>Questo utente non ha ancora scritto recensioni!</p>
     </div>
 
     <ul th:unless="${recensioni.isEmpty()}">

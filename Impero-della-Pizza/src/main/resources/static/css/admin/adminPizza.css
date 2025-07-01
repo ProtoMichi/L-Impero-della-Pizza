@@ -7,7 +7,7 @@ body {
     margin: 0;
     background-image: url('/images/crosta-sfondo.png'); 
     background-repeat: repeat-y;
-    background-size: cover; /* o 'contain' per vedere tutta l'immagine */
+    background-size: cover;
     background-position: center;
     background-attachment: fixed;
     font-family: "Sauce Tomato";    
@@ -19,23 +19,63 @@ h1 {
 	color: #ffffff;
 }
 
-form {
-	width: 40%;
-	margin: 0 auto;
-	background-color: #f1e4cde6;
-	border-radius: 15px;
-	text-align: center;
+
+table {
+  border-collapse: collapse;
+  table-layout: fixed;
+  width: 55%;
+  margin: 0 auto;
+  background-color: #f1e4cde6;
+  border-radius: 2%;
 }
 
-ul {
-	list-style-type: none;
-	padding-left: 1rem;
+th {
+	color: #a00d05;
 }
+
+th,
+td {
+  padding: 0.6em;
+}
+
+th,
+td {
+	border-bottom: 1px solid #ffffff;
+}
+
+tr :nth-child(2),
+tr :nth-child(4),
+tr :nth-child(5),
+tr :nth-child(6) {
+  text-align: right;
+  width: 35%;
+}
+
+tr :nth-child(3){
+	text-align: left;
+	width: 40%;
+	font-size: small;
+}
+
+tr :nth-child(1),
+tr :nth-child(7) {
+  text-align: left;
+  width: 35%;
+}
+
+tr a{
+	color: green;
+}
+
 
 button {
+	text-align: center;
     background-color: #b33e3e;
     color: white;
-    padding: 0.7rem 1.2rem;
+	padding-top: 1rem;
+    padding-left: 2rem;
+	padding-right: 5rem;
+	padding-bottom: 1rem;
     border: none;
     border-radius: 6px;
     font-weight: bold;

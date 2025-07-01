@@ -10,7 +10,7 @@
 	<header>
 		<nav class="navbar">
 		    <div class="nav-links">
-		        <a class="logo">
+		        <a class="logo" href="/">
 		            <img src="/images/impero-della-pizza.png" alt="logo" title="Home"
 		                height="70" width="70" class="logo">
 		        </a>               
@@ -58,7 +58,9 @@
 			</span>
 		</p>
 	</main>
-
-    <a th:href="@{/recensione}">Torna alla lista</a>
+	
+	<div class="back">
+	    <a th:href="@{/recensione}">Torna alla lista</a>
+	</div>
 </body>
 </html>

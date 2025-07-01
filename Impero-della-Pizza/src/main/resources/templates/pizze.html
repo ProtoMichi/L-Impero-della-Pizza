@@ -59,11 +59,11 @@
                    th:text="${pizza.nome} + ' (' + ${#numbers.formatDecimal(pizza.prezzo, 1, 2)} + '€)'">
                 </a>
 
-                <span th:if="${pizza.isCeliaco()}">
-                    <img class="logo" src="/images/GlutenFree.jpg" />
+                <span class="celiaco" th:if="${pizza.isCeliaco()}">
+                    <img src="/images/GlutenFree.jpg" />
                 </span>
-                <span th:if="${pizza.isVegan()}">
-                    <img class="logo" src="/images/Vegan_friendly_icon.jpg" />
+                <span class="vegano" th:if="${pizza.isVegan()}">
+                    <img src="/images/Vegan_friendly_icon.jpg" />
                 </span>
             </div>
             
