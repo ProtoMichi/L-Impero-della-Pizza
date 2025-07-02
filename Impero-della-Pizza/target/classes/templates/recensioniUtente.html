@@ -45,6 +45,15 @@
                 <span th:text="${recensione.descrizione}">Descrizione</span>
                 (<span th:text="${recensione.stelle}">5</span> stelle)
             </p>
+			<div>
+				<form th:if="${userDetails.username.equals(recensione.autore.getUsername())}" th:action="@{/recensioni/{id}/recensioni/delete}" method="post"
+										th:object="${rec}">
+										<input type="hidden" name="id" th:value="${recensione.id}" />
+										<button type="submit"
+											onclick="return confirm('Questa Recensione verrà eliminata per sempre, vuoi continuare lo stesso?');">Elimina</button>
+									</form>
+				
+			</div>
         </li>
     </ul>
 

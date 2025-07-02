@@ -3,6 +3,8 @@ package it.uniroma3.siw.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -70,5 +72,21 @@ public class RecensioneController {
 	public String eliminaRecensione(@RequestParam("id") Long id) {
 		recensioneService.deleteById(id);
 		return "redirect:/admin/formGestioneRecensioni";
+	}
+	
+	@PostMapping("/recensioni/{username}/recensioni/delete")
+	public String eliminaRecensioneUtente(@RequestParam("id") Long id, @PathVariable("username") String username, Model model) {
+		UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
+	    if (credentials == null || credentials.getUser() == null) {
+	        return "pizzaNonTrovata.html"; // inserire errore
+	    }
+		recensioneService.deleteById(id);
+		User user = credentials.getUser();
+	    List<Recensione> recensioni = this.recensioneService.getByAutore(user);
+
+	    model.addAttribute("recensioni", recensioni);
+	    model.addAttribute("utente", user);
+		return "recensioniUtente.html";
 	}
 }
