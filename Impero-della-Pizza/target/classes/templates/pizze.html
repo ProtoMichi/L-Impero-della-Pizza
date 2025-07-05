@@ -47,7 +47,8 @@
     <div class="pizza-row">
         <!-- IMMAGINE -->
         <div class="pizza-img">
-            <img th:src="${pizza.URLImmagine}" alt="Pizza" />
+			<img th:if="${pizza.URLImmagine == ''}" src="https://media1.tenor.com/m/-mGE2cZvHAUAAAAd/pizza-time-food.gif">
+			<img th:unless ="${pizza.URLImmagine == ''}" th:src="${pizza.URLImmagine}" alt="Pizza" />
         </div>
 
         <!-- BLOCCO TESTO A DESTRA -->
